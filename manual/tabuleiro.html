@@ -1,0 +1,25 @@
+<div class="page tab-page">
+  <div class="tab-toolbar">
+    <div class="tab-toolbar-left">
+      <span class="page-kicker" style="margin:0">Mesa Virtual</span>
+      <h2 style="font-family:'Oswald',sans-serif;font-size:1rem;color:var(--fg);text-transform:uppercase;letter-spacing:.08em;margin:0">Tabuleiro</h2>
+      <span style="font-size:.68rem;color:var(--fg-muted);font-family:'Inter',sans-serif">Arraste peças · Clique no tabuleiro inferior para adicionar</span>
+    </div>
+    <div class="tab-toolbar-right">
+      <span id="tab-save-msg" style="font-size:.72rem;color:var(--venaris);opacity:0;transition:opacity .4s;font-family:'Inter',sans-serif;pointer-events:none">✔ Salvo</span>
+      <button class="tab-btn" onclick="tabReset()">↺ Resetar</button>
+      <button class="tab-btn tab-btn-save" onclick="tabSave()">💾 Salvar</button>
+    </div>
+  </div>
+
+  <div class="tab-canvas-wrap" id="tabCanvasWrap">
+    <div class="tab-canvas" id="tabCanvas"></div>
+  </div>
+
+  <div class="tab-tray">
+    <div class="tab-tray-cats" id="tabTrayCats"></div>
+    <div class="tab-tray-scroll">
+      <div class="tab-tray-items" id="tabTrayItems"></div>
+    </div>
+  </div>
+</div>

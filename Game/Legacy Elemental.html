@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Legacy Elemental</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#090c10;color:#e1e4db;font-family:'Inter',sans-serif}
+#root{width:100%;height:100%;display:flex;flex-direction:column}
+button{transition:all 0.15s;font-family:inherit}
+button:hover{filter:brightness(1.15)}
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-track{background:rgba(255,255,255,0.02)}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:2px}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.35}}
+@keyframes diceSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes boardGlow{0%,100%{box-shadow:0 0 0 1px rgba(0,0,0,0.95),0 0 24px var(--tc,#d4b77a22),0 10px 48px rgba(0,0,0,0.92)}50%{box-shadow:0 0 0 1px rgba(0,0,0,0.95),0 0 38px var(--tc,#d4b77a33),0 10px 48px rgba(0,0,0,0.92)}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script src="game-data.js"></script>
+<script src="game-engine.js"></script>
+<script type="text/babel" src="components/Setup.jsx"></script>
+<script type="text/babel" src="components/Board.jsx"></script>
+<script type="text/babel" src="components/Combat.jsx"></script>
+<script type="text/babel" src="components/Camp.jsx"></script>
+
+<script type="text/babel">
+const { useReducer, useState, useCallback, useEffect } = React;
+
+// ── Setup Screen (title + char select) ───────────────────────
+// Already exported as SetupScreen from Setup.jsx
+
+// ── Main Game Board ───────────────────────────────────────────
+function GameBoard({ initState }) {
+  const [state, dispatch] = useReducer(gameReducer, initState);
+  const [mapZoom, setMapZoom] = useState(1);
+  const zoomIn  = () => setMapZoom(z => Math.min(1.65, +(z + 0.15).toFixed(2)));
+  const zoomOut = () => setMapZoom(z => Math.max(1.0,  +(z - 0.15).toFixed(2)));
+  const zoomReset = () => setMapZoom(1);
+
+  // Persist round to localStorage
+  useEffect(() => {
+    try { localStorage.setItem('le_save', JSON.stringify({ round: state.round, era: state.era })); } catch(e) {}
+  }, [state.round, state.era]);
+
+  const activePlayer = state.players[state.activePlayerIdx];
+  const viewTerritory = state.territories[state.viewTerritoryIdx];
+
+  if (state.gameOver) {
+    return <GameOverScreen result={state.gameOver} players={state.players} round={state.round} era={state.era} onRestart={() => window.location.reload()} />;
+  }
+
+  return (
+    <div style={{ display:'flex', flexDirection:'column', height:'100vh', background:'#090c10', overflow:'hidden' }}>
+
+      {/* Phase bar */}
+      <PhaseBar
+        phase={state.turnPhase} round={state.round} era={state.era}
+        players={state.players} activePlayerIdx={state.activePlayerIdx}
+        onAdvance={(next) => dispatch({ type:'ADVANCE_PHASE', nextPhase: next })}
+        onNextRound={() => dispatch({ type:'NEXT_ROUND' })}
+        darknessRounds={state.darknessRounds}
+      />
+
+      {/* Main row */}
+      <div style={{ flex:1, display:'flex', overflow:'hidden', minHeight:0 }}>
+
+        {/* Center: map area */}
+        <div style={{ flex:1, display:'flex', flexDirection:'column', overflow:'hidden', minWidth:0 }}>
+
+          {/* Screen tabs */}
+          <div style={{ display:'flex', gap:0, background:'rgba(0,0,0,0.55)', borderBottom:'1px solid rgba(255,255,255,0.05)', padding:'3px 8px', flexShrink:0 }}>
+            {[['map','🗺️ Mapa'],['camp','⛺ Acampamento']].map(([id,label]) => (
+              <button key={id} onClick={() => dispatch({ type:'SET_SCREEN', screen:id })} style={{
+                padding:'4px 14px', borderRadius:4, border:'none', background:'transparent',
+                color: state.screen===id ? '#d4b77a' : '#3a5060', fontSize:11, fontFamily:'Oswald,sans-serif',
+                letterSpacing:'0.06em', textTransform:'uppercase', cursor:'pointer',
+                borderBottom: state.screen===id ? '2px solid #d4b77a' : '2px solid transparent',
+              }}>{label}</button>
+            ))}
+          </div>
+
+          {state.screen === 'map' ? (
+            <>
+              {/* Territory strip */}
+              <TerritoryStrip
+                territories={state.territories} viewIdx={state.viewTerritoryIdx}
+                players={state.players}
+                onSwitch={(i) => dispatch({ type:'SET_VIEW_TERRITORY', idx:i })}
+              />
+
+              {/* MAP — aspect ratio preservada, estética de tabuleiro */}
+              <div style={{ flex:1, display:'flex', alignItems:'center', justifyContent:'center', padding:'10px 8px', minHeight:0, overflow:'hidden',
+                background:'#07090d',
+                backgroundImage:'radial-gradient(circle, rgba(255,255,255,0.018) 1px, transparent 1px)',
+                backgroundSize:'22px 22px' }}>
+
+                {/* Zoom controls — left of map */}
+                <div style={{ display:'flex', flexDirection:'column', gap:5, marginRight:8, flexShrink:0 }}>
+                  {[
+                    { label:'＋', action:zoomIn,    title:'Zoom In'    },
+                    { label:'○',  action:zoomReset, title:'Reset Zoom', dim: mapZoom <= 1.01 },
+                    { label:'－', action:zoomOut,   title:'Zoom Out',   dim: mapZoom <= 1.01 },
+                  ].map(({ label, action, title, dim }) => (
+                    <button key={label} onClick={action} title={title} style={{
+                      width:28, height:28, borderRadius:5,
+                      background: dim ? 'rgba(255,255,255,0.02)' : 'rgba(212,183,122,0.1)',
+                      border: `1px solid ${dim ? 'rgba(255,255,255,0.06)' : 'rgba(212,183,122,0.3)'}`,
+                      color: dim ? '#2a3a4a' : '#d4b77a',
+                      fontSize:14, cursor: dim ? 'default' : 'pointer',
+                      display:'flex', alignItems:'center', justifyContent:'center',
+                      fontFamily:'Inter,sans-serif', fontWeight:600,
+                      transition:'all 0.15s',
+                    }}>{label}</button>
+                  ))}
+                  <div style={{ fontSize:8, color:'#2a3a4a', textAlign:'center', fontFamily:'Inter,sans-serif', marginTop:1 }}>
+                    {Math.round(mapZoom * 100)}%
+                  </div>
+                </div>
+
+                <div style={{ position:'relative', width:'min(calc(100vh - 205px), 100%)', aspectRatio:'1/1', maxHeight:'100%', flexShrink:0 }}>
+                  <HexMap
+                    territory={viewTerritory}
+                    terrIdx={state.viewTerritoryIdx}
+                    players={state.players}
+                    activePlayerIdx={state.activePlayerIdx}
+                    pendingAction={state.pendingAction}
+                    selectedCell={state.selectedCell}
+                    viewTerritoryIdx={state.viewTerritoryIdx}
+                    onSelectCell={(i) => dispatch({ type:'SELECT_CELL', cellIdx:i })}
+                    onAttackCreature={(c, i) => dispatch({ type:'ATTACK_CREATURE', creatureData:c, cellIdx:i })}
+                    zoom={mapZoom}
+                  />
+
+                  {/* Selected cell info overlay */}
+                  {state.selectedCell !== null && (() => {
+                    const cell = viewTerritory.cells[state.selectedCell];
+                    if (!cell) return null;
+                    return (
+                      <div style={{ position:'absolute', bottom:8, left:'50%', transform:'translateX(-50%)', background:'rgba(9,12,16,0.92)', border:'1px solid rgba(212,183,122,0.3)', borderRadius:7, padding:'6px 12px', display:'flex', gap:8, alignItems:'center', fontSize:11, color:'#d4b77a', fontFamily:'Inter,sans-serif', backdropFilter:'blur(6px)', animation:'fadeIn 0.2s', zIndex:10 }}>
+                        <span style={{ fontSize:15 }}>{cell.creature?'⚠️':cell.type==='resource'?'🌿':cell.type==='vortex'?'🌀':cell.type==='merchant'?'⚖️':cell.type==='camp'?'⛺':'📍'}</span>
+                        <span>
+                          {cell.creature ? `${cell.creature.name} — ${cell.creature.currentHp}/${cell.creature.hp} PV` :
+                           cell.type==='resource' ? `${RESOURCES_DATA[cell.res]?.name||cell.res}${cell.depleted?' (esgotado)':' — Use Coletar'}` :
+                           cell.type==='vortex' ? `Vórtex → ${TERRITORY_META[cell.to]?.name||'?'}` :
+                           cell.type==='merchant' ? 'Posto de Comércio' :
+                           cell.type==='camp' ? 'Zona de Acampamento' :
+                           `Espaço ${cell.cellNum}`}
+                        </span>
+                        {cell.creature && !state.pendingAction && state.turnPhase==='acoes' && activePlayer?.actionsLeft>0 && (
+                          <button onClick={()=>dispatch({type:'USE_ACTION',actionId:'atacar'})}
+                            style={{ marginLeft:4, padding:'2px 8px', background:'rgba(226,122,95,0.2)', border:'1px solid #e27a5f', color:'#e27a5f', borderRadius:4, fontSize:10, fontFamily:'Oswald,sans-serif', cursor:'pointer' }}>
+                            ⚔️ Atacar
+                          </button>
+                        )}
+                        <button onClick={()=>dispatch({type:'SELECT_CELL',cellIdx:state.selectedCell})}
+                          style={{ background:'none', border:'none', color:'#627d98', cursor:'pointer', fontSize:12, marginLeft:2 }}>✕</button>
+                      </div>
+                    );
+                  })()}
+                </div>
+              </div>
+
+              {/* Action bar */}
+              <ActionBar
+                player={activePlayer} pendingAction={state.pendingAction}
+                turnPhase={state.turnPhase}
+                onAction={(id) => dispatch({ type:'USE_ACTION', actionId:id })}
+                onCancel={() => dispatch({ type:'CANCEL_ACTION' })}
+                onEndActions={() => dispatch({ type:'END_ACTIONS' })}
+              />
+            </>
+          ) : (
+            <CampScreen
+              players={state.players} campStructures={state.campStructures}
+              activePlayerIdx={state.activePlayerIdx} territories={state.territories}
+              dispatch={dispatch}
+            />
+          )}
+
+          {/* Game log */}
+          <GameLog log={state.log} />
+        </div>
+
+        {/* Right: player panel */}
+        <PlayerPanel
+          players={state.players} activePlayerIdx={state.activePlayerIdx}
+          territories={state.territories}
+        />
+      </div>
+
+      {/* Combat modal */}
+      {state.combat && (
+        <CombatModal
+          combat={state.combat} player={activePlayer}
+          onRoll={() => dispatch({ type:'COMBAT_ROLL' })}
+          onEscape={() => dispatch({ type:'COMBAT_ESCAPE' })}
+          onResolve={() => dispatch({ type:'COMBAT_RESOLVE' })}
+        />
+      )}
+
+      {/* Event card modal */}
+      {state.currentEventCard && (
+        <EventCardModal
+          card={state.currentEventCard}
+          onDismiss={() => dispatch({ type:'DISMISS_EVENT' })}
+        />
+      )}
+    </div>
+  );
+}
+
+// ── App Root ──────────────────────────────────────────────────
+function App() {
+  const [initState, setInitState] = useState(null);
+
+  const handleStart = useCallback((charIds) => {
+    setInitState(createInitialState(charIds));
+  }, []);
+
+  if (!initState) return <SetupScreen onStart={handleStart} />;
+  return <GameBoard initState={initState} />;
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

@@ -1,0 +1,491 @@
+<section id="criaturas" class="page">
+  <div class="page-header">
+    <div class="page-kicker">Seção 07</div>
+    <h1 class="page-title">Criaturas</h1>
+    <p class="page-lead">14 monstros divididos em três níveis, 6 Anciãs, 4 Guardiãs e 5 passivas — com atributos balanceados por progressão e Era.</p>
+  </div>
+
+  <!-- DEFS compartilhadas de ícones SVG (ficam ocultas; usadas via <use>) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="g-paw" viewBox="0 0 40 40"><circle cx="20" cy="26" r="7" fill="currentColor" opacity=".8"/><circle cx="11" cy="15" r="3.5" fill="currentColor"/><circle cx="20" cy="11" r="3.5" fill="currentColor"/><circle cx="29" cy="15" r="3.5" fill="currentColor"/></symbol>
+      <symbol id="g-fang" viewBox="0 0 40 40"><circle cx="20" cy="20" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 22 L10 32 M26 22 L30 32 M17 26 L15 34 M23 26 L25 34" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></symbol>
+      <symbol id="g-wing" viewBox="0 0 40 40"><path d="M20 22 Q10 10 5 18 Q8 22 14 22 L20 22 Q26 22 32 22 Q38 22 35 18 Q30 10 20 22 Z" fill="currentColor" opacity=".85"/><circle cx="20" cy="24" r="2" fill="currentColor"/></symbol>
+      <symbol id="g-skull" viewBox="0 0 40 40"><path d="M20 7 C11 7 7 14 7 21 C7 26 10 28 12 29 L12 33 L17 33 L17 30 L23 30 L23 33 L28 33 L28 29 C30 28 33 26 33 21 C33 14 29 7 20 7 Z" fill="currentColor"/><circle cx="15" cy="20" r="2.5" fill="var(--bg)"/><circle cx="25" cy="20" r="2.5" fill="var(--bg)"/></symbol>
+      <symbol id="g-stone" viewBox="0 0 40 40"><path d="M8 30 L12 14 L20 8 L28 14 L32 30 Z" fill="currentColor" opacity=".85"/><path d="M14 22 L20 18 L26 22 L24 28 L16 28 Z" fill="var(--bg-2)"/></symbol>
+      <symbol id="g-shadow" viewBox="0 0 40 40"><path d="M20 6 C13 6 9 13 9 21 C9 27 11 32 12 33 L14 31 L16 33 L18 31 L20 33 L22 31 L24 33 L26 31 L28 33 C29 32 31 27 31 21 C31 13 27 6 20 6 Z" fill="currentColor" opacity=".9"/><circle cx="16" cy="18" r="1.8" fill="var(--bg)"/><circle cx="24" cy="18" r="1.8" fill="var(--bg)"/></symbol>
+      <symbol id="g-toad" viewBox="0 0 40 40"><ellipse cx="20" cy="25" rx="14" ry="8" fill="currentColor"/><circle cx="13" cy="14" r="4" fill="currentColor"/><circle cx="27" cy="14" r="4" fill="currentColor"/><circle cx="13" cy="14" r="1.8" fill="var(--bg)"/><circle cx="27" cy="14" r="1.8" fill="var(--bg)"/></symbol>
+      <symbol id="g-ice" viewBox="0 0 40 40"><path d="M20 4 L23 12 L30 10 L25 17 L32 22 L23 22 L24 30 L20 25 L16 30 L17 22 L8 22 L15 17 L10 10 L17 12 Z" fill="currentColor"/></symbol>
+      <symbol id="b-crown" viewBox="0 0 56 56"><path d="M8 36 L8 20 L18 28 L28 14 L38 28 L48 20 L48 36 Z" fill="currentColor"/><rect x="10" y="40" width="36" height="6" fill="currentColor"/><circle cx="18" cy="28" r="2" fill="var(--bg)"/><circle cx="28" cy="14" r="2" fill="var(--bg)"/><circle cx="38" cy="28" r="2" fill="var(--bg)"/></symbol>
+      <symbol id="b-flame" viewBox="0 0 56 56"><path d="M28 6 C22 16 16 20 16 30 C16 40 22 48 28 48 C34 48 40 40 40 30 C40 22 34 18 32 10 C30 14 28 16 28 6 Z" fill="currentColor"/><path d="M28 24 C25 28 23 32 23 36 C23 42 25 44 28 44 C31 44 33 42 33 36 C33 32 31 28 28 24 Z" fill="var(--bg)" opacity=".35"/></symbol>
+      <symbol id="b-eye" viewBox="0 0 56 56"><ellipse cx="28" cy="28" rx="22" ry="14" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="28" cy="28" r="9" fill="currentColor"/><circle cx="28" cy="28" r="3.5" fill="var(--bg)"/></symbol>
+      <symbol id="b-vine" viewBox="0 0 56 56"><path d="M28 50 L28 8" stroke="currentColor" stroke-width="3" fill="none"/><path d="M28 16 Q20 14 16 20 Q20 22 28 20 M28 26 Q36 24 40 30 Q36 32 28 30 M28 36 Q20 34 16 40 Q20 42 28 40" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="28" cy="10" r="4" fill="currentColor"/></symbol>
+      <symbol id="p-cow" viewBox="0 0 40 40"><ellipse cx="20" cy="24" rx="12" ry="8" fill="currentColor"/><path d="M10 16 L14 12 L16 16 M30 16 L26 12 L24 16" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="16" cy="22" r="1.5" fill="var(--bg)"/><circle cx="24" cy="22" r="1.5" fill="var(--bg)"/></symbol>
+      <symbol id="p-pig" viewBox="0 0 40 40"><ellipse cx="20" cy="22" rx="13" ry="9" fill="currentColor"/><ellipse cx="20" cy="26" rx="5" ry="3" fill="var(--bg-2)"/><circle cx="18" cy="26" r=".8" fill="currentColor"/><circle cx="22" cy="26" r=".8" fill="currentColor"/><path d="M10 15 L13 11 M30 15 L27 11" stroke="currentColor" stroke-width="2"/></symbol>
+      <symbol id="p-turkey" viewBox="0 0 40 40"><path d="M20 34 C12 34 8 26 10 18 Q14 10 20 12 Q26 10 30 18 C32 26 28 34 20 34 Z" fill="currentColor"/><ellipse cx="20" cy="22" rx="5" ry="6" fill="var(--bg-2)"/><path d="M20 16 L20 10 M18 11 L22 11" stroke="currentColor" stroke-width="1.5"/></symbol>
+      <symbol id="p-bee" viewBox="0 0 40 40"><ellipse cx="20" cy="22" rx="10" ry="8" fill="currentColor"/><path d="M12 18 L28 18 M12 24 L28 24" stroke="var(--bg)" stroke-width="2"/><ellipse cx="13" cy="14" rx="4" ry="3" fill="currentColor" opacity=".5"/><ellipse cx="27" cy="14" rx="4" ry="3" fill="currentColor" opacity=".5"/></symbol>
+      <symbol id="p-firefly" viewBox="0 0 40 40"><circle cx="20" cy="22" r="10" fill="currentColor" opacity=".25"/><circle cx="20" cy="22" r="5" fill="currentColor"/><path d="M12 14 L28 14 M20 8 L20 12" stroke="currentColor" stroke-width="1.5"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- Filosofia de balanceamento -->
+  <div class="subtitle" style="margin-top:2rem">Filosofia de balanceamento</div>
+  <p>Cada criatura tem quatro atributos: <strong>PV</strong> (pontos de vida), <strong>Ataque</strong> (dado + modificador rolado nas ações do mestre/deck), <strong>Resistência</strong> (subtraída do dano sofrido) e <strong>Ponto de Escape</strong> (dificuldade mínima do teste para fugir). Os monstros estão distribuídos em <strong>três níveis</strong> que escalam com a progressão entre Eras; as Anciãs são mini-chefes que podem aparecer em qualquer Era a partir da segunda; as Guardiãs são os chefes finais, um por Era.</p>
+
+  <!-- Legenda -->
+  <div class="bestiary-legend">
+    <div class="legend-item"><div class="legend-label">PV</div><div class="legend-desc">Vida. Chega a 0 = derrotada, recursos são coletados.</div></div>
+    <div class="legend-item"><div class="legend-label">ATQ</div><div class="legend-desc">Dano base que o monstro aplica antes da Resistência do alvo.</div></div>
+    <div class="legend-item"><div class="legend-label">RES</div><div class="legend-desc">Subtraído do dano recebido. Crítico (10) ignora Resistência.</div></div>
+    <div class="legend-item"><div class="legend-label">FUGA</div><div class="legend-desc">Teste mínimo em 1d10 para escapar de combate com essa criatura.</div></div>
+  </div>
+
+  <!-- ================== PASSIVAS ================== -->
+  <div class="tier-header">
+    <h3>Criaturas Passivas</h3>
+    <span class="count">5 espécies · fonte de alimento</span>
+  </div>
+  <p>Não atacam. São caçadas ou criadas para suprir comida e materiais. A Botânica Ivy Hawthorne e o Lenhador Jack Timber têm sinergia direta com coleta animal.</p>
+
+  <div class="passive-grid">
+    <div class="passive-card"><svg class="passive-icon"><use href="#p-cow"/></svg><div class="passive-name">Vaca</div><div class="passive-pv">PV 18</div><div class="passive-loot">1 carne</div></div>
+    <div class="passive-card"><svg class="passive-icon"><use href="#p-pig"/></svg><div class="passive-name">Porco</div><div class="passive-pv">PV 14</div><div class="passive-loot">1 pernil</div></div>
+    <div class="passive-card"><svg class="passive-icon"><use href="#p-turkey"/></svg><div class="passive-name">Peru</div><div class="passive-pv">PV 10</div><div class="passive-loot">1 coxa</div></div>
+    <div class="passive-card"><svg class="passive-icon"><use href="#p-bee"/></svg><div class="passive-name">Abelhas</div><div class="passive-pv">PV 8 · enxame</div><div class="passive-loot">1 mel / abelha</div></div>
+    <div class="passive-card"><svg class="passive-icon"><use href="#p-firefly"/></svg><div class="passive-name">Vagalume</div><div class="passive-pv">PV 6</div><div class="passive-loot">1 vagalume (luz noturna)</div></div>
+  </div>
+
+  <!-- ================== MONSTROS ================== -->
+  <div class="tier-header">
+    <h3>Monstros — Nível I · Filhotes</h3>
+    <span class="count">Era inicial · 4 criaturas</span>
+  </div>
+  <p>Entram em cena logo na primeira Era. Baixa dureza, dano modesto, ideais para estabelecer o tempo de combate dos novos jogadores.</p>
+
+  <div class="bestiary-grid">
+
+    <div class="creature-card era-neutral">
+      <div class="creature-head">
+        <svg class="creature-icon"><use href="#g-paw"/></svg>
+        <div><div class="creature-name">Ferocious Rat</div><div class="creature-tier">Nível I · universal</div></div>
+      </div>
+      <div class="creature-stats">
+        <div class="cs-cell"><div class="cs-val">5</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d6+1</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">1</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">5</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <div class="creature-note">Aparece em matilhas de 1d4. Move 4 casas por turno.</div>
+    </div>
+
+    <div class="creature-card era-glacis">
+      <div class="creature-head">
+        <svg class="creature-icon"><use href="#g-paw"/></svg>
+        <div><div class="creature-name">White Wolf</div><div class="creature-tier">Nível I · Glacis</div></div>
+      </div>
+      <div class="creature-stats">
+        <div class="cs-cell"><div class="cs-val">7</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d6+2</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">1</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">5</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <div class="creature-note">Caça em par: se houver 2+ adjacentes, ganha +1 ATQ.</div>
+    </div>
+
+    <div class="creature-card era-venaris">
+      <div class="creature-head">
+        <svg class="creature-icon"><use href="#g-fang"/></svg>
+        <div><div class="creature-name">Nightmarish Spider</div><div class="creature-tier">Nível I · Venaris</div></div>
+      </div>
+      <div class="creature-stats">
+        <div class="cs-cell"><div class="cs-val">6</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d6+1</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">1</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">5</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <div class="creature-note">Teia: ao acertar, o alvo perde 1 de Movimento no próximo turno.</div>
+    </div>
+
+    <div class="creature-card era-tenebris">
+      <div class="creature-head">
+        <svg class="creature-icon"><use href="#g-wing"/></svg>
+        <div><div class="creature-name">Bat Demon</div><div class="creature-tier">Nível I · Tenebris</div></div>
+      </div>
+      <div class="creature-stats">
+        <div class="cs-cell"><div class="cs-val">5</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d6+2</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">1</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">6</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <div class="creature-note">Voador: ignora penalidade de terreno. Fuga +1 de dificuldade.</div>
+    </div>
+
+  </div>
+
+  <div class="tier-header">
+    <h3>Monstros — Nível II · Médios</h3>
+    <span class="count">Eras 2–3 · 6 criaturas</span>
+  </div>
+  <p>O núcleo do bestiário. Dano de 1d8, já exigem cooperação entre 2 ou mais personagens para serem abatidos em um turno.</p>
+
+  <div class="bestiary-grid">
+
+    <div class="creature-card era-venaris">
+      <div class="creature-head">
+        <svg class="creature-icon"><use href="#g-toad"/></svg>
+        <div><div class="creature-name">Spiked Toad Beast</div><div class="creature-tier">Nível II · Venaris</div></div>
+      </div>
+      <div class="creature-stats">
+        <div class="cs-cell"><div class="cs-val">9</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d8+2</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">2</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">6</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <div class="creature-note">Espinhos: atacante corpo-a-corpo sofre 1 de dano automático.</div>
+    </div>
+
+    <div class="creature-card era-venaris">
+      <div class="creature-head">
+        <svg class="creature-icon"><use href="#g-toad"/></svg>
+        <div><div class="creature-name">Crimson-Spiked Toad</div><div class="creature-tier">Nível II · Venaris</div></div>
+      </div>
+      <div class="creature-stats">
+        <div class="cs-cell"><div class="cs-val">10</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d8+2</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">2</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">6</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <div class="creature-note">Veneno: em acerto crítico aplica condição <em>Envenenado</em> (1 dano/turno por 2 rodadas).</div>
+    </div>
+
+    <div class="creature-card era-glacis">
+      <div class="creature-head">
+        <svg class="creature-icon"><use href="#g-paw"/></svg>
+        <div><div class="creature-name">Lunar Beast</div><div class="creature-tier">Nível II · Glacis</div></div>
+      </div>
+      <div class="creature-stats">
+        <div class="cs-cell"><div class="cs-val">10</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d8+2</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">2</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">6</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <div class="creature-note">À noite (turnos 4–6) ganha +2 PV e +1 ATQ.</div>
+    </div>
+
+    <div class="creature-card era-tenebris">
+      <div class="creature-head">
+        <svg class="creature-icon"><use href="#g-wing"/></svg>
+        <div><div class="creature-name">Nightwing Fiend</div><div class="creature-tier">Nível II · Tenebris</div></div>
+      </div>
+      <div class="creature-stats">
+        <div class="cs-cell"><div class="cs-val">8</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d8+2</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">1</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">7</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <div class="creature-note">Voador. Ao acertar, drena 1 de Sanidade do alvo.</div>
+    </div>
+
+    <div class="creature-card era-tenebris">
+      <div class="creature-head">
+        <svg class="creature-icon"><use href="#g-skull"/></svg>
+        <div><div class="creature-name">Skeleton Fiend</div><div class="creature-tier">Nível II · Tenebris</div></div>
+      </div>
+      <div class="creature-stats">
+        <div class="cs-cell"><div class="cs-val">9</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d8+2</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">2</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">6</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <div class="creature-note">Reanima: quando derrotado, role 1d10 — em 8+ volta com metade do PV (apenas 1×).</div>
+    </div>
+
+    <div class="creature-card era-terragorn">
+      <div class="creature-head">
+        <svg class="creature-icon"><use href="#g-paw"/></svg>
+        <div><div class="creature-name">Demonic Boar</div><div class="creature-tier">Nível II · Terragorn</div></div>
+      </div>
+      <div class="creature-stats">
+        <div class="cs-cell"><div class="cs-val">11</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d8+3</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">2</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">6</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <div class="creature-note">Investida: se tiver 3+ casas livres até o alvo, +1d4 de dano no primeiro ataque.</div>
+    </div>
+
+  </div>
+
+  <div class="tier-header">
+    <h3>Monstros — Nível III · Elite</h3>
+    <span class="count">Eras 3–4 · 4 criaturas</span>
+  </div>
+  <p>Presença rara e perigosa. Exigem equipamento forjado e coordenação de grupo. Aparecem com mais frequência conforme a Essência se corrompe.</p>
+
+  <div class="bestiary-grid">
+
+    <div class="creature-card era-tenebris">
+      <div class="creature-head">
+        <svg class="creature-icon"><use href="#g-shadow"/></svg>
+        <div><div class="creature-name">Ethereal Warden</div><div class="creature-tier">Nível III · Tenebris</div></div>
+      </div>
+      <div class="creature-stats">
+        <div class="cs-cell"><div class="cs-val">13</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d10+2</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">3</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">7</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <div class="creature-note">Imaterial: só sofre dano total de armas encantadas (com Pedra especial).</div>
+    </div>
+
+    <div class="creature-card era-terragorn">
+      <div class="creature-head">
+        <svg class="creature-icon"><use href="#g-stone"/></svg>
+        <div><div class="creature-name">Rock Guardian</div><div class="creature-tier">Nível III · Terragorn</div></div>
+      </div>
+      <div class="creature-stats">
+        <div class="cs-cell"><div class="cs-val">16</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d10+2</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">4</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">7</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <div class="creature-note">Armadura pétrea: +1 Resistência adicional contra ataques não-contundentes.</div>
+    </div>
+
+    <div class="creature-card era-tenebris">
+      <div class="creature-head">
+        <svg class="creature-icon"><use href="#g-paw"/></svg>
+        <div><div class="creature-name">Nightclaw Beast</div><div class="creature-tier">Nível III · Tenebris</div></div>
+      </div>
+      <div class="creature-stats">
+        <div class="cs-cell"><div class="cs-val">14</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d10+3</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">3</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">7</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <div class="creature-note">Emboscada: sempre age antes dos personagens no primeiro turno.</div>
+    </div>
+
+    <div class="creature-card era-glacis">
+      <div class="creature-head">
+        <svg class="creature-icon"><use href="#g-ice"/></svg>
+        <div><div class="creature-name">Ice Golem</div><div class="creature-tier">Nível III · Glacis</div></div>
+      </div>
+      <div class="creature-stats">
+        <div class="cs-cell"><div class="cs-val">15</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d10+2</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">4</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">7</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <div class="creature-note">Frágil ao fogo: ataques incendiários causam +2 de dano e ignoram 2 de Resistência.</div>
+    </div>
+
+  </div>
+
+  <!-- ================== ANCIÃS ================== -->
+  <div class="tier-header">
+    <h3>Anciãs — Mini-Bosses</h3>
+    <span class="count">6 criaturas · uma por região distinta</span>
+  </div>
+  <p>Aparecem uma vez por Era a partir da segunda. Derrotar uma Anciã libera um fragmento parcial da Essência e desbloqueia um evento narrativo. PV altos, habilidade única, costumam invocar ou reforçar monstros menores.</p>
+
+  <div class="bestiary-grid">
+
+    <div class="creature-card era-venaris">
+      <div class="creature-head">
+        <svg class="creature-icon"><use href="#g-fang"/></svg>
+        <div><div class="creature-name">Arachnid Overlord</div><div class="creature-tier">Anciã · Venaris</div></div>
+      </div>
+      <div class="creature-stats">
+        <div class="cs-cell"><div class="cs-val">24</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d10+3</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">4</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">8</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <div class="creature-note"><strong>Prole:</strong> invoca 1 Nightmarish Spider por turno enquanto tiver PV &gt; 12.</div>
+    </div>
+
+    <div class="creature-card era-venaris">
+      <div class="creature-head">
+        <svg class="creature-icon"><use href="#g-toad"/></svg>
+        <div><div class="creature-name">Battle Toad</div><div class="creature-tier">Anciã · Venaris</div></div>
+      </div>
+      <div class="creature-stats">
+        <div class="cs-cell"><div class="cs-val">26</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d10+3</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">4</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">8</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <div class="creature-note"><strong>Língua:</strong> puxa 1 personagem em até 3 casas para adjacência (teste Sobrevivência ≥ 7 nega).</div>
+    </div>
+
+    <div class="creature-card era-glacis">
+      <div class="creature-head">
+        <svg class="creature-icon"><use href="#g-paw"/></svg>
+        <div><div class="creature-name">Werewolf Fury</div><div class="creature-tier">Anciã · Glacis</div></div>
+      </div>
+      <div class="creature-stats">
+        <div class="cs-cell"><div class="cs-val">22</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d10+4</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">3</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">8</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <div class="creature-note"><strong>Frenesi:</strong> abaixo de 10 PV, age duas vezes por turno.</div>
+    </div>
+
+    <div class="creature-card era-tenebris">
+      <div class="creature-head">
+        <svg class="creature-icon"><use href="#g-shadow"/></svg>
+        <div><div class="creature-name">Necromancer's Wraith</div><div class="creature-tier">Anciã · Tenebris</div></div>
+      </div>
+      <div class="creature-stats">
+        <div class="cs-cell"><div class="cs-val">20</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d10+3</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">3</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">9</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <div class="creature-note"><strong>Dreno:</strong> cada acerto rouba 1 ponto de Sanidade (Elizabeth pode curar com ação normal).</div>
+    </div>
+
+    <div class="creature-card era-venaris">
+      <div class="creature-head">
+        <svg class="creature-icon"><use href="#b-vine"/></svg>
+        <div><div class="creature-name">Eldritch Ent</div><div class="creature-tier">Anciã · Venaris</div></div>
+      </div>
+      <div class="creature-stats">
+        <div class="cs-cell"><div class="cs-val">28</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d10+3</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">5</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">8</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <div class="creature-note"><strong>Raízes:</strong> personagens adjacentes têm Movimento reduzido a 1. Fogo anula esta habilidade por 1 turno.</div>
+    </div>
+
+    <div class="creature-card era-terragorn">
+      <div class="creature-head">
+        <svg class="creature-icon"><use href="#g-stone"/></svg>
+        <div><div class="creature-name">Rock Titan</div><div class="creature-tier">Anciã · Terragorn</div></div>
+      </div>
+      <div class="creature-stats">
+        <div class="cs-cell"><div class="cs-val">30</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d10+3</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">5</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">8</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <div class="creature-note"><strong>Terremoto:</strong> atinge todos os personagens a até 2 casas (teste Sobrevivência ≥ 6 reduz à metade).</div>
+    </div>
+
+  </div>
+
+  <!-- ================== GUARDIÃS ================== -->
+  <div class="tier-header">
+    <h3>Guardiãs — Chefões Finais</h3>
+    <span class="count">4 bosses · um por Era</span>
+  </div>
+  <p>Derrotar uma Guardiã libera o fragmento puro da Essência daquela Era. São combates de ~5 turnos que envolvem fase única com mecânica temática e exigem o grupo inteiro em pé — se apenas metade dos personagens estiverem ativos, considerar fuga ou retirada para acampar.</p>
+
+  <div class="boss-grid">
+
+    <div class="boss-card era-venaris">
+      <div class="boss-head">
+        <svg class="boss-icon"><use href="#b-vine"/></svg>
+        <div>
+          <div class="boss-title">Verdant Sovereign</div>
+          <div class="boss-sub">Guardiã de Venaris · sugestão de nome</div>
+        </div>
+      </div>
+      <div class="boss-stats">
+        <div class="cs-cell"><div class="cs-val">40</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d10+4</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">5</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">10</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <p class="boss-lore">Um colosso de raízes e esporos tóxicos. Antes era a guardiã benéfica das florestas; agora seus galhos destilam a Geada Venenosa que corrompeu toda a Era.</p>
+      <div class="boss-mech"><strong>Esporos:</strong> ao início de cada turno, cada personagem em Venaris rola 1d10 — em 4 ou menos, sofre condição <em>Envenenado</em>. <strong>Queima frágil:</strong> ataques incendiários causam +3 de dano.</div>
+    </div>
+
+    <div class="boss-card era-glacis">
+      <div class="boss-head">
+        <svg class="boss-icon"><use href="#g-ice"/></svg>
+        <div>
+          <div class="boss-title">Ice Monarch</div>
+          <div class="boss-sub">Guardiã de Glacis</div>
+        </div>
+      </div>
+      <div class="boss-stats">
+        <div class="cs-cell"><div class="cs-val">42</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d10+4</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">5</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">10</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <p class="boss-lore">Coroado de cristais azul-ferrosos, governa a Geada Negra. Sua voz congela o tempo por frações de segundo — o que reduz drasticamente o número de ações disponíveis ao grupo.</p>
+      <div class="boss-mech"><strong>Congelar tempo:</strong> em cada turno do monstro, role 1d10 — em 7+, todos os personagens perdem 1 ação no próximo turno. <strong>Resistência ao frio:</strong> gelo causa 0 dano; fogo causa o normal.</div>
+    </div>
+
+    <div class="boss-card era-terragorn">
+      <div class="boss-head">
+        <svg class="boss-icon"><use href="#b-flame"/></svg>
+        <div>
+          <div class="boss-title">Titan Inferno</div>
+          <div class="boss-sub">Guardiã de Terragorn</div>
+        </div>
+      </div>
+      <div class="boss-stats">
+        <div class="cs-cell"><div class="cs-val">45</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d10+4</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">6</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">10</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <p class="boss-lore">Forjado no centro vulcânico da ilha. Uma criatura de magma e rocha cujo coração pulsa como uma forja. Paira sobre toda Terragorn; sua presença derrete metal bruto.</p>
+      <div class="boss-mech"><strong>Forja de fúria:</strong> a cada 3 turnos desencadeia uma Erupção (1d10+6 em todos os personagens a até 3 casas, Sobrevivência ≥ 7 divide). <strong>Frágil ao gelo:</strong> ataques congelantes causam +3 dano e tiram 1 Resistência por 1 turno.</div>
+    </div>
+
+    <div class="boss-card era-tenebris">
+      <div class="boss-head">
+        <svg class="boss-icon"><use href="#b-eye"/></svg>
+        <div>
+          <div class="boss-title">Shadow Sovereign</div>
+          <div class="boss-sub">Guardiã de Tenebris</div>
+        </div>
+      </div>
+      <div class="boss-stats">
+        <div class="cs-cell"><div class="cs-val">38</div><div class="cs-lbl">PV</div></div>
+        <div class="cs-cell"><div class="cs-val">1d10+5</div><div class="cs-lbl">ATQ</div></div>
+        <div class="cs-cell"><div class="cs-val">5</div><div class="cs-lbl">RES</div></div>
+        <div class="cs-cell"><div class="cs-val">10</div><div class="cs-lbl">FUGA</div></div>
+      </div>
+      <p class="boss-lore">A Essência do pesadelo, corrompida em forma cognitiva. Não se manifesta plenamente — aparece como espelhamento distorcido dos próprios personagens, explorando medos e traumas coletados ao longo da jornada.</p>
+      <div class="boss-mech"><strong>Pesadelo:</strong> cada acerto reduz 1 de Sanidade (sem Resistência possível). <strong>Reflexo:</strong> em 10 natural no ataque do personagem, o dano também se aplica a quem desferiu o golpe.</div>
+    </div>
+
+  </div>
+
+  <!-- Tabela de balanceamento -->
+  <div class="subtitle">Matriz de balanceamento</div>
+  <p>Visão geral dos atributos por nível para checar curva de dificuldade. Os números foram escolhidos para que um grupo de 3 personagens consiga abater uma criatura do nível correspondente em ~2 turnos, e uma Guardiã em ~5 turnos.</p>
+
+  <table class="balance-matrix">
+    <thead><tr><th>Nível</th><th>PV</th><th>Ataque</th><th>Resistência</th><th>Ponto de Escape</th><th>Ocorrência</th></tr></thead>
+    <tbody>
+      <tr><td>I · Filhote</td><td>5–7</td><td>1d6+1 ~ +2</td><td>1</td><td>5–6</td><td>Era 1 (início)</td></tr>
+      <tr><td>II · Médio</td><td>8–11</td><td>1d8+2 ~ +3</td><td>2</td><td>6–7</td><td>Eras 2–3</td></tr>
+      <tr><td>III · Elite</td><td>13–16</td><td>1d10+2 ~ +3</td><td>3–4</td><td>7</td><td>Eras 3–4</td></tr>
+      <tr><td>Anciã</td><td>20–30</td><td>1d10+3 ~ +4</td><td>3–5</td><td>8–9</td><td>1× por Era (2ª+)</td></tr>
+      <tr><td>Guardiã</td><td>38–45</td><td>1d10+4 ~ +5</td><td>5–6</td><td>10</td><td>Fim de cada Era</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout" style="margin-top:1.4rem">
+    <div class="callout-title">Decisões abertas</div>
+    <ul style="margin:0.5rem 0 0 1.2rem;padding:0">
+      <li><strong>Nome da Guardiã de Venaris:</strong> proposto <em>Verdant Sovereign</em> (mantém padrão "Sovereign/Monarch/Titan"). Alternativas possíveis: <em>Toxic Overgrowth</em>, <em>Spored Archon</em>, <em>Mother Bramble</em>.</li>
+      <li><strong>Dano real:</strong> após Resistência, muitos Nível I rolam para dano ≤ 3 contra personagens de Resistência 3+ — intencional no tier de entrada, mas validar em playtest se não quebra tempo de tutorial.</li>
+      <li><strong>Condições:</strong> Envenenado e Dreno de Sanidade ainda precisam de entrada oficial na seção de Mecânicas (já citadas).</li>
+    </ul>
+  </div>
+
+  <div class="pager">
+    <a class="prev" href="#mecanicas"><span class="lbl">← Anterior</span><span class="nxt">Mecânicas</span></a>
+    <a class="next" href="#recursos"><span class="lbl">Próximo →</span><span class="nxt">Recursos &amp; Itens</span></a>
+  </div>
+</section>

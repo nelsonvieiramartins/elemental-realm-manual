@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Legacy of the Elemental Realms — Pitch Deck</title>
+<style>
+  :root {
+    --bg: #09171a;
+    --fg: #e1e4db;
+    --accent-venaris: #4a8a4a;
+    --accent-glacis: #6fb9d8;
+    --accent-terragorn: #c94a3a;
+    --accent-tenebris: #8a5ac9;
+    --muted: #8a9499;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100vh; width: 100vw;
+    background: var(--bg); color: var(--fg);
+    font-family: 'Georgia', 'Palatino', serif;
+    overflow: hidden;
+  }
+  .deck { position: relative; width: 100%; height: 100%; }
+  .slide {
+    position: absolute; inset: 0;
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    padding: 6vh 8vw;
+    text-align: center;
+    animation: fade 0.4s ease;
+  }
+  .slide.active { display: flex; }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+  h1 { font-size: clamp(2.4rem, 6vw, 5.5rem); letter-spacing: 0.02em; margin-bottom: 1.5rem; line-height: 1.1; }
+  h2 { font-size: clamp(1.8rem, 4.2vw, 3.2rem); letter-spacing: 0.02em; margin-bottom: 1.5rem; line-height: 1.15; }
+  h3 { font-size: clamp(1.2rem, 2.4vw, 1.8rem); color: var(--muted); font-weight: normal; margin-bottom: 2.5rem; font-style: italic; }
+  p, li { font-size: clamp(1rem, 1.6vw, 1.45rem); line-height: 1.55; max-width: 56rem; }
+  ul { list-style: none; text-align: left; max-width: 60rem; }
+  li { margin: 0.7rem 0; padding-left: 2rem; position: relative; }
+  li::before { content: "◆"; position: absolute; left: 0; color: var(--muted); font-size: 0.8em; top: 0.3em; }
+  .tag { display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--fg); border-radius: 999px; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; margin: 0.3rem; }
+  .era-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; width: 100%; max-width: 70rem; margin-top: 1rem; }
+  .era-card { border: 1px solid var(--fg); padding: 1.6rem; border-radius: 8px; text-align: left; }
+  .era-card h4 { font-size: clamp(1.1rem, 2.2vw, 1.6rem); margin-bottom: 0.4rem; letter-spacing: 0.05em; }
+  .era-card p { font-size: clamp(0.85rem, 1.3vw, 1.1rem); color: var(--muted); }
+  .era-venaris h4 { color: var(--accent-venaris); }
+  .era-glacis h4 { color: var(--accent-glacis); }
+  .era-terragorn h4 { color: var(--accent-terragorn); }
+  .era-tenebris h4 { color: var(--accent-tenebris); }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; max-width: 70rem; margin: 1.5rem 0; }
+  .stat { text-align: center; border: 1px solid var(--muted); padding: 1.2rem 0.8rem; border-radius: 6px; }
+  .stat .num { font-size: clamp(2rem, 4vw, 3.2rem); display: block; line-height: 1; margin-bottom: 0.4rem; }
+  .stat .label { font-size: 0.9rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+  .char-table { width: 100%; max-width: 75rem; border-collapse: collapse; margin-top: 1rem; }
+  .char-table th, .char-table td { border-bottom: 1px solid #2a3a3f; padding: 0.55rem 0.7rem; text-align: left; font-size: clamp(0.8rem, 1.2vw, 1rem); }
+  .char-table th { color: var(--muted); font-weight: normal; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.75rem; }
+  .subtitle-block { text-align: left; max-width: 52rem; }
+  .subtitle-block p + p { margin-top: 1.2rem; }
+  .nav {
+    position: fixed; bottom: 2vh; right: 2vw;
+    display: flex; align-items: center; gap: 1rem;
+    color: var(--muted); font-size: 0.9rem;
+    user-select: none;
+  }
+  .nav button {
+    background: transparent; border: 1px solid var(--muted); color: var(--fg);
+    width: 2.4rem; height: 2.4rem; border-radius: 50%;
+    cursor: pointer; font-size: 1.2rem;
+  }
+  .nav button:hover { border-color: var(--fg); }
+  .slide-num { position: fixed; bottom: 2vh; left: 2vw; color: var(--muted); font-size: 0.85rem; letter-spacing: 0.15em; }
+  .hint { position: fixed; top: 2vh; right: 2vw; color: var(--muted); font-size: 0.75rem; letter-spacing: 0.1em; }
+  .quote { font-style: italic; color: var(--muted); font-size: clamp(1.1rem, 2vw, 1.6rem); max-width: 50rem; line-height: 1.5; }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <section class="slide active">
+    <h3 class="tag">JOGO DE TABULEIRO COOPERATIVO</h3>
+    <h1>Legacy of the<br>Elemental Realms</h1>
+    <h3>Por Nelson Vieira Martins — 1 a 5 jogadores · ~60 min</h3>
+  </section>
+
+  <section class="slide">
+    <h2>A premissa</h2>
+    <p class="quote">"Oito heróis vindos de outra realidade são lançados em um mundo em colapso. Quatro reinos elementais, quatro guardiões ancestrais, quatro fragmentos da Essência Harmônica. Sobreviver é só o começo."</p>
+  </section>
+
+  <section class="slide">
+    <h2>Os quatro reinos</h2>
+    <div class="era-grid">
+      <div class="era-card era-venaris"><h4>VENARIS</h4><p>Natureza venenosa. Crescimento descontrolado, esporos tóxicos, bonança e névoa densa.</p></div>
+      <div class="era-card era-glacis"><h4>GLACIS</h4><p>Geada negra. Frio intenso, nevascas que prendem, sanidade drenando turno a turno.</p></div>
+      <div class="era-card era-terragorn"><h4>TERRAGORN</h4><p>Fogo e rocha. Incêndios, calor insuportável, titãs infernais à espreita.</p></div>
+      <div class="era-card era-tenebris"><h4>TENEBRIS</h4><p>Trevas e pesadelo. Chuva torrencial, alagamentos, o Soberano das Sombras.</p></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>O que torna o jogo único</h2>
+    <ul>
+      <li><strong>Cooperação obrigatória</strong> — cada classe cobre a fraqueza das outras</li>
+      <li><strong>Sobrevivência real</strong> — fome, sanidade e vida drenam a cada turno</li>
+      <li><strong>Mapa mutável</strong> — o que era seguro em Venaris vira letal em Glacis</li>
+      <li><strong>Risco calculado</strong> — o combate permite fuga, mas fugir custa turnos</li>
+      <li><strong>História emergente</strong> — 17+ eventos climáticos, fenômenos e sobrenaturais</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Números do jogo</h2>
+    <div class="stats-grid">
+      <div class="stat"><span class="num">4</span><span class="label">Eras / Mapas</span></div>
+      <div class="stat"><span class="num">8</span><span class="label">Personagens</span></div>
+      <div class="stat"><span class="num">24</span><span class="label">Criaturas</span></div>
+      <div class="stat"><span class="num">17+</span><span class="label">Eventos</span></div>
+      <div class="stat"><span class="num">11</span><span class="label">Receitas</span></div>
+      <div class="stat"><span class="num">23+</span><span class="label">Materiais</span></div>
+      <div class="stat"><span class="num">8</span><span class="label">Companheiros</span></div>
+      <div class="stat"><span class="num">5</span><span class="label">Amuletos raros</span></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Os oito heróis</h2>
+    <table class="char-table">
+      <tr><th>Personagem</th><th>Classe</th><th>PV</th><th>San</th><th>Mov</th><th>Pod</th><th>Res</th></tr>
+      <tr><td>Arthur Blackwood</td><td>O Pintor</td><td>10</td><td>8</td><td>4</td><td>3</td><td>3</td></tr>
+      <tr><td>Dra. Elizabeth Bancroft</td><td>A Médica</td><td>9</td><td>10</td><td>3</td><td>2</td><td>4</td></tr>
+      <tr><td>Morgan Huxley</td><td>O Alquimista</td><td>8</td><td>10</td><td>3</td><td>3</td><td>3</td></tr>
+      <tr><td>Conde Thomas Wellington</td><td>O Burocrata</td><td>8</td><td>9</td><td>3</td><td>3</td><td>2</td></tr>
+      <tr><td>Jack Timber</td><td>O Lenhador</td><td>12</td><td>6</td><td>3</td><td>5</td><td>5</td></tr>
+      <tr><td>Cassandra Vane</td><td>A Investigadora</td><td>10</td><td>8</td><td>3</td><td>4</td><td>3</td></tr>
+      <tr><td>Ivy Hawthorne</td><td>A Botânica</td><td>9</td><td>9</td><td>3</td><td>3</td><td>3</td></tr>
+      <tr><td>Helena Gearwright</td><td>A Engenheira</td><td>8</td><td>9</td><td>3</td><td>3</td><td>3</td></tr>
+    </table>
+  </section>
+
+  <section class="slide">
+    <h2>Sistema de combate</h2>
+    <div class="subtitle-block">
+      <p><strong>Base:</strong> 1d10 — crítico em 10 natural.</p>
+      <p><strong>Fórmula:</strong> Dano = Ataque − (Resistência + Armadura).</p>
+      <p><strong>Fuga:</strong> teste contra o Ponto de Escape da criatura (4 a 10).</p>
+      <p><strong>0 PV:</strong> personagem desmaiado, não morto — pode ser reanimado com item específico e retorna com metade de PV e Sanidade.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>O turno em 5 fases</h2>
+    <ul>
+      <li><strong>1. Evento</strong> — revela-se uma carta climática, fenômeno ou sobrenatural</li>
+      <li><strong>2. Ação dos Jogadores</strong> — 3 ações cada: Explorar, Coletar, Comprar, Construir, Atacar, Curar, Reanimar, Reciclar</li>
+      <li><strong>3. Ação das Criaturas</strong> — inimigos em campo agem</li>
+      <li><strong>4. Manutenção</strong> — fome, combustível, descarte forçado</li>
+      <li><strong>5. Final de Turno</strong> — durações decaem, próximo jogador</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Pedras especiais</h2>
+    <div class="stats-grid">
+      <div class="stat"><span class="num">◆</span><span class="label">Rubi · Velocidade</span></div>
+      <div class="stat"><span class="num">◆</span><span class="label">Diamante · Sanidade</span></div>
+      <div class="stat"><span class="num">◆</span><span class="label">Jade · Vida</span></div>
+      <div class="stat"><span class="num">◆</span><span class="label">Ametista · Fome</span></div>
+    </div>
+    <p style="margin-top: 2rem; color: var(--muted);">Cada pedra ancora um dos quatro atributos de sobrevivência do jogo.</p>
+  </section>
+
+  <section class="slide">
+    <h2>Referências de gênero</h2>
+    <ul>
+      <li><strong>Sobrevivência cooperativa</strong> — à la <em>Robinson Crusoé</em> e <em>This War of Mine</em></li>
+      <li><strong>Exploração por Eras</strong> — estrutura inspirada em campanhas de <em>Gloomhaven</em></li>
+      <li><strong>Crafting + economia de recursos</strong> — <em>Don't Starve</em> e <em>Terraforming Mars</em></li>
+      <li><strong>Narrativa por eventos</strong> — <em>Arkham Horror</em> e <em>Tainted Grail</em></li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Estado atual do projeto</h2>
+    <ul>
+      <li>Lore completa escrita (4 Eras, 8 personagens com backstory)</li>
+      <li>Mecânicas core definidas: combate, turnos, manutenção</li>
+      <li>13 documentos de regras + planilha de eventos</li>
+      <li>Referências visuais (fontes, paleta, modelos 3D)</li>
+      <li>3 HQs gerando tom visual</li>
+      <li><strong>Pendências abertas:</strong> boss de Venaris, nome Helena/Emily, balanceamento do Jack</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Próximos passos</h2>
+    <ul>
+      <li>Fechar o chefão de Venaris e resolver Helena/Emily Gearwright</li>
+      <li>Consolidar MANUAL DO JOGO.docx como fonte única</li>
+      <li>Playtest fechado com 2, 3 e 5 jogadores</li>
+      <li>Prototipagem final de cartas e tabuleiros</li>
+      <li>Arte definitiva a partir das referências de MODELOS 3D</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h1>Obrigado.</h1>
+    <h3>Legacy of the Elemental Realms — Nelson Vieira Martins</h3>
+  </section>
+
+</div>
+
+<div class="slide-num" id="slideNum">01 / 13</div>
+<div class="hint">← → para navegar · F para tela cheia</div>
+<div class="nav">
+  <button id="prev">‹</button>
+  <button id="next">›</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  const slideNum = document.getElementById('slideNum');
+  let idx = 0;
+  function show(i) {
+    slides.forEach((s, j) => s.classList.toggle('active', j === i));
+    slideNum.textContent = String(i + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+    idx = i;
+  }
+  function next() { show((idx + 1) % total); }
+  function prev() { show((idx - 1 + total) % total); }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') next();
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') prev();
+    else if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+  });
+  document.getElementById('next').onclick = next;
+  document.getElementById('prev').onclick = prev;
+  show(0);
+</script>
+</body>
+</html>

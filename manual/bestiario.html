@@ -1,0 +1,444 @@
+<section class="page">
+  <div class="page-header">
+    <div class="page-kicker">Seção 08</div>
+    <h1 class="page-title">Bestiário</h1>
+    <p class="page-lead">20 monstros por Era, 4 Guardiãs e 5 passivas — com imagens das cartas e atributos balanceados por progressão.</p>
+  </div>
+
+  <!-- Filters -->
+  <div class="bestiary-filters">
+    <button class="filter-btn active" data-filter="all">Todos</button>
+    <button class="filter-btn f-venaris" data-filter="venaris">Venaris</button>
+    <button class="filter-btn f-glacis" data-filter="glacis">Glacis</button>
+    <button class="filter-btn f-terragorn" data-filter="terragorn">Terragorn</button>
+    <button class="filter-btn f-tenebris" data-filter="tenebris">Tenebris</button>
+    <button class="filter-btn" data-filter="passiva" style="--filter-color:#6fb871">Passivas</button>
+    <button class="filter-btn" data-filter="guardia" style="--filter-color:var(--accent)">Guardiãs</button>
+  </div>
+
+  <!-- Legend -->
+  <div class="bestiary-legend">
+    <div class="legend-item"><div class="legend-label">PV</div><div class="legend-desc">Vida. Chega a 0 = derrotada; loot coletado.</div></div>
+    <div class="legend-item"><div class="legend-label">ATQ</div><div class="legend-desc">Dano base antes da Resistência do alvo.</div></div>
+    <div class="legend-item"><div class="legend-label">RES</div><div class="legend-desc">Subtraído do dano recebido. Crítico ignora.</div></div>
+    <div class="legend-item"><div class="legend-label">FUGA</div><div class="legend-desc">Mínimo em 1d10 para escapar do combate.</div></div>
+  </div>
+
+  <!-- PASSIVAS -->
+  <div class="tier-header">
+    <h3>Criaturas Passivas</h3>
+    <span class="count">5 espécies · fonte de alimento e recursos</span>
+  </div>
+  <div class="passive-grid">
+    <div class="passive-card" data-era="passiva" data-tier="passiva" onclick="openLightbox('ELEMENTOS/CRIATURAS/PASSIVAS/Vaca.webp')">
+      <img src="ELEMENTOS/CRIATURAS/PASSIVAS/Vaca.webp" alt="Vaca">
+      <div class="passive-info"><div class="passive-name">Vaca</div><div class="passive-pv">PV 18 · não ataca</div><div class="passive-loot">1 × Carne Vermelha</div></div>
+    </div>
+    <div class="passive-card" data-era="passiva" data-tier="passiva" onclick="openLightbox('ELEMENTOS/CRIATURAS/PASSIVAS/Porco.webp')">
+      <img src="ELEMENTOS/CRIATURAS/PASSIVAS/Porco.webp" alt="Porco">
+      <div class="passive-info"><div class="passive-name">Porco</div><div class="passive-pv">PV 14 · não ataca</div><div class="passive-loot">1 × Pernil</div></div>
+    </div>
+    <div class="passive-card" data-era="passiva" data-tier="passiva" onclick="openLightbox('ELEMENTOS/CRIATURAS/PASSIVAS/Peru.webp')">
+      <img src="ELEMENTOS/CRIATURAS/PASSIVAS/Peru.webp" alt="Peru">
+      <div class="passive-info"><div class="passive-name">Peru</div><div class="passive-pv">PV 10 · não ataca</div><div class="passive-loot">1 × Coxa de Ave</div></div>
+    </div>
+    <div class="passive-card" data-era="passiva" data-tier="passiva" onclick="openLightbox('ELEMENTOS/CRIATURAS/PASSIVAS/Abelhas.webp')">
+      <img src="ELEMENTOS/CRIATURAS/PASSIVAS/Abelhas.webp" alt="Abelhas">
+      <div class="passive-info"><div class="passive-name">Abelhas</div><div class="passive-pv">PV 8 · enxame</div><div class="passive-loot">1 × Mel + 1 × Abelha</div></div>
+    </div>
+    <div class="passive-card" data-era="passiva" data-tier="passiva" onclick="openLightbox('ELEMENTOS/CRIATURAS/PASSIVAS/Vagalumes.webp')">
+      <img src="ELEMENTOS/CRIATURAS/PASSIVAS/Vagalumes.webp" alt="Vagalumes">
+      <div class="passive-info"><div class="passive-name">Vagalume</div><div class="passive-pv">PV 6 · não ataca</div><div class="passive-loot">1 × Vagalume (luz noturna)</div></div>
+    </div>
+  </div>
+
+  <!-- VENARIS CREATURES -->
+  <div class="tier-header">
+    <h3 style="color:var(--venaris)">Criaturas de Venaris</h3>
+    <span class="count">5 criaturas · natureza venenosa</span>
+  </div>
+  <div class="bestiary-grid">
+    <div class="creature-card era-venaris" data-era="venaris" data-tier="I">
+      <img class="creature-img" src="ELEMENTOS/CRIATURAS/VENARIS/Ferocious Rat.webp" alt="Ferocious Rat" onclick="openLightbox('ELEMENTOS/CRIATURAS/VENARIS/Ferocious Rat.webp')">
+      <div class="creature-body">
+        <div class="creature-head"><div><div class="creature-name">Ferocious Rat</div><div class="creature-tier">Nível I · Universal</div></div></div>
+        <div class="creature-stats">
+          <div class="cs-cell"><div class="cs-val">5</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d6+1</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">1</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">5</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <div class="creature-note">Aparece em matilhas de 1d4. Move 4 casas por turno.</div>
+      </div>
+    </div>
+    <div class="creature-card era-venaris" data-era="venaris" data-tier="I">
+      <img class="creature-img" src="ELEMENTOS/CRIATURAS/VENARIS/Nightmarish Spider.webp" alt="Nightmarish Spider" onclick="openLightbox('ELEMENTOS/CRIATURAS/VENARIS/Nightmarish Spider.webp')">
+      <div class="creature-body">
+        <div class="creature-head"><div><div class="creature-name">Nightmarish Spider</div><div class="creature-tier">Nível I · Venaris</div></div></div>
+        <div class="creature-stats">
+          <div class="cs-cell"><div class="cs-val">6</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d6+1</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">1</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">5</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <div class="creature-note">Teia: ao acertar, o alvo perde 1 Movimento no próximo turno.</div>
+      </div>
+    </div>
+    <div class="creature-card era-venaris" data-era="venaris" data-tier="II">
+      <img class="creature-img" src="ELEMENTOS/CRIATURAS/VENARIS/Spiked Toad.webp" alt="Spiked Toad" onclick="openLightbox('ELEMENTOS/CRIATURAS/VENARIS/Spiked Toad.webp')">
+      <div class="creature-body">
+        <div class="creature-head"><div><div class="creature-name">Spiked Toad</div><div class="creature-tier">Nível II · Venaris</div></div></div>
+        <div class="creature-stats">
+          <div class="cs-cell"><div class="cs-val">9</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d8+2</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">2</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">6</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <div class="creature-note">Espinhos: atacante corpo a corpo sofre 1 dano automático.</div>
+      </div>
+    </div>
+    <div class="creature-card era-venaris" data-era="venaris" data-tier="II">
+      <img class="creature-img" src="ELEMENTOS/CRIATURAS/VENARIS/Crimson-Spiked Toad.webp" alt="Crimson-Spiked Toad" onclick="openLightbox('ELEMENTOS/CRIATURAS/VENARIS/Crimson-Spiked Toad.webp')">
+      <div class="creature-body">
+        <div class="creature-head"><div><div class="creature-name">Crimson-Spiked Toad</div><div class="creature-tier">Nível II · Venaris</div></div></div>
+        <div class="creature-stats">
+          <div class="cs-cell"><div class="cs-val">10</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d8+2</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">2</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">6</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <div class="creature-note">Veneno: crítico aplica <em>Envenenado</em> (1 dano/turno por 2 rodadas).</div>
+      </div>
+    </div>
+    <div class="creature-card era-venaris" data-era="venaris" data-tier="II">
+      <img class="creature-img" src="ELEMENTOS/CRIATURAS/VENARIS/Lunar Beast.webp" alt="Lunar Beast" onclick="openLightbox('ELEMENTOS/CRIATURAS/VENARIS/Lunar Beast.webp')">
+      <div class="creature-body">
+        <div class="creature-head"><div><div class="creature-name">Lunar Beast</div><div class="creature-tier">Nível II · Venaris</div></div></div>
+        <div class="creature-stats">
+          <div class="cs-cell"><div class="cs-val">10</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d8+2</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">2</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">6</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <div class="creature-note">À noite (turnos 4–6): +2 PV e +1 ATQ.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GLACIS CREATURES -->
+  <div class="tier-header">
+    <h3 style="color:var(--glacis)">Criaturas de Glacis</h3>
+    <span class="count">5 criaturas · geada negra</span>
+  </div>
+  <div class="bestiary-grid">
+    <div class="creature-card era-glacis" data-era="glacis" data-tier="I">
+      <img class="creature-img" src="ELEMENTOS/CRIATURAS/GLACIS/White Wolf.webp" alt="White Wolf" onclick="openLightbox('ELEMENTOS/CRIATURAS/GLACIS/White Wolf.webp')">
+      <div class="creature-body">
+        <div class="creature-head"><div><div class="creature-name">White Wolf</div><div class="creature-tier">Nível I · Glacis</div></div></div>
+        <div class="creature-stats">
+          <div class="cs-cell"><div class="cs-val">7</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d6+2</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">1</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">5</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <div class="creature-note">Caça em par: 2+ adjacentes → +1 ATQ.</div>
+      </div>
+    </div>
+    <div class="creature-card era-glacis" data-era="glacis" data-tier="I">
+      <img class="creature-img" src="ELEMENTOS/CRIATURAS/GLACIS/Froststing Scorpion.webp" alt="Froststing Scorpion" onclick="openLightbox('ELEMENTOS/CRIATURAS/GLACIS/Froststing Scorpion.webp')">
+      <div class="creature-body">
+        <div class="creature-head"><div><div class="creature-name">Froststing Scorpion</div><div class="creature-tier">Nível I · Glacis</div></div></div>
+        <div class="creature-stats">
+          <div class="cs-cell"><div class="cs-val">6</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d6+2</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">1</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">5</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <div class="creature-note">Ferrão: aplica condição <em>Lentidão</em> (−1 Movimento por 1 turno).</div>
+      </div>
+    </div>
+    <div class="creature-card era-glacis" data-era="glacis" data-tier="II">
+      <img class="creature-img" src="ELEMENTOS/CRIATURAS/GLACIS/Frostbite Serpent.webp" alt="Frostbite Serpent" onclick="openLightbox('ELEMENTOS/CRIATURAS/GLACIS/Frostbite Serpent.webp')">
+      <div class="creature-body">
+        <div class="creature-head"><div><div class="creature-name">Frostbite Serpent</div><div class="creature-tier">Nível II · Glacis</div></div></div>
+        <div class="creature-stats">
+          <div class="cs-cell"><div class="cs-val">9</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d8+2</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">2</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">6</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <div class="creature-note">Congelamento: acerto drena 1 Sanidade.</div>
+      </div>
+    </div>
+    <div class="creature-card era-glacis" data-era="glacis" data-tier="III">
+      <img class="creature-img" src="ELEMENTOS/CRIATURAS/GLACIS/Glacial Sentinel.webp" alt="Glacial Sentinel" onclick="openLightbox('ELEMENTOS/CRIATURAS/GLACIS/Glacial Sentinel.webp')">
+      <div class="creature-body">
+        <div class="creature-head"><div><div class="creature-name">Glacial Sentinel</div><div class="creature-tier">Nível III · Glacis</div></div></div>
+        <div class="creature-stats">
+          <div class="cs-cell"><div class="cs-val">13</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d10+2</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">3</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">7</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <div class="creature-note">Imaterial em gelo: só sofre dano total de armas encantadas.</div>
+      </div>
+    </div>
+    <div class="creature-card era-glacis" data-era="glacis" data-tier="III">
+      <img class="creature-img" src="ELEMENTOS/CRIATURAS/GLACIS/Ice Guardian.webp" alt="Ice Guardian" onclick="openLightbox('ELEMENTOS/CRIATURAS/GLACIS/Ice Guardian.webp')">
+      <div class="creature-body">
+        <div class="creature-head"><div><div class="creature-name">Ice Guardian</div><div class="creature-tier">Nível III · Glacis</div></div></div>
+        <div class="creature-stats">
+          <div class="cs-cell"><div class="cs-val">15</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d10+2</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">4</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">7</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <div class="creature-note">Frágil ao fogo: ataques incendiários +2 dano, ignoram 2 RES.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TERRAGORN CREATURES -->
+  <div class="tier-header">
+    <h3 style="color:var(--terragorn)">Criaturas de Terragorn</h3>
+    <span class="count">5 criaturas · fogo e pedra</span>
+  </div>
+  <div class="bestiary-grid">
+    <div class="creature-card era-terragorn" data-era="terragorn" data-tier="I">
+      <img class="creature-img" src="ELEMENTOS/CRIATURAS/TERRAGORN/Fanged Blossom.webp" alt="Fanged Blossom" onclick="openLightbox('ELEMENTOS/CRIATURAS/TERRAGORN/Fanged Blossom.webp')">
+      <div class="creature-body">
+        <div class="creature-head"><div><div class="creature-name">Fanged Blossom</div><div class="creature-tier">Nível I · Terragorn</div></div></div>
+        <div class="creature-stats">
+          <div class="cs-cell"><div class="cs-val">5</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d6+1</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">1</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">4</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <div class="creature-note">Planta carnívora. Imóvel mas com alcance 2 casas.</div>
+      </div>
+    </div>
+    <div class="creature-card era-terragorn" data-era="terragorn" data-tier="II">
+      <img class="creature-img" src="ELEMENTOS/CRIATURAS/TERRAGORN/Lavabound Serpent.webp" alt="Lavabound Serpent" onclick="openLightbox('ELEMENTOS/CRIATURAS/TERRAGORN/Lavabound Serpent.webp')">
+      <div class="creature-body">
+        <div class="creature-head"><div><div class="creature-name">Lavabound Serpent</div><div class="creature-tier">Nível II · Terragorn</div></div></div>
+        <div class="creature-stats">
+          <div class="cs-cell"><div class="cs-val">9</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d8+2</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">2</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">6</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <div class="creature-note">Rasteja em lava sem penalidade de terreno.</div>
+      </div>
+    </div>
+    <div class="creature-card era-terragorn" data-era="terragorn" data-tier="II">
+      <img class="creature-img" src="ELEMENTOS/CRIATURAS/TERRAGORN/Demonic Boar.webp" alt="Demonic Boar" onclick="openLightbox('ELEMENTOS/CRIATURAS/TERRAGORN/Demonic Boar.webp')">
+      <div class="creature-body">
+        <div class="creature-head"><div><div class="creature-name">Demonic Boar</div><div class="creature-tier">Nível II · Terragorn</div></div></div>
+        <div class="creature-stats">
+          <div class="cs-cell"><div class="cs-val">11</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d8+3</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">2</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">6</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <div class="creature-note">Investida: 3+ casas livres → +1d4 no primeiro ataque.</div>
+      </div>
+    </div>
+    <div class="creature-card era-terragorn" data-era="terragorn" data-tier="III">
+      <img class="creature-img" src="ELEMENTOS/CRIATURAS/TERRAGORN/Beastly Claws.webp" alt="Beastly Claws" onclick="openLightbox('ELEMENTOS/CRIATURAS/TERRAGORN/Beastly Claws.webp')">
+      <div class="creature-body">
+        <div class="creature-head"><div><div class="creature-name">Beastly Claws</div><div class="creature-tier">Nível III · Terragorn</div></div></div>
+        <div class="creature-stats">
+          <div class="cs-cell"><div class="cs-val">14</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d10+3</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">3</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">7</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <div class="creature-note">Emboscada: sempre age antes dos personagens no 1º turno.</div>
+      </div>
+    </div>
+    <div class="creature-card era-terragorn" data-era="terragorn" data-tier="III">
+      <img class="creature-img" src="ELEMENTOS/CRIATURAS/TERRAGORN/Spiked Guardian.webp" alt="Spiked Guardian" onclick="openLightbox('ELEMENTOS/CRIATURAS/TERRAGORN/Spiked Guardian.webp')">
+      <div class="creature-body">
+        <div class="creature-head"><div><div class="creature-name">Spiked Guardian</div><div class="creature-tier">Nível III · Terragorn</div></div></div>
+        <div class="creature-stats">
+          <div class="cs-cell"><div class="cs-val">16</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d10+2</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">4</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">7</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <div class="creature-note">Armadura pétrea: +1 RES adicional contra ataques não-contundentes.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TENEBRIS CREATURES -->
+  <div class="tier-header">
+    <h3 style="color:var(--tenebris)">Criaturas de Tenebris</h3>
+    <span class="count">5 criaturas · trevas e pesadelos</span>
+  </div>
+  <div class="bestiary-grid">
+    <div class="creature-card era-tenebris" data-era="tenebris" data-tier="I">
+      <img class="creature-img" src="ELEMENTOS/CRIATURAS/TENEBRIS/Bat Demon.webp" alt="Bat Demon" onclick="openLightbox('ELEMENTOS/CRIATURAS/TENEBRIS/Bat Demon.webp')">
+      <div class="creature-body">
+        <div class="creature-head"><div><div class="creature-name">Bat Demon</div><div class="creature-tier">Nível I · Tenebris</div></div></div>
+        <div class="creature-stats">
+          <div class="cs-cell"><div class="cs-val">5</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d6+2</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">1</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">6</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <div class="creature-note">Voador: ignora penalidade de terreno. Fuga +1 dificuldade.</div>
+      </div>
+    </div>
+    <div class="creature-card era-tenebris" data-era="tenebris" data-tier="I">
+      <img class="creature-img" src="ELEMENTOS/CRIATURAS/TENEBRIS/Dark Ferocious Rat.webp" alt="Dark Ferocious Rat" onclick="openLightbox('ELEMENTOS/CRIATURAS/TENEBRIS/Dark Ferocious Rat.webp')">
+      <div class="creature-body">
+        <div class="creature-head"><div><div class="creature-name">Dark Ferocious Rat</div><div class="creature-tier">Nível I · Tenebris</div></div></div>
+        <div class="creature-stats">
+          <div class="cs-cell"><div class="cs-val">6</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d6+1</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">1</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">5</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <div class="creature-note">Variante sombria. Matilhas de 1d4+1 em Tenebris.</div>
+      </div>
+    </div>
+    <div class="creature-card era-tenebris" data-era="tenebris" data-tier="II">
+      <img class="creature-img" src="ELEMENTOS/CRIATURAS/TENEBRIS/Nightwing Fiend.webp" alt="Nightwing Fiend" onclick="openLightbox('ELEMENTOS/CRIATURAS/TENEBRIS/Nightwing Fiend.webp')">
+      <div class="creature-body">
+        <div class="creature-head"><div><div class="creature-name">Nightwing Fiend</div><div class="creature-tier">Nível II · Tenebris</div></div></div>
+        <div class="creature-stats">
+          <div class="cs-cell"><div class="cs-val">8</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d8+2</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">1</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">7</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <div class="creature-note">Voador. Acerto drena 1 Sanidade do alvo.</div>
+      </div>
+    </div>
+    <div class="creature-card era-tenebris" data-era="tenebris" data-tier="II">
+      <img class="creature-img" src="ELEMENTOS/CRIATURAS/TENEBRIS/Skeleton Fiend.webp" alt="Skeleton Fiend" onclick="openLightbox('ELEMENTOS/CRIATURAS/TENEBRIS/Skeleton Fiend.webp')">
+      <div class="creature-body">
+        <div class="creature-head"><div><div class="creature-name">Skeleton Fiend</div><div class="creature-tier">Nível II · Tenebris</div></div></div>
+        <div class="creature-stats">
+          <div class="cs-cell"><div class="cs-val">9</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d8+2</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">2</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">6</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <div class="creature-note">Reanima: ao ser derrotado, role 1d10 — em 8+ volta com ½ PV (apenas 1×).</div>
+      </div>
+    </div>
+    <div class="creature-card era-tenebris" data-era="tenebris" data-tier="III">
+      <img class="creature-img" src="ELEMENTOS/CRIATURAS/TENEBRIS/Necromancer's Dominion.jpg" alt="Necromancer's Dominion" onclick="openLightbox('ELEMENTOS/CRIATURAS/TENEBRIS/Necromancer\'s Dominion.jpg')">
+      <div class="creature-body">
+        <div class="creature-head"><div><div class="creature-name">Necromancer's Dominion</div><div class="creature-tier">Nível III · Tenebris</div></div></div>
+        <div class="creature-stats">
+          <div class="cs-cell"><div class="cs-val">20</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d10+3</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">3</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">9</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <div class="creature-note">Dreno: cada acerto rouba 1 Sanidade. Elizabeth pode curar com ação normal.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUARDIÃS -->
+  <div class="tier-header">
+    <h3>Guardiãs — Chefões Finais</h3>
+    <span class="count">4 bosses · um por Era · guardam os fragmentos da Essência</span>
+  </div>
+  <div class="boss-grid">
+
+    <div class="boss-card era-venaris" data-era="venaris" data-tier="guardia">
+      <div class="boss-img-wrap" onclick="openLightbox('ELEMENTOS/CRIATURAS GUARDIÃS/VIPER.webp')">
+        <img src="ELEMENTOS/CRIATURAS GUARDIÃS/VIPER.webp" alt="Viper — Guardiã de Venaris">
+      </div>
+      <div class="boss-body">
+        <div class="boss-title">Viper</div>
+        <div class="boss-sub">Guardiã de Venaris · Era 01</div>
+        <div class="boss-stats">
+          <div class="cs-cell"><div class="cs-val">40</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d10+4</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">5</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">10</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <p class="boss-lore">Um colosso de raízes e esporos tóxicos. Antes era a guardiã benéfica das florestas; agora seus galhos destilam a geada venenosa que corrompeu toda a Era.</p>
+        <div class="boss-mech"><strong>Esporos:</strong> início de cada turno, cada personagem em Venaris rola 1d10 — em 4 ou menos sofre <em>Envenenado</em>. <strong>Queima frágil:</strong> ataques incendiários causam +3 dano.</div>
+      </div>
+    </div>
+
+    <div class="boss-card era-glacis" data-era="glacis" data-tier="guardia">
+      <div class="boss-img-wrap" onclick="openLightbox('ELEMENTOS/CRIATURAS GUARDIÃS/ICE WITCH.webp')">
+        <img src="ELEMENTOS/CRIATURAS GUARDIÃS/ICE WITCH.webp" alt="Ice Witch — Guardiã de Glacis">
+      </div>
+      <div class="boss-body">
+        <div class="boss-title">Ice Witch</div>
+        <div class="boss-sub">Guardiã de Glacis · Era 02</div>
+        <div class="boss-stats">
+          <div class="cs-cell"><div class="cs-val">42</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d10+4</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">5</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">10</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <p class="boss-lore">Coroada de cristais azul-ferrosos, governa a Geada Negra. Sua voz congela o tempo por frações de segundo — reduzindo drasticamente as ações do grupo.</p>
+        <div class="boss-mech"><strong>Congelar tempo:</strong> turno da Ice Witch, role 1d10 — em 7+ todos perdem 1 ação no próximo turno. <strong>Imune ao gelo.</strong></div>
+      </div>
+    </div>
+
+    <div class="boss-card era-terragorn" data-era="terragorn" data-tier="guardia">
+      <div class="boss-img-wrap" onclick="openLightbox('ELEMENTOS/CRIATURAS GUARDIÃS/Hellish Titan.webp')">
+        <img src="ELEMENTOS/CRIATURAS GUARDIÃS/Hellish Titan.webp" alt="Hellish Titan — Guardiã de Terragorn">
+      </div>
+      <div class="boss-body">
+        <div class="boss-title">Hellish Titan</div>
+        <div class="boss-sub">Guardiã de Terragorn · Era 03</div>
+        <div class="boss-stats">
+          <div class="cs-cell"><div class="cs-val">45</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d10+4</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">6</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">10</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <p class="boss-lore">Forjado no centro vulcânico. Uma criatura de magma e rocha cujo coração pulsa como uma forja. Paira sobre toda Terragorn; sua presença derrete metal bruto.</p>
+        <div class="boss-mech"><strong>Forja de fúria:</strong> a cada 3 turnos, Erupção (1d10+6 em todos a ≤3 casas, Sobrevivência ≥7 divide). <strong>Frágil ao gelo:</strong> +3 dano e −1 RES por 1 turno.</div>
+      </div>
+    </div>
+
+    <div class="boss-card era-tenebris" data-era="tenebris" data-tier="guardia">
+      <div class="boss-img-wrap" onclick="openLightbox('ELEMENTOS/CRIATURAS GUARDIÃS/SHADOW.webp')">
+        <img src="ELEMENTOS/CRIATURAS GUARDIÃS/SHADOW.webp" alt="Shadow — Guardiã de Tenebris">
+      </div>
+      <div class="boss-body">
+        <div class="boss-title">Shadow</div>
+        <div class="boss-sub">Guardiã de Tenebris · Era 04</div>
+        <div class="boss-stats">
+          <div class="cs-cell"><div class="cs-val">38</div><div class="cs-lbl">PV</div></div>
+          <div class="cs-cell"><div class="cs-val">1d10+5</div><div class="cs-lbl">ATQ</div></div>
+          <div class="cs-cell"><div class="cs-val">5</div><div class="cs-lbl">RES</div></div>
+          <div class="cs-cell"><div class="cs-val">10</div><div class="cs-lbl">FUGA</div></div>
+        </div>
+        <p class="boss-lore">A Essência do pesadelo em forma cognitiva. Espelha os próprios personagens, explorando medos e traumas acumulados ao longo da jornada.</p>
+        <div class="boss-mech"><strong>Pesadelo:</strong> cada acerto reduz 1 Sanidade (sem RES possível). <strong>Reflexo:</strong> crítico natural → dano também se aplica a quem desferiu o golpe.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Balance Matrix -->
+  <h2>Matriz de balanceamento</h2>
+  <table class="balance-matrix">
+    <thead><tr><th>Nível</th><th>PV</th><th>Ataque</th><th>Resistência</th><th>Ponto de Fuga</th><th>Ocorrência</th></tr></thead>
+    <tbody>
+      <tr><td>I · Filhote</td><td>5–7</td><td>1d6+1~+2</td><td>1</td><td>5–6</td><td>Era 1 (início)</td></tr>
+      <tr><td>II · Médio</td><td>8–11</td><td>1d8+2~+3</td><td>2</td><td>6–7</td><td>Eras 2–3</td></tr>
+      <tr><td>III · Elite</td><td>13–16</td><td>1d10+2~+3</td><td>3–4</td><td>7</td><td>Eras 3–4</td></tr>
+      <tr><td>Guardiã</td><td>38–45</td><td>1d10+4~+5</td><td>5–6</td><td>10</td><td>Fim de cada Era</td></tr>
+    </tbody>
+  </table>
+
+  <div class="pager">
+    <a class="prev" href="#/mecanicas"><span class="lbl">← Anterior</span><span class="nxt">Mecânicas</span></a>
+    <a class="next" href="#/recursos"><span class="lbl">Próximo →</span><span class="nxt">Recursos &amp; Itens</span></a>
+  </div>
+</section>

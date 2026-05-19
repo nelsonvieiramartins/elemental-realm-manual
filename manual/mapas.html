@@ -1,0 +1,256 @@
+<section class="page">
+  <div class="page-header">
+    <div class="page-kicker">Seção 04</div>
+    <h1 class="page-title">Mapas &amp; Cidades</h1>
+    <p class="page-lead">Os quatro territórios do Elemental Realm estão sempre presentes — expostos na mesa do início ao fim da partida. Cada local tem sua história, seus perigos e suas oportunidades.</p>
+  </div>
+
+  <div class="callout callout-note">
+    <strong>Todos os mapas, sempre ativos</strong>
+    Os 4 mapas ficam dispostos na mesa simultaneamente durante toda a partida. As Eras não determinam qual mapa usar — elas afetam todos ao mesmo tempo. O grupo se move livremente entre os territórios usando os <strong>Vórtices</strong>.
+  </div>
+
+  <!-- MAP MECHANICS -->
+  <h2>Mecânicas de Deslocamento</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin:1rem 0 2rem">
+
+    <!-- VORTEX -->
+    <div style="background:var(--bg-2);border:1px solid #4a9fd8;border-radius:10px;padding:1.4rem;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#4a9fd8,#7ec6e8)"></div>
+      <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:.8rem">
+        <div style="width:46px;height:46px;flex:0 0 46px;border-radius:50%;background:radial-gradient(circle,#1a4a6a,#0e2024);border:2px solid #4a9fd8;display:flex;align-items:center;justify-content:center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4a9fd8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <circle cx="12" cy="12" r="4"/>
+            <line x1="12" y1="2" x2="12" y2="6"/>
+            <line x1="12" y1="18" x2="12" y2="22"/>
+            <line x1="2" y1="12" x2="6" y2="12"/>
+            <line x1="18" y1="12" x2="22" y2="12"/>
+          </svg>
+        </div>
+        <div>
+          <div style="font-family:'Oswald',sans-serif;font-size:1.1rem;color:#7ec6e8;letter-spacing:.06em">Vórtex</div>
+          <div style="font-size:.68rem;color:var(--fg-muted);text-transform:uppercase;letter-spacing:.15em;font-family:'Inter',sans-serif">Transição entre Mapas</div>
+        </div>
+      </div>
+      <p style="font-family:'Lora',serif;font-size:.88rem;color:var(--fg-dim);line-height:1.6;margin-bottom:.8rem">Portais dimensionais marcados nos mapas com o ícone redondo azul. Permitem que personagens se desloquem entre territórios adjacentes sem precisar atravessar todo o tabuleiro.</p>
+      <div style="background:var(--bg-3);border-radius:6px;padding:.7rem .9rem">
+        <div style="font-size:.65rem;color:#4a9fd8;letter-spacing:.2em;text-transform:uppercase;font-family:'Inter',sans-serif;margin-bottom:.4rem">Regra</div>
+        <ul style="list-style:none;padding:0;margin:0;font-size:.83rem;color:var(--fg);font-family:'Lora',serif">
+          <li style="padding:.2rem 0;border-bottom:1px solid var(--border-soft)">Custo: <strong style="color:#7ec6e8">2 pontos de movimento</strong></li>
+          <li style="padding:.2rem 0;border-bottom:1px solid var(--border-soft)">Somente entre mapas <strong>adjacentes</strong></li>
+          <li style="padding:.2rem 0">Pode ser usado durante a ação de Movimento normal</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RECURSOS -->
+    <div style="background:var(--bg-2);border:1px solid var(--venaris);border-radius:10px;padding:1.4rem;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--venaris),#5aaa5c)"></div>
+      <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:.8rem">
+        <div style="width:46px;height:46px;flex:0 0 46px;border-radius:8px;background:linear-gradient(135deg,#1a3a1a,#0e2024);border:2px solid var(--venaris);display:flex;align-items:center;justify-content:center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--venaris)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <polygon points="12,7 15,11 12,9 9,11"/>
+            <line x1="12" y1="9" x2="12" y2="17"/>
+          </svg>
+        </div>
+        <div>
+          <div style="font-family:'Oswald',sans-serif;font-size:1.1rem;color:var(--venaris);letter-spacing:.06em">Ponto de Recurso</div>
+          <div style="font-size:.68rem;color:var(--fg-muted);text-transform:uppercase;letter-spacing:.15em;font-family:'Inter',sans-serif">Coleta de Materiais</div>
+        </div>
+      </div>
+      <p style="font-family:'Lora',serif;font-size:.88rem;color:var(--fg-dim);line-height:1.6;margin-bottom:.8rem">Locais marcados com o ícone verde em cada mapa. Representam pontos ricos em materiais — madeira, pedra, ervas, minérios ou alimentos — que o grupo pode explorar durante a exploração do território.</p>
+      <div style="background:var(--bg-3);border-radius:6px;padding:.7rem .9rem">
+        <div style="font-size:.65rem;color:var(--venaris);letter-spacing:.2em;text-transform:uppercase;font-family:'Inter',sans-serif;margin-bottom:.4rem">Regra</div>
+        <ul style="list-style:none;padding:0;margin:0;font-size:.83rem;color:var(--fg);font-family:'Lora',serif">
+          <li style="padding:.2rem 0;border-bottom:1px solid var(--border-soft)">Ação: <strong style="color:var(--venaris)">Coletar Recurso</strong> (1 ação)</li>
+          <li style="padding:.2rem 0;border-bottom:1px solid var(--border-soft)">O recurso coletado depende do território</li>
+          <li style="padding:.2rem 0">Limitado por capacidade de armazenamento do personagem</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- COMÉRCIO -->
+    <div style="background:var(--bg-2);border:1px solid var(--accent);border-radius:10px;padding:1.4rem;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),#b89a5a)"></div>
+      <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:.8rem">
+        <div style="width:46px;height:46px;flex:0 0 46px;border-radius:8px;background:linear-gradient(135deg,#2a2010,#0e2024);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="3" x2="12" y2="21"/>
+            <path d="M5 7h14M5 12h14M5 17h14"/>
+            <circle cx="5" cy="12" r="2" fill="var(--accent)" stroke="none"/>
+            <circle cx="19" cy="12" r="2" fill="var(--accent)" stroke="none"/>
+          </svg>
+        </div>
+        <div>
+          <div style="font-family:'Oswald',sans-serif;font-size:1.1rem;color:var(--accent);letter-spacing:.06em">Posto de Comércio</div>
+          <div style="font-size:.68rem;color:var(--fg-muted);text-transform:uppercase;letter-spacing:.15em;font-family:'Inter',sans-serif">Troca pela Tabela</div>
+        </div>
+      </div>
+      <p style="font-family:'Lora',serif;font-size:.88rem;color:var(--fg-dim);line-height:1.6;margin-bottom:.8rem">Representado pelo ícone de balança em cada mapa. São os mercados locais onde o grupo pode trocar recursos e itens seguindo as taxas da <strong style="color:var(--accent)">Tabela de Comércio</strong>.</p>
+      <div style="background:var(--bg-3);border-radius:6px;padding:.7rem .9rem">
+        <div style="font-size:.65rem;color:var(--accent);letter-spacing:.2em;text-transform:uppercase;font-family:'Inter',sans-serif;margin-bottom:.4rem">Regra</div>
+        <ul style="list-style:none;padding:0;margin:0;font-size:.83rem;color:var(--fg);font-family:'Lora',serif">
+          <li style="padding:.2rem 0;border-bottom:1px solid var(--border-soft)">Ação: <strong style="color:var(--accent)">Comerciar</strong> (1 ação)</li>
+          <li style="padding:.2rem 0;border-bottom:1px solid var(--border-soft)">Trocas seguem a tabela de Comércio do jogo</li>
+          <li style="padding:.2rem 0">Disponível em qualquer dos 4 mapas</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ornament">◆ ◆ ◆</div>
+
+  <!-- FLORESTA NEGRA -->
+  <h2 style="margin-bottom:1.2rem">Os Quatro Territórios</h2>
+
+  <div style="margin-bottom:3rem">
+    <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:2rem;align-items:start;margin-bottom:1.5rem">
+      <div>
+        <div class="era-map-wrap" data-lb="ELEMENTOS/MAPAS/FLORESTA NEGRA.webp" style="--era-color:var(--venaris)">
+          <img src="ELEMENTOS/MAPAS/FLORESTA NEGRA.webp" alt="Floresta Negra">
+        </div>
+        <div style="font-size:.68rem;color:var(--fg-muted);margin-top:.4rem;text-align:center;font-family:'Inter',sans-serif">Clique para ampliar</div>
+      </div>
+      <div>
+        <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem">
+          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--venaris)"></span>
+          <span style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--venaris);font-family:'Inter',sans-serif">Território I</span>
+        </div>
+        <h3 style="font-size:1.8rem;color:var(--venaris);font-family:'Oswald',sans-serif;letter-spacing:.06em;margin-bottom:.8rem">Floresta Negra</h3>
+        <p style="font-family:'Lora',serif;color:var(--fg);line-height:1.7;margin-bottom:.9rem">Antes conhecida como Viridante — a floresta eterna que cobria o coração do Elemental Realm. Seus antigos guardiões a chamavam de "o pulmão do mundo": árvores que existiam antes dos primeiros registros, raízes tão profundas que tocavam o núcleo elementar do plano.</p>
+        <p style="font-family:'Lora',serif;color:var(--fg);line-height:1.7;margin-bottom:.9rem">Quando a corrupção chegou, ela não destruiu a floresta — a transformou. A vegetação cresceu além do controle, impregnada de essência tóxica. Hoje, esporos venenosos flutuam no ar, cogumelos pulsam com luz púrpura antinatural, e os próprios animais do bosque tornaram-se extensões de uma vontade coletiva e faminta.</p>
+        <p style="font-family:'Lora',serif;color:var(--fg-dim);font-style:italic;line-height:1.7">Diz-se que no centro da Floresta Negra, onde a névoa é mais densa, ainda existe o coração da Viridante — uma árvore ancestral aprisionada pela corrupção, gemendo em silêncio há séculos.</p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.7rem;margin-top:.5rem">
+      <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:.9rem">
+        <div style="font-size:.65rem;color:var(--venaris);text-transform:uppercase;letter-spacing:.15em;font-family:'Inter',sans-serif;margin-bottom:.4rem">Recursos Típicos</div>
+        <div style="font-size:.83rem;color:var(--fg);font-family:'Lora',serif">Madeira, ervas medicinais, esporos, mel silvestre, fungos raros</div>
+      </div>
+      <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:.9rem">
+        <div style="font-size:.65rem;color:var(--venaris);text-transform:uppercase;letter-spacing:.15em;font-family:'Inter',sans-serif;margin-bottom:.4rem">Perigo Característico</div>
+        <div style="font-size:.83rem;color:var(--fg);font-family:'Lora',serif">Envenenamento passivo · Visibilidade reduzida por névoa</div>
+      </div>
+      <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:.9rem">
+        <div style="font-size:.65rem;color:var(--venaris);text-transform:uppercase;letter-spacing:.15em;font-family:'Inter',sans-serif;margin-bottom:.4rem">Espaços</div>
+        <div style="font-size:.83rem;color:var(--fg);font-family:'Lora',serif">24 espaços · Terrenos de floresta densa, clareiras e pântanos</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UMBRAFORT -->
+  <div style="margin-bottom:3rem">
+    <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:2rem;align-items:start;margin-bottom:1.5rem">
+      <div>
+        <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem">
+          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--glacis)"></span>
+          <span style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--glacis);font-family:'Inter',sans-serif">Território II</span>
+        </div>
+        <h3 style="font-size:1.8rem;color:var(--glacis);font-family:'Oswald',sans-serif;letter-spacing:.06em;margin-bottom:.8rem">Umbrafort</h3>
+        <p style="font-family:'Lora',serif;color:var(--fg);line-height:1.7;margin-bottom:.9rem">Uma fortaleza de pedra negra que outrora protegia a fronteira norte do Elemental Realm. Construída há gerações pela Guarda das Muralhas para resistir a qualquer ameaça externa, Umbrafort era símbolo de poder e resistência — seus muros nunca tinham sido rompidos em batalha.</p>
+        <p style="font-family:'Lora',serif;color:var(--fg);line-height:1.7;margin-bottom:.9rem">A corrupção entrou de dentro. Um inverno que não terminou congelou as pedras, os corredores e os próprios guardas. O gelo que hoje ocupa Umbrafort não é frio — é uma substância viva, que preserva os corpos dos defensores em estado eterno de vigília gelada, prontos para atacar qualquer intruso.</p>
+        <p style="font-family:'Lora',serif;color:var(--fg-dim);font-style:italic;line-height:1.7">Os veteranos ainda reconhecem os brasões das antigas famílias nas armaduras congeladas. Diz-se que é possível ouvir os guardas tentando gritar — aprisionados no gelo, conscientes, sem poder se mover.</p>
+      </div>
+      <div>
+        <div class="era-map-wrap" data-lb="ELEMENTOS/MAPAS/UMBRAFORT.webp" style="--era-color:var(--glacis)">
+          <img src="ELEMENTOS/MAPAS/UMBRAFORT.webp" alt="Umbrafort">
+        </div>
+        <div style="font-size:.68rem;color:var(--fg-muted);margin-top:.4rem;text-align:center;font-family:'Inter',sans-serif">Clique para ampliar</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.7rem;margin-top:.5rem">
+      <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:.9rem">
+        <div style="font-size:.65rem;color:var(--glacis);text-transform:uppercase;letter-spacing:.15em;font-family:'Inter',sans-serif;margin-bottom:.4rem">Recursos Típicos</div>
+        <div style="font-size:.83rem;color:var(--fg);font-family:'Lora',serif">Pedra, ferro, equipamentos abandonados, cristais de gelo raro</div>
+      </div>
+      <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:.9rem">
+        <div style="font-size:.65rem;color:var(--glacis);text-transform:uppercase;letter-spacing:.15em;font-family:'Inter',sans-serif;margin-bottom:.4rem">Perigo Característico</div>
+        <div style="font-size:.83rem;color:var(--fg);font-family:'Lora',serif">Dreno de Sanidade · Terreno gelado reduz movimento</div>
+      </div>
+      <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:.9rem">
+        <div style="font-size:.65rem;color:var(--glacis);text-transform:uppercase;letter-spacing:.15em;font-family:'Inter',sans-serif;margin-bottom:.4rem">Espaços</div>
+        <div style="font-size:.83rem;color:var(--fg);font-family:'Lora',serif">24 espaços · Corredores, muralhas, pátios e torres</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VALE SERENO -->
+  <div style="margin-bottom:3rem">
+    <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:2rem;align-items:start;margin-bottom:1.5rem">
+      <div>
+        <div class="era-map-wrap" data-lb="ELEMENTOS/MAPAS/VALE SERENO.webp" style="--era-color:var(--terragorn)">
+          <img src="ELEMENTOS/MAPAS/VALE SERENO.webp" alt="Vale Sereno">
+        </div>
+        <div style="font-size:.68rem;color:var(--fg-muted);margin-top:.4rem;text-align:center;font-family:'Inter',sans-serif">Clique para ampliar</div>
+      </div>
+      <div>
+        <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem">
+          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--terragorn)"></span>
+          <span style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--terragorn);font-family:'Inter',sans-serif">Território III</span>
+        </div>
+        <h3 style="font-size:1.8rem;color:var(--terragorn);font-family:'Oswald',sans-serif;letter-spacing:.06em;margin-bottom:.8rem">Vale Sereno</h3>
+        <p style="font-family:'Lora',serif;color:var(--fg);line-height:1.7;margin-bottom:.9rem">O nome é uma ironia cruel. O Vale Sereno foi por séculos o lugar mais pacífico do Elemental Realm — um vale fértil entre montanhas, atravessado por rios cristalinos, onde comunidades inteiras floresciam sem guerras ou fome. Era o coração civil do reino, o lugar onde crianças brincavam sem medo.</p>
+        <p style="font-family:'Lora',serif;color:var(--fg);line-height:1.7;margin-bottom:.9rem">Quando a força elemental desequilibrou, as próprias montanhas acordaram. As erupções vieram sem aviso — primeiro como tremores, depois como fontes de magma brotando do chão onde antes havia pastos. As cidades foram engolidas. O que sobrou é um labirinto de rocha resfriada, rios de lava e cinzas que nunca assentam.</p>
+        <p style="font-family:'Lora',serif;color:var(--fg-dim);font-style:italic;line-height:1.7">Viajantes que sobreviveram à travessia descrevem ruínas de casas visíveis sob camadas de pedra solidificada — como se o vale tivesse sido arquivado, não destruído. Uma memória petrificada do que o mundo poderia ter sido.</p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.7rem;margin-top:.5rem">
+      <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:.9rem">
+        <div style="font-size:.65rem;color:var(--terragorn);text-transform:uppercase;letter-spacing:.15em;font-family:'Inter',sans-serif;margin-bottom:.4rem">Recursos Típicos</div>
+        <div style="font-size:.83rem;color:var(--fg);font-family:'Lora',serif">Minério fundido, obsidiana, cinzas fertilizantes, cristais de calor</div>
+      </div>
+      <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:.9rem">
+        <div style="font-size:.65rem;color:var(--terragorn);text-transform:uppercase;letter-spacing:.15em;font-family:'Inter',sans-serif;margin-bottom:.4rem">Perigo Característico</div>
+        <div style="font-size:.83rem;color:var(--fg);font-family:'Lora',serif">Dano de calor passivo · Terreno instável (risco de erupção)</div>
+      </div>
+      <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:.9rem">
+        <div style="font-size:.65rem;color:var(--terragorn);text-transform:uppercase;letter-spacing:.15em;font-family:'Inter',sans-serif;margin-bottom:.4rem">Espaços</div>
+        <div style="font-size:.83rem;color:var(--fg);font-family:'Lora',serif">24 espaços · Planícies de lava, ruínas soterradas e desfiladeiros</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABISMO CRESCENTE -->
+  <div style="margin-bottom:2rem">
+    <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:2rem;align-items:start;margin-bottom:1.5rem">
+      <div>
+        <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem">
+          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--tenebris)"></span>
+          <span style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--tenebris);font-family:'Inter',sans-serif">Território IV</span>
+        </div>
+        <h3 style="font-size:1.8rem;color:var(--tenebris);font-family:'Oswald',sans-serif;letter-spacing:.06em;margin-bottom:.8rem">Abismo Crescente</h3>
+        <p style="font-family:'Lora',serif;color:var(--fg);line-height:1.7;margin-bottom:.9rem">Não é um lugar — é uma ausência. O Abismo Crescente começou como uma fenda no chão, pequena o suficiente para ser ignorada pelos primeiros exploradores. Depois cresceu. Continua crescendo. Não destrói o que encontra: apaga. Pedra, árvore, água, memória.</p>
+        <p style="font-family:'Lora',serif;color:var(--fg);line-height:1.7;margin-bottom:.9rem">As bordas do Abismo são a parte mais perigosa — terreno instável que desmorona sem aviso, arrastando para uma escuridão da qual nada retorna. Nas profundezas visíveis, movimentos lentos sugerem que algo se agita — mas nenhum explorador chegou perto o suficiente para identificar o que é.</p>
+        <p style="font-family:'Lora',serif;color:var(--fg-dim);font-style:italic;line-height:1.7">Os estudiosos do Realm acreditam que o Abismo não é obra da corrupção — ele era anterior a ela. A corrupção apenas acordou o que dormia. E agora que está acordado, não para de crescer.</p>
+      </div>
+      <div>
+        <div class="era-map-wrap" data-lb="ELEMENTOS/MAPAS/ABISMO CRESCENTE.webp" style="--era-color:var(--tenebris)">
+          <img src="ELEMENTOS/MAPAS/ABISMO CRESCENTE.webp" alt="Abismo Crescente">
+        </div>
+        <div style="font-size:.68rem;color:var(--fg-muted);margin-top:.4rem;text-align:center;font-family:'Inter',sans-serif">Clique para ampliar</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.7rem;margin-top:.5rem">
+      <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:.9rem">
+        <div style="font-size:.65rem;color:var(--tenebris);text-transform:uppercase;letter-spacing:.15em;font-family:'Inter',sans-serif;margin-bottom:.4rem">Recursos Típicos</div>
+        <div style="font-size:.83rem;color:var(--fg);font-family:'Lora',serif">Fragmentos de sombra, pedras do vazio, éter condensado</div>
+      </div>
+      <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:.9rem">
+        <div style="font-size:.65rem;color:var(--tenebris);text-transform:uppercase;letter-spacing:.15em;font-family:'Inter',sans-serif;margin-bottom:.4rem">Perigo Característico</div>
+        <div style="font-size:.83rem;color:var(--fg);font-family:'Lora',serif">Dreno de Sanidade extremo · Espaços que "desaparecem"</div>
+      </div>
+      <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:.9rem">
+        <div style="font-size:.65rem;color:var(--tenebris);text-transform:uppercase;letter-spacing:.15em;font-family:'Inter',sans-serif;margin-bottom:.4rem">Espaços</div>
+        <div style="font-size:.83rem;color:var(--fg);font-family:'Lora',serif">24 espaços · Bordas instáveis, pontes e zonas de vazio</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pager">
+    <a class="prev" href="#/eras"><span class="lbl">← Anterior</span><span class="nxt">Os Quatro Reinos</span></a>
+    <a class="next" href="#/pedras"><span class="lbl">Próximo →</span><span class="nxt">Pedras Especiais</span></a>
+  </div>
+</section>

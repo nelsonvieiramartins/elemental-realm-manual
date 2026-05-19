@@ -1,0 +1,240 @@
+<section class="page">
+  <div class="page-header">
+    <div class="page-kicker">Seção 10</div>
+    <h1 class="page-title">Tokens &amp; Tabuleiros</h1>
+    <p class="page-lead">Os componentes físicos que representam o estado do jogo — recursos coletados, condições ativas, construções erguidas e o fluxo do tempo em cada Era.</p>
+  </div>
+
+  <!-- TABULEIRO DE RODADA -->
+  <h2>Tabuleiro de Rodada</h2>
+  <p>Cada Era possui o seu próprio Tabuleiro de Rodada — também chamado de <strong>Tabuleiro de Estações</strong>. Ele regista quantos dias (rodadas) a Era possui e indica, com marcação visual, os períodos de <strong>Escuridão</strong>.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:1.2rem 0 2rem;align-items:start">
+    <div>
+      <div style="cursor:pointer;border-radius:8px;overflow:hidden;border:1px solid var(--venaris);transition:border-color .2s"
+           onclick="openLightbox('ELEMENTOS/TABULEIRO DE RODADAS/TABULEIRO DE ESTAÇÕES_16rodadas_VENARIS.webp')">
+        <img src="ELEMENTOS/TABULEIRO DE RODADAS/TABULEIRO DE ESTAÇÕES_16rodadas_VENARIS.webp"
+             alt="Tabuleiro de Estações — Venaris" style="width:100%;display:block">
+      </div>
+      <div style="font-size:.68rem;color:var(--fg-muted);margin-top:.4rem;text-align:center;font-family:'Inter',sans-serif">Tabuleiro de Estações — Venaris · Clique para ampliar</div>
+    </div>
+    <div>
+      <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin-bottom:.8rem">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8rem;color:var(--accent);letter-spacing:.1em;margin-bottom:.6rem">ESTRUTURA DO TABULEIRO</div>
+        <ul style="list-style:none;padding:0;margin:0;font-size:.85rem;font-family:'Lora',serif">
+          <li style="padding:.35rem 0;border-bottom:1px solid var(--border-soft);color:var(--fg)"><strong style="color:var(--accent)">16 espaços</strong> — um por rodada. Cada Era dura exactamente 16 rodadas.</li>
+          <li style="padding:.35rem 0;border-bottom:1px solid var(--border-soft);color:var(--fg)"><strong style="color:var(--glacis)">Campo azul</strong> — indica os períodos de <strong>Escuridão</strong>. Durante esses turnos é obrigatória uma fonte de luz activa.</li>
+          <li style="padding:.35rem 0;color:var(--fg)"><strong style="color:var(--fg-dim)">Avance de Guardiã</strong> — ao completar os requisitos dentro das 16 rodadas, a Guardiã pode ser invocada.</li>
+        </ul>
+      </div>
+      <div class="callout callout-note">
+        <strong>Escuridão</strong>
+        Nos turnos marcados a azul, qualquer personagem sem fonte de luz activa perde <strong>−1 Sanidade</strong> na Fase de Manutenção. A Fogueira do Acampamento ou o item Vagalume cobrem esta exigência.
+      </div>
+      <div class="callout" style="margin-top:.6rem;border-left-color:var(--fg-muted)">
+        <strong style="color:var(--fg-muted)">Em produção</strong>
+        O tabuleiro de Glacis, Terragorn e Tenebris estão em desenvolvimento. Cada Era terá a sua distribuição própria de dias de Escuridão.
+      </div>
+    </div>
+  </div>
+
+  <div class="ornament">◆ ◆ ◆</div>
+
+  <!-- TOKENS DE RECURSOS -->
+  <h2>Tokens de Recursos</h2>
+  <p>Representam os materiais colectados nos pontos de recurso dos mapas. São o combustível de todo o sistema de crafting — receitas, construções e equipamentos exigem tokens específicos em mão.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:.6rem;margin:1rem 0 .5rem">
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/MADEIRA.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/MADEIRA.webp" alt="Madeira"><div class="item-name">Madeira</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/PEDRA.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/PEDRA.webp" alt="Pedra"><div class="item-name">Pedra</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/FIBRA.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/FIBRA.webp" alt="Fibra"><div class="item-name">Fibra</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/MINERIO DE FERRO.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/MINERIO DE FERRO.webp" alt="Minério de Ferro"><div class="item-name">Minério de Ferro</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/OURO.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/OURO.webp" alt="Ouro"><div class="item-name">Ouro</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/MEDICINAL.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/MEDICINAL.webp" alt="Medicinal"><div class="item-name">Medicinal</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/CARNE VERMELHA.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/CARNE VERMELHA.webp" alt="Carne Vermelha"><div class="item-name">Carne Vermelha</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/COXA DE AVE.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/COXA DE AVE.webp" alt="Coxa de Ave"><div class="item-name">Coxa de Ave</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/PERNIL.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/PERNIL.webp" alt="Pernil"><div class="item-name">Pernil</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/ABOBORA.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/ABOBORA.webp" alt="Abóbora"><div class="item-name">Abóbora</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/CENOURA.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/CENOURA.webp" alt="Cenoura"><div class="item-name">Cenoura</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/CEREJA.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/CEREJA.webp" alt="Cereja"><div class="item-name">Cereja</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/MORANGOS.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/MORANGOS.webp" alt="Morangos"><div class="item-name">Morangos</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/MEL.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/MEL.webp" alt="Mel"><div class="item-name">Mel</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/LEITE.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/LEITE.webp" alt="Leite"><div class="item-name">Leite</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/ABELHA.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/ABELHA.webp" alt="Abelha"><div class="item-name">Abelha</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/VAGALUME.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/VAGALUME.webp" alt="Vagalume"><div class="item-name">Vagalume</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/DIAMANTE.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/DIAMANTE.webp" alt="Diamante"><div class="item-name">Diamante</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/RUBI.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/RUBI.webp" alt="Rubi"><div class="item-name">Rubi</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/SAFIRA.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/SAFIRA.webp" alt="Safira"><div class="item-name">Safira</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/CRISTAL ARCANO AZUL.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/CRISTAL ARCANO AZUL.webp" alt="Cristal Arcano Azul"><div class="item-name">Cristal Azul</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/CRISTAL ARCANO VERDE.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/CRISTAL ARCANO VERDE.webp" alt="Cristal Arcano Verde"><div class="item-name">Cristal Verde</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/CRISTAL ARCANO VERMELHO.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/CRISTAL ARCANO VERMELHO.webp" alt="Cristal Arcano Vermelho"><div class="item-name">Cristal Vermelho</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/CRISTAL ARCANO PRETO.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/CRISTAL ARCANO PRETO.webp" alt="Cristal Arcano Preto"><div class="item-name">Cristal Preto</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/BASE DE CRIAÃO.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECURSOS/BASE DE CRIAÃO.webp" alt="Base de Criação"><div class="item-name">Base Criação</div>
+    </div>
+  </div>
+
+  <div class="ornament">◆ ◆ ◆</div>
+
+  <!-- TOKENS DE RECEITAS -->
+  <h2>Tokens de Receitas</h2>
+  <p>Utilizados para referenciar os recursos necessários para preparar cada prato na <strong>Panela de Ferro</strong> ou estrutura equivalente. Após o prato ser confeccionado, o token de receita converte-se num <strong>Token de Recurso</strong> (o alimento pronto).</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:.7rem;margin:1rem 0">
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECEITAS/CARNECENOURA.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECEITAS/CARNECENOURA.webp" alt="Carne com Cenoura"><div class="item-name">Carne c/ Cenoura</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECEITAS/MIXCARNE.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECEITAS/MIXCARNE.webp" alt="Mix de Carne"><div class="item-name">Mix de Carne</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECEITAS/PERNIL.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECEITAS/PERNIL.webp" alt="Pernil"><div class="item-name">Pernil</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECEITAS/GLACEADA.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECEITAS/GLACEADA.webp" alt="Coxa Glaceada"><div class="item-name">Coxa Glaceada</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECEITAS/SOPALEGUMES.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECEITAS/SOPALEGUMES.webp" alt="Sopa de Legumes"><div class="item-name">Sopa de Legumes</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECEITAS/PURE.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECEITAS/PURE.webp" alt="Purê de Abóbora"><div class="item-name">Purê de Abóbora</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECEITAS/PANACHE.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECEITAS/PANACHE.webp" alt="Panache"><div class="item-name">Panache</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECEITAS/FRUTAS.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECEITAS/FRUTAS.webp" alt="Compota de Frutas"><div class="item-name">Compota de Frutas</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECEITAS/MILK.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE RECEITAS/MILK.webp" alt="Shake"><div class="item-name">Shake</div>
+    </div>
+  </div>
+
+  <div class="ornament">◆ ◆ ◆</div>
+
+  <!-- TOKENS DE TABULEIRO DE ACAMPAMENTO -->
+  <h2>Tokens de Tabuleiro de Acampamento</h2>
+  <p>Marcadores colocados no Tabuleiro de Acampamento para indicar onde cada carta de item de acampamento foi instalada. Cada token corresponde a uma estrutura construída pelo grupo.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.7rem;margin:1rem 0">
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE ACAMPAMENTO/BAU PEQUENO.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE ACAMPAMENTO/BAU PEQUENO.webp" alt="Baú Pequeno"><div class="item-name">Baú Pequeno</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE ACAMPAMENTO/BAU GRANDE.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE ACAMPAMENTO/BAU GRANDE.webp" alt="Baú Grande"><div class="item-name">Baú Grande</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE ACAMPAMENTO/CANTEIRO.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE ACAMPAMENTO/CANTEIRO.webp" alt="Canteiro"><div class="item-name">Canteiro</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE ACAMPAMENTO/GELADEIRA.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE ACAMPAMENTO/GELADEIRA.webp" alt="Geladeira"><div class="item-name">Geladeira</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE ACAMPAMENTO/CONDIÇÕES.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE ACAMPAMENTO/CONDIÇÕES.webp" alt="Condições"><div class="item-name">Condições</div>
+    </div>
+  </div>
+
+  <div class="ornament">◆ ◆ ◆</div>
+
+  <!-- TOKENS DE TABULEIRO DE PERSONAGEM -->
+  <h2>Tokens de Tabuleiro de Personagem</h2>
+  <p>Indicam onde um determinado item foi construído ou equipado no tabuleiro individual de cada personagem.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.7rem;margin:1rem 0 .4rem;max-width:300px">
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE PERSONAGEM/VALISE.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE PERSONAGEM/VALISE.webp" alt="Valise"><div class="item-name">Valise</div>
+    </div>
+  </div>
+
+  <div class="ornament">◆ ◆ ◆</div>
+
+  <!-- TOKENS DE MAPA -->
+  <h2>Tokens de Mapa</h2>
+  <p>Representam as <strong>criaturas passivas</strong> presentes nos mapas durante a partida. Ao contrário das criaturas do deck, estas habitam o tabuleiro permanentemente e podem ser abatidas para obter os seus recursos específicos.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:.7rem;margin:1rem 0">
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE MAPA/PASSIVOS/ABELHAS@4x.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE MAPA/PASSIVOS/ABELHAS@4x.webp" alt="Abelhas"><div class="item-name">Abelhas</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE MAPA/PASSIVOS/PERU@4x.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE MAPA/PASSIVOS/PERU@4x.webp" alt="Peru"><div class="item-name">Peru</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE MAPA/PASSIVOS/PORCO@4x.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE MAPA/PASSIVOS/PORCO@4x.webp" alt="Porco"><div class="item-name">Porco</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE MAPA/PASSIVOS/VACA@4x.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE MAPA/PASSIVOS/VACA@4x.webp" alt="Vaca"><div class="item-name">Vaca</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE MAPA/PASSIVOS/VAGALUME@4x.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE TABULEIRO DE MAPA/PASSIVOS/VAGALUME@4x.webp" alt="Vagalume"><div class="item-name">Vagalume</div>
+    </div>
+  </div>
+
+  <div class="ornament">◆ ◆ ◆</div>
+
+  <!-- TOKENS DE TEMPO DE CONDIÇÃO -->
+  <h2>Tokens de Tempo de Condição</h2>
+  <p>Colocados no <strong>Tabuleiro de Turno</strong> para indicar por quantos turnos um efeito de condição permanece activo — envenenamento, lentidão, dreno de sanidade, etc. Removidos à medida que os turnos passam.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.7rem;margin:1rem 0;max-width:360px">
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE TEMPO DE CONDIÇÃO/2 turnos.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE TEMPO DE CONDIÇÃO/2 turnos.webp" alt="2 Turnos"><div class="item-name">2 Turnos</div>
+    </div>
+    <div class="item-card" onclick="openLightbox('ELEMENTOS/TOKENS DO JOGO/TOKENS DE TEMPO DE CONDIÇÃO/3 turnos.webp')">
+      <img src="ELEMENTOS/TOKENS DO JOGO/TOKENS DE TEMPO DE CONDIÇÃO/3 turnos.webp" alt="3 Turnos"><div class="item-name">3 Turnos</div>
+    </div>
+  </div>
+
+  <div class="pager">
+    <a class="prev" href="#/recursos"><span class="lbl">← Anterior</span><span class="nxt">Recursos &amp; Itens</span></a>
+    <a class="next" href="#/apendice"><span class="lbl">Próximo →</span><span class="nxt">Apêndice</span></a>
+  </div>
+</section>

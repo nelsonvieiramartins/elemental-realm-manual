@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/c/Users/nelso/OneDrive/_BRAVE/_TABULEIRO/ELEMENTAL REALM/_MANUEL_SITE/**)",
+      "Bash(start \"c:/Users/nelso/OneDrive/_BRAVE/_TABULEIRO/ELEMENTAL REALM/_MANUEL_SITE/MANUAL_DO_JOGO.html\")",
+      "Bash(python -m http.server 8787)",
+      "Bash(start http://localhost:8787/MANUAL_DO_JOGO.html)",
+      "Bash(sed -i 's/Seção 05<\\\\/div>/Seção 06<\\\\/div>/' \"c:/Users/nelso/OneDrive/_BRAVE/_TABULEIRO/ELEMENTAL REALM/_MANUEL_SITE/manual/personagens.html\")",
+      "Bash(sed -i 's/Seção 06<\\\\/div>/Seção 07<\\\\/div>/' \"c:/Users/nelso/OneDrive/_BRAVE/_TABULEIRO/ELEMENTAL REALM/_MANUEL_SITE/manual/mecanicas.html\")",
+      "Bash(sed -i 's/Seção 07<\\\\/div>/Seção 08<\\\\/div>/' \"c:/Users/nelso/OneDrive/_BRAVE/_TABULEIRO/ELEMENTAL REALM/_MANUEL_SITE/manual/bestiario.html\")",
+      "Bash(sed -i 's/Seção 08<\\\\/div>/Seção 09<\\\\/div>/' \"c:/Users/nelso/OneDrive/_BRAVE/_TABULEIRO/ELEMENTAL REALM/_MANUEL_SITE/manual/recursos.html\")",
+      "Bash(sed -i 's/Seção 09<\\\\/div>/Seção 10<\\\\/div>/' \"c:/Users/nelso/OneDrive/_BRAVE/_TABULEIRO/ELEMENTAL REALM/_MANUEL_SITE/manual/apendice.html\")"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\nelso\\OneDrive\\_BRAVE\\_TABULEIRO\\ELEMENTAL REALM\\_MANUEL_SITE"
+    ]
+  }
+}

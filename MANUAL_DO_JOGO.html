@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Legacy of the Elemental Realms — Manual do Jogo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@500;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #09171a; --bg-2: #0e2024; --bg-3: #132b30;
+  --fg: #e1e4db; --fg-dim: #8a9499; --fg-muted: #5a6468;
+  --border: #1f373c; --border-soft: #17292d;
+  --venaris: #6fb871; --glacis: #7ec6e8;
+  --terragorn: #e27a5f; --tenebris: #9a7ed8;
+  --accent: #d4b77a; --danger: #c94a3a;
+  --sidebar-w: 260px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:'Inter','Segoe UI',system-ui,sans-serif;line-height:1.6;min-height:100vh;display:grid;grid-template-columns:var(--sidebar-w) 1fr}
+h1,h2,h3,h4{font-family:'Oswald',sans-serif;letter-spacing:.05em;text-transform:uppercase}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--fg)}
+
+/* SIDEBAR */
+aside{position:sticky;top:0;height:100vh;background:var(--bg-2);border-right:1px solid var(--border);padding:1.6rem 1rem;overflow-y:auto;display:flex;flex-direction:column;gap:1.2rem}
+.logo{display:block;font-family:'Oswald',sans-serif;font-size:1rem;line-height:1.2;color:var(--fg);padding-bottom:1.2rem;border-bottom:1px solid var(--border);border-left:2px solid transparent;transition:border-color .15s}
+.logo:hover{border-left-color:var(--fg-muted)}
+.logo.active{border-left-color:var(--accent)}
+.logo strong{color:var(--accent);font-size:1.1rem;display:block}
+.logo .small{display:block;font-size:.68rem;color:var(--fg-muted);text-transform:uppercase;letter-spacing:.2em;margin-top:.3rem}
+nav ol{list-style:none;counter-reset:sec}
+nav>ol>li{counter-increment:sec;margin-bottom:.15rem}
+nav>ol>li>a{display:flex;align-items:center;gap:.5rem;padding:.42rem .6rem;color:var(--fg-dim);font-size:.82rem;border-radius:4px;transition:all .15s;border-left:2px solid transparent}
+nav>ol>li>a::before{content:counter(sec,decimal-leading-zero);font-size:.65rem;color:var(--fg-muted);min-width:1.4rem;flex:0 0 auto}
+nav>ol>li>a:hover{background:var(--bg-3);color:var(--fg)}
+nav>ol>li>a.active{background:var(--bg-3);color:var(--fg);border-left-color:var(--accent)}
+nav>ol>li>a.active::before{color:var(--accent)}
+nav ul{list-style:none;padding-left:1.6rem;margin:.15rem 0 .4rem}
+nav ul li a{display:block;padding:.22rem .5rem;font-size:.75rem;color:var(--fg-muted);border-left:1px solid var(--border);padding-left:.7rem;transition:all .15s}
+nav ul li a:hover{color:var(--fg);border-color:var(--accent)}
+
+/* MAIN */
+main{min-height:100vh;position:relative}
+.page{padding:3.5rem 4rem;min-height:100vh;border-bottom:1px solid var(--border-soft)}
+.page-header{margin-bottom:2.5rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border)}
+.page-kicker{font-size:.7rem;letter-spacing:.35em;color:var(--accent);text-transform:uppercase;margin-bottom:.5rem;font-family:'Inter',sans-serif}
+.page-title{font-size:2.4rem;line-height:1.05;color:var(--fg)}
+.page-lead{font-size:1.05rem;color:var(--fg-dim);margin-top:.6rem;max-width:52em;font-family:'Lora',serif;font-style:italic}
+.page p{max-width:58em;margin-bottom:1rem;color:var(--fg);font-family:'Lora',serif}
+.page h2{font-size:1.4rem;margin:2.2rem 0 .8rem;color:var(--fg)}
+.page h3{font-size:1rem;margin:1.5rem 0 .5rem;color:var(--accent);letter-spacing:.08em}
+.page ul,.page ol{margin:.5rem 0 .9rem 1.4rem;color:var(--fg);font-family:'Lora',serif}
+.page li{margin-bottom:.25rem}
+.page strong{color:var(--fg)}
+.page em{color:var(--fg-dim)}
+.page code{background:var(--bg-3);padding:.1rem .4rem;border-radius:3px;font-size:.92em;color:var(--accent)}
+
+/* CALLOUTS */
+.callout{border-left:3px solid var(--accent);padding:.9rem 1.2rem;margin:1.2rem 0;background:var(--bg-2);border-radius:0 6px 6px 0;font-size:.92rem;font-family:'Lora',serif}
+.callout-warn{border-left-color:var(--danger)}
+.callout-note{border-left-color:var(--glacis)}
+.callout strong{color:var(--accent);display:block;margin-bottom:.3rem;font-family:'Oswald',sans-serif;letter-spacing:.08em;font-size:.8rem}
+.callout-warn strong{color:var(--danger)}
+.callout-note strong{color:var(--glacis)}
+
+/* PAGER */
+.pager{display:flex;justify-content:space-between;margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--border)}
+.pager a{display:flex;flex-direction:column;padding:.7rem 1rem;border:1px solid var(--border);border-radius:6px;min-width:160px;transition:border-color .15s}
+.pager a:hover{border-color:var(--accent)}
+.pager .lbl{font-size:.65rem;color:var(--fg-muted);letter-spacing:.2em;text-transform:uppercase}
+.pager .nxt{font-family:'Oswald',sans-serif;color:var(--fg);margin-top:.2rem;font-size:1rem}
+.pager .next{margin-left:auto;text-align:right}
+
+/* ORNAMENT */
+.ornament{display:flex;justify-content:center;align-items:center;gap:1rem;margin:1.8rem 0;color:var(--border)}
+.ornament::before,.ornament::after{content:"";flex:1;max-width:8rem;height:1px;background:var(--border)}
+
+/* COVER */
+#cover-page{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:6vh 4vw;
+  background:radial-gradient(ellipse at top,rgba(111,184,113,.1),transparent 60%),radial-gradient(ellipse at bottom left,rgba(226,122,95,.08),transparent 55%),radial-gradient(ellipse at bottom right,rgba(154,126,216,.08),transparent 55%),var(--bg)}
+.cover-mark{margin-bottom:2rem}
+.cover-kicker{font-size:.75rem;letter-spacing:.5em;color:var(--fg-dim);text-transform:uppercase;margin-bottom:1.2rem;font-family:'Inter',sans-serif}
+.cover-title{font-size:clamp(2.6rem,7vw,5.5rem);color:var(--fg);line-height:1.05;margin-bottom:.5rem;font-family:'Oswald',sans-serif;font-weight:700}
+.cover-sub{font-size:clamp(.9rem,2vw,1.25rem);color:var(--fg-dim);font-style:italic;margin-bottom:2.5rem;font-family:'Lora',serif}
+.cover-meta{display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center}
+.cover-meta div{text-align:center}
+.cover-meta .num{display:block;font-family:'Oswald',sans-serif;font-size:2.2rem;color:var(--accent);line-height:1}
+.cover-meta .lbl{font-size:.68rem;letter-spacing:.2em;color:var(--fg-dim);text-transform:uppercase;margin-top:.3rem;display:block}
+
+/* ERAS GRID */
+.eras-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1.4rem}
+.era{border:1px solid var(--border);border-radius:8px;padding:1.4rem;background:var(--bg-2);position:relative;overflow:hidden;transition:transform .2s,border-color .2s}
+.era::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,var(--era-color,var(--accent)) 0%,transparent 40%);opacity:.07;pointer-events:none}
+.era:hover{transform:translateY(-2px);border-color:var(--era-color)}
+.era-venaris{--era-color:var(--venaris)} .era-glacis{--era-color:var(--glacis)} .era-terragorn{--era-color:var(--terragorn)} .era-tenebris{--era-color:var(--tenebris)}
+.era-icon{width:44px;height:44px;margin-bottom:.8rem;color:var(--era-color)}
+.era h3{font-size:1.3rem;color:var(--era-color);margin:0;letter-spacing:.1em}
+.era .era-tag{font-size:.7rem;color:var(--fg-muted);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.4rem;display:block;font-family:'Inter',sans-serif}
+.era p{font-size:.9rem;color:var(--fg);margin:.7rem 0;max-width:none}
+.era dl{margin-top:.7rem;font-size:.82rem;font-family:'Inter',sans-serif}
+.era dt{color:var(--fg-muted);letter-spacing:.08em;font-size:.68rem;text-transform:uppercase;margin-top:.5rem}
+.era dd{color:var(--fg);margin-bottom:.2rem}
+
+/* ERA TABS */
+.era-tabs{display:flex;gap:.4rem;margin-bottom:1.5rem;border-bottom:1px solid var(--border);padding-bottom:0}
+.era-tab{padding:.5rem 1rem;font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.08em;border:none;background:none;color:var(--fg-muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;margin-bottom:-1px}
+.era-tab:hover{color:var(--fg)}
+.era-tab.active{color:var(--era-color,var(--accent));border-bottom-color:var(--era-color,var(--accent))}
+.era-tab.t-venaris{--era-color:var(--venaris)} .era-tab.t-glacis{--era-color:var(--glacis)} .era-tab.t-terragorn{--era-color:var(--terragorn)} .era-tab.t-tenebris{--era-color:var(--tenebris)}
+.era-panel{display:none}.era-panel.active{display:block}
+.era-detail{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin-bottom:2rem}
+.era-map-wrap{border-radius:8px;overflow:hidden;border:1px solid var(--border);cursor:pointer;transition:border-color .2s}
+.era-map-wrap:hover{border-color:var(--era-color,var(--accent))}
+.era-map-wrap img{width:100%;display:block}
+.era-info h2{font-size:1.6rem;color:var(--era-color,var(--accent));margin-bottom:.6rem}
+.era-events{margin-top:1.2rem}
+.event-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.7rem;margin:.8rem 0}
+.event-card{background:var(--bg-2);border:1px solid var(--border);border-radius:6px;overflow:hidden;cursor:pointer;transition:border-color .15s,transform .15s}
+.event-card:hover{border-color:var(--era-color,var(--accent));transform:translateY(-2px)}
+.event-card img{width:100%;display:block}
+.event-card .event-lbl{font-size:.68rem;color:var(--fg-dim);padding:.4rem .6rem;text-align:center;letter-spacing:.05em;font-family:'Inter',sans-serif}
+
+/* STONES */
+.stones{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.9rem;margin:1.4rem 0}
+.stone{border:1px solid var(--border);padding:1.2rem;border-radius:6px;text-align:center;background:var(--bg-2);transition:border-color .2s,transform .2s}
+.stone:hover{border-color:var(--stone-color,var(--accent));transform:translateY(-2px)}
+.stone-gem{width:40px;height:40px;margin:0 auto .7rem}
+.stone-name{font-family:'Oswald',sans-serif;font-size:1.1rem;color:var(--fg)}
+.stone-attr{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--fg-dim);margin-top:.3rem;font-family:'Inter',sans-serif}
+
+/* CHARS */
+.chars-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;margin-top:1.4rem}
+.char{border:1px solid var(--border);background:var(--bg-2);border-radius:10px;padding:1.4rem;position:relative;overflow:hidden;transition:border-color .2s,transform .2s}
+.char:hover{border-color:var(--char-color,var(--accent));transform:translateY(-2px)}
+.char::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--char-color,var(--accent));opacity:.8}
+.char-head{display:flex;align-items:center;gap:.9rem;margin-bottom:.9rem}
+.char-portrait{width:72px;height:72px;flex:0 0 72px;border-radius:50%;border:2px solid var(--char-color,var(--accent));background:var(--bg-3);overflow:hidden;cursor:pointer}
+.char-portrait img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.char-name{font-family:'Oswald',sans-serif;font-size:1.15rem;color:var(--fg);line-height:1.1;margin:0}
+.char-class{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--char-color,var(--accent));margin-top:.25rem;font-family:'Inter',sans-serif}
+.char-desc{font-size:.83rem;color:var(--fg-dim);font-style:italic;margin:.4rem 0 .9rem;line-height:1.5;font-family:'Lora',serif}
+.stats{display:grid;grid-template-columns:1fr;gap:.3rem;margin:.8rem 0}
+.stat-row{display:grid;grid-template-columns:4rem 1fr 1.8rem;align-items:center;gap:.5rem;font-size:.75rem}
+.stat-lbl{color:var(--fg-muted);letter-spacing:.08em;text-transform:uppercase;font-size:.68rem;font-family:'Inter',sans-serif}
+.stat-val{text-align:right;color:var(--fg);font-family:'Oswald',sans-serif;font-size:.95rem}
+.stat-bar{height:5px;background:var(--bg-3);border-radius:3px;overflow:hidden}
+.stat-bar span{display:block;height:100%;border-radius:3px;width:0;transition:width .8s cubic-bezier(.4,0,.2,1)}
+.stat-bar.stat-pv span{background:#c94a3a}.stat-bar.stat-san span{background:#7ec6e8}
+.stat-bar.stat-mov span{background:#d4b77a}.stat-bar.stat-sob span{background:#6fb871}
+.stat-bar.stat-pod span{background:#e27a5f}.stat-bar.stat-res span{background:#9a7ed8}
+.ability{background:var(--bg-3);padding:.8rem .9rem;border-radius:6px;margin-top:.7rem;border-left:2px solid var(--char-color,var(--accent))}
+.ability-lbl{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--fg-muted);margin-bottom:.25rem;font-family:'Inter',sans-serif}
+.ability-name{font-family:'Oswald',sans-serif;color:var(--fg);font-size:.95rem;margin-bottom:.15rem}
+.ability-desc{font-size:.82rem;color:var(--fg-dim);line-height:1.45;font-family:'Lora',serif}
+.char-board-btn{display:inline-flex;align-items:center;gap:.4rem;margin-top:.8rem;padding:.4rem .8rem;border:1px solid var(--border);border-radius:4px;font-size:.72rem;color:var(--fg-dim);font-family:'Inter',sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .15s;background:none}
+.char-board-btn:hover{border-color:var(--char-color,var(--accent));color:var(--fg)}
+.balance-note{font-size:.78rem;color:var(--accent);margin-top:.7rem;padding-top:.7rem;border-top:1px dashed var(--border);font-family:'Lora',serif}
+.balance-note strong{color:var(--danger);text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;display:block;margin-bottom:.2rem;font-family:'Oswald',sans-serif}
+
+/* CHAR COLORS */
+.char-c-arthur{--char-color:#c9a96a}.char-c-elizabeth{--char-color:#e1e4db}.char-c-morgan{--char-color:#9a7ed8}.char-c-thomas{--char-color:#d4b77a}.char-c-jack{--char-color:#c94a3a}.char-c-cassandra{--char-color:#7ec6e8}.char-c-ivy{--char-color:#6fb871}.char-c-helena{--char-color:#e27a5f}
+
+/* CHAR SUMMARY TABLE */
+.char-table{width:100%;max-width:none;border-collapse:collapse;margin:1rem 0;font-size:.85rem}
+.char-table th{text-align:left;padding:.5rem .5rem;border-bottom:1px solid var(--border);color:var(--fg-muted);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;font-family:'Inter',sans-serif;font-weight:400}
+.char-table td{padding:.45rem .5rem;border-bottom:1px solid var(--border-soft);font-family:'Lora',serif;font-size:.85rem}
+.char-table td:not(:first-child){text-align:center}
+
+/* MECHANICS */
+.turn-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:.6rem;margin:1.2rem 0 1.8rem}
+.turn-phase{border:1px solid var(--border);background:var(--bg-2);padding:1.1rem .8rem;border-radius:8px;text-align:center;position:relative;transition:border-color .2s}
+.turn-phase:hover{border-color:var(--accent)}
+.turn-phase:not(:last-child)::after{content:"›";position:absolute;right:-.6rem;top:50%;transform:translateY(-50%);color:var(--fg-muted);font-size:1.6rem;z-index:2}
+.turn-phase-num{display:block;font-family:'Oswald',sans-serif;font-size:2.2rem;color:var(--accent);line-height:1;margin-bottom:.4rem}
+.turn-phase-name{font-family:'Oswald',sans-serif;font-size:.85rem;color:var(--fg);letter-spacing:.08em;margin-bottom:.4rem}
+.turn-phase-desc{font-size:.72rem;color:var(--fg-dim);line-height:1.4;font-family:'Lora',serif}
+.actions-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.7rem;margin:1.2rem 0}
+.action-card{border:1px solid var(--border);background:var(--bg-2);padding:.9rem 1rem;border-radius:6px;display:flex;align-items:flex-start;gap:.8rem;transition:border-color .2s}
+.action-card:hover{border-color:var(--accent)}
+.action-icon{flex:0 0 28px;width:28px;height:28px;color:var(--accent)}
+.action-name{font-family:'Oswald',sans-serif;font-size:.95rem;color:var(--fg);margin-bottom:.15rem}
+.action-desc{font-size:.78rem;color:var(--fg-dim);line-height:1.45;font-family:'Lora',serif}
+.formula-box{background:var(--bg-2);border:1px solid var(--accent);border-radius:8px;padding:1.4rem;margin:1.2rem 0;text-align:center}
+.formula-lbl{display:block;font-size:.68rem;color:var(--fg-muted);letter-spacing:.25em;text-transform:uppercase;margin-bottom:.7rem;font-family:'Inter',sans-serif}
+.formula{font-family:'Oswald',sans-serif;font-size:clamp(1rem,2.2vw,1.5rem);color:var(--fg);line-height:1.5}
+.formula .op{color:var(--accent);margin:0 .4rem}
+.formula .var{color:var(--glacis)}
+.example{background:var(--bg-3);border-left:3px solid var(--glacis);padding:.9rem 1.2rem;border-radius:0 6px 6px 0;margin:1rem 0;font-size:.88rem}
+.example-title{font-size:.65rem;letter-spacing:.25em;color:var(--glacis);text-transform:uppercase;margin-bottom:.4rem;font-family:'Inter',sans-serif}
+.example p{margin:.35rem 0;max-width:none;font-family:'Lora',serif}
+.diff-scale{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:.5rem;margin:.8rem 0 1.5rem}
+.diff-level{border:1px solid var(--border);padding:.8rem .5rem;border-radius:6px;text-align:center;background:var(--bg-2)}
+.diff-level .num{font-family:'Oswald',sans-serif;font-size:1.6rem;color:var(--accent);display:block;line-height:1}
+.diff-level .lbl{font-size:.65rem;color:var(--fg-dim);letter-spacing:.12em;text-transform:uppercase;margin-top:.3rem;display:block;font-family:'Inter',sans-serif}
+.state-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin:1.2rem 0;position:relative}
+.state-card{border:1px solid var(--border);padding:1rem;border-radius:8px;text-align:center;background:var(--bg-2);position:relative}
+.state-card:not(:last-child)::after{content:"→";position:absolute;right:-.6rem;top:50%;transform:translateY(-50%);color:var(--fg-muted);font-size:1.2rem;z-index:2}
+.state-icon{width:34px;height:34px;margin:0 auto .5rem;color:var(--accent)}
+.state-name{font-family:'Oswald',sans-serif;font-size:.95rem;color:var(--fg);margin-bottom:.25rem}
+.state-desc{font-size:.77rem;color:var(--fg-dim);line-height:1.45;font-family:'Lora',serif}
+
+/* BESTIARY */
+.bestiary-filters{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.4rem}
+.filter-btn{padding:.35rem .8rem;font-family:'Oswald',sans-serif;font-size:.78rem;letter-spacing:.08em;border:1px solid var(--border);background:var(--bg-2);color:var(--fg-muted);border-radius:20px;cursor:pointer;transition:all .15s}
+.filter-btn:hover{color:var(--fg);border-color:var(--fg-muted)}
+.filter-btn.active{color:var(--filter-color,var(--accent));border-color:var(--filter-color,var(--accent));background:rgba(0,0,0,.2)}
+.filter-btn.f-venaris{--filter-color:var(--venaris)}.filter-btn.f-glacis{--filter-color:var(--glacis)}.filter-btn.f-terragorn{--filter-color:var(--terragorn)}.filter-btn.f-tenebris{--filter-color:var(--tenebris)}
+.bestiary-legend{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin:1rem 0 1.8rem}
+.legend-item{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:.8rem;text-align:center}
+.legend-label{font-family:'Oswald',sans-serif;color:var(--accent);font-size:.9rem;margin-bottom:.2rem}
+.legend-desc{font-size:.75rem;color:var(--fg-dim);line-height:1.4;font-family:'Lora',serif}
+.tier-header{display:flex;align-items:baseline;gap:.8rem;margin:2rem 0 .7rem;padding-bottom:.4rem;border-bottom:1px solid var(--border)}
+.tier-header h3{font-family:'Oswald',sans-serif;font-size:1.2rem;color:var(--fg);margin:0}
+.tier-header .count{font-size:.75rem;color:var(--fg-muted);letter-spacing:.08em;text-transform:uppercase;font-family:'Inter',sans-serif}
+.bestiary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.9rem;margin:.8rem 0 1.8rem}
+.creature-card{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;overflow:hidden;position:relative;transition:border-color .15s,transform .15s}
+.creature-card:hover{border-color:var(--era-color,var(--accent));transform:translateY(-1px)}
+.creature-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--era-color,var(--accent));border-radius:8px 8px 0 0}
+.creature-img{width:100%;height:auto;display:block;cursor:pointer}
+.creature-card:hover .creature-img{opacity:.92}
+.creature-body{padding:.8rem .9rem}
+.creature-head{display:flex;align-items:flex-start;gap:.5rem;margin-bottom:.5rem}
+.creature-name{font-family:'Oswald',sans-serif;font-size:.98rem;color:var(--fg);line-height:1.2}
+.creature-tier{font-size:.65rem;color:var(--fg-muted);letter-spacing:.08em;text-transform:uppercase;margin-top:.12rem;font-family:'Inter',sans-serif}
+.creature-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.25rem;margin:.5rem 0;padding:.45rem .2rem;background:var(--bg);border-radius:5px}
+.cs-cell{text-align:center}
+.cs-val{font-family:'Oswald',sans-serif;font-size:.95rem;color:var(--fg)}
+.cs-lbl{font-size:.58rem;color:var(--fg-muted);letter-spacing:.08em;text-transform:uppercase;font-family:'Inter',sans-serif}
+.creature-note{font-size:.75rem;color:var(--fg-dim);margin-top:.4rem;line-height:1.4;font-family:'Lora',serif}
+.passive-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.7rem;margin:.8rem 0 1.5rem}
+.passive-card{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;overflow:hidden;text-align:center;transition:border-color .15s,transform .15s;cursor:pointer}
+.passive-card:hover{border-color:var(--venaris);transform:translateY(-2px)}
+.passive-card img{width:100%;height:auto;display:block}
+.passive-info{padding:.5rem .6rem}
+.passive-name{font-family:'Oswald',sans-serif;font-size:.9rem;color:var(--fg)}
+.passive-pv{font-size:.68rem;color:var(--fg-muted);margin:.15rem 0;font-family:'Inter',sans-serif}
+.passive-loot{font-size:.75rem;color:var(--accent);font-family:'Lora',serif}
+.boss-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem;margin:1rem 0 2rem}
+.boss-card{background:linear-gradient(145deg,var(--bg-2),var(--bg));border:1px solid var(--border);border-radius:10px;overflow:hidden;position:relative}
+.boss-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--era-color)}
+.boss-img-wrap{position:relative;cursor:pointer}
+.boss-img-wrap img{width:100%;height:auto;display:block}
+.boss-card:hover .boss-img-wrap img{opacity:.92}
+.boss-body{padding:1.2rem}
+.boss-title{font-family:'Oswald',sans-serif;font-size:1.2rem;color:var(--fg);letter-spacing:.05em}
+.boss-sub{font-size:.7rem;color:var(--era-color);letter-spacing:.1em;text-transform:uppercase;margin:.2rem 0 .7rem;font-family:'Inter',sans-serif}
+.boss-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.35rem;margin:.7rem 0;padding:.6rem .3rem;background:var(--bg);border-radius:5px}
+.boss-stats .cs-val{font-size:1.1rem;color:var(--era-color)}
+.boss-lore{font-size:.82rem;color:var(--fg-dim);line-height:1.55;margin:.5rem 0;font-family:'Lora',serif}
+.boss-mech{background:rgba(0,0,0,.25);border-left:2px solid var(--era-color);padding:.5rem .7rem;margin-top:.6rem;font-size:.76rem;color:var(--fg);line-height:1.5;font-family:'Lora',serif}
+.boss-mech strong{color:var(--era-color);font-family:'Oswald',sans-serif}
+.balance-matrix{width:100%;border-collapse:collapse;margin:.8rem 0 1.2rem;font-size:.8rem}
+.balance-matrix th,.balance-matrix td{padding:.45rem .6rem;border-bottom:1px solid var(--border);text-align:center;font-family:'Lora',serif}
+.balance-matrix th{background:var(--bg-2);font-family:'Oswald',sans-serif;color:var(--accent);font-weight:400;letter-spacing:.05em}
+.balance-matrix td:first-child{text-align:left;color:var(--fg)}
+
+/* RECURSOS */
+.item-tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.item-tab{padding:.4rem 1rem;font-family:'Oswald',sans-serif;font-size:.82rem;letter-spacing:.08em;border:1px solid var(--border);background:var(--bg-2);color:var(--fg-muted);border-radius:4px;cursor:pointer;transition:all .15s}
+.item-tab:hover{color:var(--fg);border-color:var(--fg-muted)}
+.item-tab.active{color:var(--accent);border-color:var(--accent);background:rgba(212,183,122,.08)}
+.item-panel{display:none}.item-panel.active{display:block}
+.items-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.8rem;margin:.8rem 0}
+.item-card{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;overflow:hidden;cursor:pointer;transition:border-color .15s,transform .15s}
+.item-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.item-card img{width:100%;display:block;transition:transform .3s}
+.item-card:hover img{transform:scale(1.04)}
+.item-card .item-name{font-size:.72rem;color:var(--fg-dim);padding:.4rem .6rem;text-align:center;letter-spacing:.05em;font-family:'Inter',sans-serif}
+
+/* GLOSSARY */
+.glossary{columns:2;column-gap:2rem;margin:1rem 0}
+.glos-entry{break-inside:avoid;margin-bottom:.8rem}
+.glos-term{font-family:'Oswald',sans-serif;color:var(--accent);font-size:.9rem}
+.glos-def{font-size:.82rem;color:var(--fg-dim);line-height:1.45;margin-top:.15rem;font-family:'Lora',serif}
+
+/* LOADER */
+#loader{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity .2s}
+#loader.active{opacity:1;pointer-events:all}
+.spinner{width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* PAGE TRANSITION */
+.page-in{animation:fadeUp .35s cubic-bezier(.4,0,.2,1) both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* LIGHTBOX */
+#lightbox{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:2000;display:none;align-items:center;justify-content:center;padding:1.5rem;cursor:zoom-out}
+#lightbox.open{display:flex}
+#lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.8)}
+#lightbox-close{position:absolute;top:1rem;right:1.4rem;color:var(--fg-muted);font-size:2rem;cursor:pointer;line-height:1;font-family:'Inter',sans-serif}
+#lightbox-close:hover{color:var(--fg)}
+
+/* CARD ZOOM — flip animation para cartas de criatura */
+#card-zoom{position:fixed;inset:0;z-index:2000;background:rgba(5,15,18,0);display:none;align-items:center;justify-content:center;cursor:zoom-out;perspective:1400px;transition:background .35s}
+#card-zoom.open{display:flex;background:rgba(5,15,18,0.82);backdrop-filter:blur(5px)}
+#card-zoom.open .card-zoom-inner{animation:cardFlipIn .48s cubic-bezier(.34,1.4,.64,1) both}
+#card-zoom.closing .card-zoom-inner{animation:cardFlipOut .28s ease-in both}
+.card-zoom-inner{max-width:min(380px,88vw);border-radius:10px;overflow:hidden;box-shadow:0 0 0 1px rgba(212,183,122,.22),0 28px 90px rgba(0,0,0,.9),0 0 48px rgba(212,183,122,.08);transform-origin:center;will-change:transform}
+.card-zoom-inner img{width:100%;height:auto;display:block}
+.card-zoom-close{position:absolute;top:1rem;right:1.4rem;color:var(--fg-muted);font-size:1.8rem;cursor:pointer;line-height:1;font-family:'Inter',sans-serif;transition:color .15s;z-index:1}
+.card-zoom-close:hover{color:var(--fg)}
+@keyframes cardFlipIn{from{transform:rotateY(-90deg) scale(.82);opacity:0}to{transform:rotateY(0deg) scale(1);opacity:1}}
+@keyframes cardFlipOut{from{transform:rotateY(0deg) scale(1);opacity:1}to{transform:rotateY(90deg) scale(.82);opacity:0}}
+
+/* CHAR FLIP OVERLAY */
+#char-flip-overlay{position:fixed;inset:0;z-index:2000;background:rgba(5,15,18,0);display:none;align-items:center;justify-content:center;cursor:zoom-out;perspective:1400px;transition:background .35s}
+#char-flip-overlay.open{display:flex;background:rgba(5,15,18,0.9);backdrop-filter:blur(7px)}
+#char-flip-overlay.open .char-flip-card{animation:cardFlipIn .52s cubic-bezier(.34,1.4,.64,1) both}
+#char-flip-overlay.closing .char-flip-card{animation:cardFlipOut .28s ease-in both}
+.char-flip-card{max-width:min(340px,90vw);border-radius:12px;overflow:hidden;border:1px solid rgba(212,183,122,.2);box-shadow:0 28px 90px rgba(0,0,0,.9);cursor:default;will-change:transform}
+.char-flip-card img{width:100%;height:auto;display:block}
+.char-flip-close{position:absolute;top:1rem;right:1.4rem;color:var(--fg-muted);font-size:1.8rem;cursor:pointer;line-height:1;font-family:'Inter',sans-serif;transition:color .15s;z-index:1}
+.char-flip-close:hover{color:var(--fg)}
+.cfstat{text-align:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:6px;padding:.5rem .2rem}
+.cfstat-val{font-family:'Oswald',sans-serif;font-size:1.15rem;line-height:1}
+.cfstat-lbl{font-family:'Inter',sans-serif;font-size:.6rem;color:#5a6468;letter-spacing:.1em;text-transform:uppercase;margin-top:.15rem}
+.char[style]{cursor:pointer}
+.char{cursor:pointer;transition:transform .18s,box-shadow .18s}
+.char:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.4)}
+
+/* GAME INTEGRATION */
+.nav-game-sep{border-top:1px solid var(--border);margin:1.5rem 0 1rem}
+.nav-game-link{display:flex;align-items:center;gap:.5rem;padding:.9rem 1rem;border-radius:8px;background:linear-gradient(135deg,rgba(212,183,122,.12),rgba(226,122,95,.08));border:1px solid rgba(212,183,122,.3);color:var(--accent)!important;font-family:'Oswald',sans-serif;font-size:.92rem;letter-spacing:.08em;text-transform:uppercase;transition:all .3s;box-shadow:0 0 12px rgba(212,183,122,.08);text-decoration:none;margin-top:auto}
+.nav-game-link:hover{background:linear-gradient(135deg,rgba(212,183,122,.22),rgba(226,122,95,.15));border-color:var(--accent);box-shadow:0 0 24px rgba(212,183,122,.2);color:#fff!important;transform:translateY(-1px)}
+.nav-game-link.active{background:linear-gradient(135deg,rgba(212,183,122,.25),rgba(226,122,95,.18));border-color:var(--accent);box-shadow:0 0 20px rgba(212,183,122,.25)}
+main.game-mode{overflow:hidden!important;padding:0!important}
+.game-page{display:flex;flex-direction:column;height:100vh;width:100%;padding:0!important;border:none!important;min-height:100vh}
+.game-header{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:rgba(9,12,16,.95);border-bottom:1px solid rgba(212,183,122,.2);flex-shrink:0;backdrop-filter:blur(8px)}
+.game-header-left{display:flex;align-items:center;gap:12px}
+.game-header-icon{font-size:24px}
+.game-header-title{font-family:'Oswald',sans-serif;font-size:1.1rem;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin:0;line-height:1.2}
+.game-header-sub{font-family:'Inter',sans-serif;font-size:.7rem;color:var(--fg-muted);margin:0;line-height:1.3}
+.game-header-actions{display:flex;gap:8px}
+.game-btn{padding:6px 14px;border-radius:6px;font-family:'Oswald',sans-serif;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:all .2s;border:1px solid}
+.game-btn-fullscreen{background:rgba(212,183,122,.1);border-color:rgba(212,183,122,.35);color:var(--accent)}
+.game-btn-fullscreen:hover{background:rgba(212,183,122,.2);border-color:var(--accent);box-shadow:0 0 12px rgba(212,183,122,.2)}
+.game-btn-reload{background:rgba(154,126,216,.1);border-color:rgba(154,126,216,.3);color:var(--tenebris)}
+.game-btn-reload:hover{background:rgba(154,126,216,.2);border-color:var(--tenebris);box-shadow:0 0 12px rgba(154,126,216,.2)}
+.game-frame-container{flex:1;position:relative;min-height:0;background:#090c10}
+.game-frame{width:100%;height:100%;border:none;display:block;background:#090c10}
+.game-frame-container:fullscreen{width:100vw;height:100vh}
+.game-frame-container:fullscreen .game-frame{width:100%;height:100%}
+
+/* TABULEIRO VIRTUAL */
+.tab-page{padding:0!important;display:flex;flex-direction:column;height:100vh;overflow:hidden}
+.tab-toolbar{display:flex;align-items:center;justify-content:space-between;padding:7px 16px;background:rgba(9,12,16,.97);border-bottom:1px solid var(--border);flex-shrink:0;gap:1rem;flex-wrap:wrap}
+.tab-toolbar-left{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
+.tab-toolbar-right{display:flex;align-items:center;gap:.6rem;flex-shrink:0}
+.tab-btn{padding:5px 12px;border-radius:5px;font-family:'Oswald',sans-serif;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:all .15s;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:var(--fg-muted)}
+.tab-btn:hover{background:rgba(255,255,255,.1);color:var(--fg)}
+.tab-btn-save{border-color:rgba(212,183,122,.3);background:rgba(212,183,122,.08);color:var(--accent)}
+.tab-btn-save:hover{border-color:var(--accent);background:rgba(212,183,122,.18)}
+.tab-canvas-wrap{flex:1;overflow:auto;background:#07090d;background-image:radial-gradient(circle,rgba(255,255,255,.014) 1px,transparent 1px);background-size:28px 28px;min-height:0}
+.tab-canvas{position:relative;width:3600px;height:2400px}
+.tab-piece{position:absolute;cursor:grab;user-select:none}
+.tab-piece:active{cursor:grabbing}
+.tab-piece img{width:100%;height:auto;display:block;pointer-events:none;border-radius:5px;transition:box-shadow .15s}
+.tab-piece:hover img{box-shadow:0 0 0 2px rgba(212,183,122,.5),0 8px 28px rgba(0,0,0,.6)}
+.tab-piece-del{position:absolute;top:-8px;right:-8px;width:20px;height:20px;border-radius:50%;background:rgba(201,74,58,.9);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:9px;cursor:pointer;display:none;align-items:center;justify-content:center;font-family:'Inter',sans-serif;line-height:1;padding:0;transition:background .12s;z-index:1}
+.tab-piece:hover .tab-piece-del{display:flex}
+.tab-piece-del:hover{background:var(--danger)}
+.tab-tray{flex-shrink:0;background:rgba(9,12,16,.97);border-top:1px solid var(--border);height:148px;display:flex;flex-direction:column}
+.tab-tray-cats{display:flex;gap:0;padding:4px 8px 0;border-bottom:1px solid var(--border);overflow-x:auto;flex-shrink:0}
+.tab-cat{padding:4px 14px;background:none;border:none;color:var(--fg-muted);font-family:'Oswald',sans-serif;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:all .15s}
+.tab-cat:hover{color:var(--fg)}
+.tab-cat.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab-tray-scroll{flex:1;overflow-x:auto;overflow-y:hidden;min-height:0}
+.tab-tray-items{display:flex;gap:5px;padding:5px 10px;height:100%;align-items:center}
+.tab-stack{flex-shrink:0;cursor:pointer;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 5px;border-radius:5px;border:1px solid transparent;transition:all .15s;width:76px}
+.tab-stack:hover{background:rgba(212,183,122,.08);border-color:rgba(212,183,122,.3);transform:translateY(-1px)}
+.tab-stack img{height:72px;width:auto;max-width:70px;object-fit:contain;border-radius:4px;display:block;pointer-events:none}
+.tab-stack-lbl{font-size:.56rem;color:var(--fg-muted);text-align:center;line-height:1.2;max-width:72px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:'Inter',sans-serif}
+
+/* RESPONSIVE */
+@media(max-width:860px){
+  body{grid-template-columns:1fr}
+  aside{position:static;height:auto}
+  .page{padding:2rem 1.5rem}
+  .era-detail{grid-template-columns:1fr}
+  .turn-flow{grid-template-columns:1fr}
+  .turn-phase:not(:last-child)::after{content:"↓";right:50%;bottom:-.6rem;top:auto;transform:translateX(50%)}
+  .glossary{columns:1}
+}
+</style>
+</head>
+<body>
+
+<aside>
+  <a href="#/capa" class="logo nav-link" id="nav-logo">
+    Legacy of the<br>
+    <strong>Elemental Realms</strong>
+    <span class="small">Manual do Jogo · v0.2</span>
+  </a>
+  <nav>
+    <ol>
+      <li><a href="#/introducao" class="nav-link">Introdução</a></li>
+      <li><a href="#/historia" class="nav-link">A História</a></li>
+      <li><a href="#/eras" class="nav-link">Os Quatro Reinos</a>
+        <ul>
+          <li><a href="#/eras" data-era="venaris">· Venaris</a></li>
+          <li><a href="#/eras" data-era="glacis">· Glacis</a></li>
+          <li><a href="#/eras" data-era="terragorn">· Terragorn</a></li>
+          <li><a href="#/eras" data-era="tenebris">· Tenebris</a></li>
+        </ul>
+      </li>
+      <li><a href="#/mapas" class="nav-link">Mapas &amp; Cidades</a>
+        <ul>
+          <li><a href="#/mapas">· Floresta Negra</a></li>
+          <li><a href="#/mapas">· Umbrafort</a></li>
+          <li><a href="#/mapas">· Vale Sereno</a></li>
+          <li><a href="#/mapas">· Abismo Crescente</a></li>
+        </ul>
+      </li>
+      <li><a href="#/pedras" class="nav-link">Pedras Especiais</a>
+        <ul>
+          <li><a href="#/pedras">· Gemas &amp; Cristais</a></li>
+          <li><a href="#/pedras">· Amuletos Raros</a></li>
+        </ul>
+      </li>
+      <li><a href="#/personagens" class="nav-link">Personagens</a>
+        <ul>
+          <li><a href="#/personagens">· 8 Heróis</a></li>
+          <li><a href="#/personagens">· Tabela Comparativa</a></li>
+        </ul>
+      </li>
+      <li><a href="#/mecanicas" class="nav-link">Mecânicas</a>
+        <ul>
+          <li><a href="#/mecanicas">· Rodada · 5 Fases</a></li>
+          <li><a href="#/mecanicas">· Ações</a></li>
+          <li><a href="#/mecanicas">· Combate &amp; Fuga</a></li>
+        </ul>
+      </li>
+      <li><a href="#/bestiario" class="nav-link">Bestiário</a>
+        <ul>
+          <li><a href="#/bestiario">· Passivas (5)</a></li>
+          <li><a href="#/bestiario">· Monstros (20)</a></li>
+          <li><a href="#/bestiario">· Guardiãs (4)</a></li>
+        </ul>
+      </li>
+      <li><a href="#/recursos" class="nav-link">Recursos &amp; Itens</a>
+        <ul>
+          <li><a href="#/recursos">· Acampamento</a></li>
+          <li><a href="#/recursos">· Armas &amp; Armaduras</a></li>
+          <li><a href="#/recursos">· Itens Pessoais</a></li>
+        </ul>
+      </li>
+      <li><a href="#/tokens" class="nav-link">Tokens &amp; Tabuleiros</a>
+        <ul>
+          <li><a href="#/tokens">· Tabuleiro de Rodada</a></li>
+          <li><a href="#/tokens">· Tokens de Recursos</a></li>
+          <li><a href="#/tokens">· Tokens de Receitas</a></li>
+          <li><a href="#/tokens">· Tokens de Mapa</a></li>
+        </ul>
+      </li>
+      <li><a href="#/apendice" class="nav-link">Apêndice</a>
+        <ul>
+          <li><a href="#/apendice">· Glossário</a></li>
+          <li><a href="#/apendice">· Decisões em Aberto</a></li>
+          <li><a href="#/apendice">· Créditos</a></li>
+        </ul>
+      </li>
+      <li><a href="#/tabuleiro" class="nav-link">Mesa Virtual</a>
+        <ul>
+          <li><a href="#/tabuleiro">· Tabuleiros &amp; Mapas</a></li>
+          <li><a href="#/tabuleiro">· Cartas &amp; Tokens</a></li>
+        </ul>
+      </li>
+    </ol>
+  </nav>
+  <div class="nav-game-sep"></div>
+  <a href="Game/Legacy%20Elemental.html" target="_blank" rel="noopener" class="nav-link nav-game-link" id="nav-game">🎮 Jogar Legacy Elemental</a>
+</aside>
+
+<main id="app-content"></main>
+
+<div id="loader"><div class="spinner"></div></div>
+
+<div id="lightbox">
+  <span id="lightbox-close">✕</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<div id="card-zoom">
+  <span class="card-zoom-close">✕</span>
+  <div class="card-zoom-inner">
+    <img id="card-zoom-img" src="" alt="">
+  </div>
+</div>
+
+<div id="char-flip-overlay">
+  <span class="char-flip-close">✕</span>
+  <div class="char-flip-card"></div>
+</div>
+
+<script>
+(function(){
+  const content = document.getElementById('app-content');
+  const loader = document.getElementById('loader');
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  let currentRoute = '';
+
+  // Lightbox
+  document.getElementById('lightbox-close').onclick = closeLb;
+  lb.addEventListener('click', e => { if(e.target === lb) closeLb(); });
+  function closeLb(){ lb.classList.remove('open'); }
+  window.openLightbox = function(src){ lbImg.src = src; lb.classList.add('open'); }
+
+  // Card zoom — flip animation for creature cards
+  const cardZoom    = document.getElementById('card-zoom');
+  const cardZoomImg = document.getElementById('card-zoom-img');
+  function closeCardZoom(){
+    cardZoom.classList.add('closing');
+    setTimeout(() => cardZoom.classList.remove('open','closing'), 300);
+  }
+  window.openCardZoom = function(src){
+    cardZoomImg.src = src;
+    cardZoom.classList.remove('closing');
+    cardZoom.classList.add('open');
+  };
+  cardZoom.addEventListener('click', e => { if(e.target === cardZoom) closeCardZoom(); });
+  document.querySelector('.card-zoom-close').addEventListener('click', closeCardZoom);
+
+  // Char flip overlay
+  const charFlipOverlay = document.getElementById('char-flip-overlay');
+  const charFlipCard    = charFlipOverlay.querySelector('.char-flip-card');
+  function closeCharFlip(){
+    charFlipOverlay.classList.add('closing');
+    setTimeout(() => charFlipOverlay.classList.remove('open','closing'), 300);
+  }
+  const CHAR_STATS = [
+    { lbl:'PV',      color:'#c94a3a',
+      icon:'<svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 13.5C8 13.5 2 9.2 2 5.5A3 3 0 0 1 8 4.1 3 3 0 0 1 14 5.5C14 9.2 8 13.5 8 13.5z"/></svg>' },
+    { lbl:'Sanidade', color:'#7ec6e8',
+      icon:'<svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 2 L14 8 L8 14 L2 8 Z"/></svg>' },
+    { lbl:'Movim.',   color:'#d4b77a',
+      icon:'<svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg>' },
+    { lbl:'Sobrev.',  color:'#6fb871',
+      icon:'<svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 2 C4 2 2 6 4 9 C5.5 11.5 8 14 8 14 C8 14 10.5 11.5 12 9 C14 6 12 2 8 2z M8 6 C8 6 6 8 6 10 C6 11 8 13 8 13 C8 13 10 11 10 10 C10 8 8 6 8 6z"/></svg>' },
+    { lbl:'Poder',    color:'#e27a5f',
+      icon:'<svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1 L9.5 6 L14 6 L10.5 9 L12 14 L8 11 L4 14 L5.5 9 L2 6 L6.5 6 Z"/></svg>' },
+    { lbl:'Resist.',  color:'#9a7ed8',
+      icon:'<svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 2 L14 5 L14 9 C14 12 11 14.5 8 15 C5 14.5 2 12 2 9 L2 5 Z"/></svg>' },
+  ];
+  window.openCharFlip = function({ portrait, name, role, vals, abilityName, color }){
+    const statCells = CHAR_STATS.map((s, i) => `
+      <div class="cfstat">
+        <div style="color:${s.color};display:flex;align-items:center;justify-content:center;margin-bottom:.2rem">${s.icon}</div>
+        <div class="cfstat-val" style="color:${s.color}">${vals[i] ?? '—'}</div>
+        <div class="cfstat-lbl">${s.lbl}</div>
+      </div>`).join('');
+    charFlipCard.innerHTML = `
+      <div style="position:relative">
+        <img src="${portrait}" alt="${name}" style="width:100%;height:auto;display:block">
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(9,17,20,.96) 82%);pointer-events:none"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:1rem 1.2rem .9rem">
+          <div style="font-family:'Oswald',sans-serif;font-size:1.4rem;color:${color};text-transform:uppercase;letter-spacing:.06em;line-height:1">${name}</div>
+          <div style="font-family:'Lora',serif;font-size:.72rem;color:#8a9499;margin-top:.18rem">${role}</div>
+        </div>
+      </div>
+      <div style="background:rgba(9,17,20,.97);padding:.9rem 1.2rem 1.1rem;border-top:1px solid ${color}44">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.45rem;margin-bottom:.85rem">${statCells}</div>
+        <div style="font-family:'Inter',sans-serif;font-size:.6rem;color:${color};letter-spacing:.15em;text-transform:uppercase;margin-bottom:.2rem">Habilidade</div>
+        <div style="font-family:'Oswald',sans-serif;font-size:.92rem;color:var(--fg);letter-spacing:.03em">${abilityName}</div>
+      </div>`;
+    charFlipCard.style.borderColor = color + '55';
+    charFlipCard.style.boxShadow   = `0 0 0 1px ${color}22, 0 28px 90px rgba(0,0,0,.9), 0 0 60px ${color}18`;
+    charFlipOverlay.classList.remove('closing');
+    charFlipOverlay.classList.add('open');
+  };
+  charFlipOverlay.addEventListener('click', e => { if(e.target === charFlipOverlay) closeCharFlip(); });
+  document.querySelector('.char-flip-close').addEventListener('click', closeCharFlip);
+  document.addEventListener('keydown', e => { if(e.key==='Escape'){ closeLb(); closeCardZoom(); closeCharFlip(); } });
+
+  function getRoute(hash){
+    const r = (hash||'').replace('#/','').split('?')[0].trim();
+    return r || 'capa';
+  }
+
+  async function loadPage(hash){
+    const route = getRoute(hash);
+    if(route === currentRoute) return;
+    currentRoute = route;
+
+    // Game mode: remove padding for full-screen layout
+    const isGame = route === 'jogar' || route === 'tabuleiro';
+    content.classList.toggle('game-mode', isGame);
+
+    loader.classList.add('active');
+    try {
+      const res = await fetch('manual/' + route + '.html');
+      if(!res.ok) throw new Error('not found');
+      const html = await res.text();
+      content.innerHTML = html;
+      content.querySelector('.page')?.classList.add('page-in');
+      content.scrollTop = 0;
+      window.scrollTo(0,0);
+      attachPageEvents(route);
+    } catch(e) {
+      content.innerHTML = '<div class="page"><p style="color:var(--fg-dim)">Página não encontrada.</p></div>';
+      content.classList.remove('game-mode');
+    }
+    loader.classList.remove('active');
+    updateNav(route);
+  }
+
+  function updateNav(route){
+    document.querySelectorAll('.nav-link').forEach(a => {
+      const r = getRoute(a.getAttribute('href'));
+      a.classList.toggle('active', r === route);
+    });
+    // Logo active state for capa
+    const logo = document.getElementById('nav-logo');
+    if(logo) logo.classList.toggle('active', route === 'capa');
+  }
+
+  function attachPageEvents(route){
+    // Lightbox on all images with data-lb
+    content.querySelectorAll('[data-lb]').forEach(el => {
+      el.style.cursor = 'zoom-in';
+      el.addEventListener('click', () => openLightbox(el.dataset.lb || el.src));
+    });
+    // Internal nav links
+    content.querySelectorAll('a[href^="#/"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const href = a.getAttribute('href');
+        window.location.hash = href.slice(1);
+      });
+    });
+
+    if(route==='personagens') initPersonagens();
+    if(route==='bestiario') initBestiario();
+    if(route==='eras') initEras();
+    if(route==='recursos') initRecursos();
+    if(route==='mapas') initMapas();
+    if(route==='tabuleiro') initTabuleiro();
+
+    // Era sub-links from sidebar only (not creature cards which also have data-era)
+    document.querySelectorAll('aside [data-era]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        window.location.hash = '#/eras';
+        setTimeout(() => switchEraTab(a.dataset.era), 50);
+      });
+    });
+  }
+
+  // ERA TABS
+  function initEras(){
+    const tabs = content.querySelectorAll('.era-tab');
+    tabs.forEach(tab => tab.addEventListener('click', () => switchEraTab(tab.dataset.era)));
+    switchEraTab('venaris');
+  }
+  function switchEraTab(era){
+    if(!content) return;
+    content.querySelectorAll('.era-tab').forEach(t => t.classList.toggle('active', t.dataset.era===era));
+    content.querySelectorAll('.era-panel').forEach(p => p.classList.toggle('active', p.dataset.era===era));
+  }
+  window.switchEraTab = switchEraTab;
+
+  // MAPAS — lightbox on map images
+  function initMapas(){
+    content.querySelectorAll('.era-map-wrap').forEach(wrap => {
+      wrap.style.cursor = 'zoom-in';
+      wrap.addEventListener('click', () => {
+        const src = wrap.dataset.lb || wrap.querySelector('img')?.src;
+        if(src) openLightbox(src);
+      });
+    });
+  }
+
+  // PERSONAGENS — stat bar animation + card flip
+  function initPersonagens(){
+    setTimeout(() => {
+      content.querySelectorAll('.stat-bar span').forEach(bar => {
+        const w = bar.style.width;
+        bar.style.width = '0';
+        requestAnimationFrame(() => requestAnimationFrame(() => { bar.style.width = w; }));
+      });
+    }, 80);
+
+    content.querySelectorAll('.char').forEach(article => {
+      article.addEventListener('click', e => {
+        if (e.target.closest('button, a, .char-portrait')) return;
+        const portrait = article.querySelector('.char-portrait img')?.getAttribute('src') || '';
+        const name     = article.querySelector('.char-name')?.textContent.trim() || '';
+        const role     = article.querySelector('.char-class')?.textContent.trim() || '';
+        const vals     = [...article.querySelectorAll('.stat-val')].map(s => s.textContent.trim());
+        const abilityName = article.querySelector('.ability-name')?.textContent.trim() || '';
+        const color    = getComputedStyle(article).getPropertyValue('--char-color').trim() || '#d4b77a';
+        openCharFlip({ portrait, name, role, vals, abilityName, color });
+      });
+    });
+  }
+
+  // BESTIARIO — filters + card flip zoom
+  function initBestiario(){
+    // Card flip zoom — intercept all card image clicks
+    content.querySelectorAll('.creature-img').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.onclick = (e) => { e.stopPropagation(); openCardZoom(img.getAttribute('src')); };
+    });
+    content.querySelectorAll('.passive-card').forEach(card => {
+      const src = card.querySelector('img')?.getAttribute('src');
+      if(src) card.onclick = (e) => { e.stopPropagation(); openCardZoom(src); };
+    });
+    content.querySelectorAll('.boss-img-wrap').forEach(wrap => {
+      const src = wrap.dataset.lb || wrap.querySelector('img')?.getAttribute('src');
+      if(src){ wrap.style.cursor='zoom-in'; wrap.onclick = (e) => { e.stopPropagation(); openCardZoom(src); }; }
+    });
+
+    // Filter buttons
+    content.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        content.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b===btn));
+        content.querySelectorAll('.creature-card,.passive-card,.boss-card').forEach(card => {
+          if(filter==='all'){
+            card.style.display = '';
+          } else {
+            const match = card.dataset.era === filter || card.dataset.tier === filter;
+            card.style.display = match ? '' : 'none';
+          }
+        });
+      });
+    });
+    const allBtn = content.querySelector('.filter-btn[data-filter="all"]');
+    if(allBtn) allBtn.click();
+  }
+
+  // RECURSOS — tabs + card flip zoom on item cards
+  function initRecursos(){
+    const tabs = content.querySelectorAll('.item-tab');
+    const panels = content.querySelectorAll('.item-panel');
+    tabs.forEach(tab => tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.toggle('active', t===tab));
+      panels.forEach(p => p.classList.toggle('active', p.dataset.tab===tab.dataset.tab));
+    }));
+    if(tabs.length) tabs[0].click();
+
+    // Intercept item-card clicks → card flip zoom
+    content.querySelectorAll('.item-card').forEach(card => {
+      card.style.cursor = 'zoom-in';
+      card.onclick = (e) => {
+        e.stopPropagation();
+        const src = card.querySelector('img')?.getAttribute('src');
+        if (src) openCardZoom(src);
+      };
+    });
+  }
+
+  // TABULEIRO VIRTUAL
+  function initTabuleiro(){
+    const CATS = [
+      { id:'boards',      label:'🗺️ Tabuleiros' },
+      { id:'acampamento', label:'🏕️ Acampamento' },
+      { id:'armas',       label:'⚔️ Armas' },
+      { id:'pessoais',    label:'🎒 Pessoais' },
+      { id:'recursos',    label:'🌿 Recursos' },
+      { id:'tokens',      label:'🪙 Tokens' },
+    ];
+    const E = 'ELEMENTOS/';
+    const DEFS = [
+      // BOARDS
+      {id:'b-camp',    cat:'boards',      label:'Acampamento',         w:680, src:E+'ACAMPAMENTO/TABULEIRO_NOVA_PROPOSTA.webp'},
+      {id:'b-est',     cat:'boards',      label:'Tabuleiro de Estações',w:500, src:E+'TABULEIRO DE RODADAS/TABULEIRO DE ESTAÇÕES_16rodadas_VENARIS.webp'},
+      {id:'b-fl',      cat:'boards',      label:'Floresta Negra',      w:470, src:E+'MAPAS/FLORESTA NEGRA.webp'},
+      {id:'b-um',      cat:'boards',      label:'Umbrafort',           w:470, src:E+'MAPAS/UMBRAFORT.webp'},
+      {id:'b-vs',      cat:'boards',      label:'Vale Sereno',         w:470, src:E+'MAPAS/VALE SERENO.webp'},
+      {id:'b-ab',      cat:'boards',      label:'Abismo Crescente',    w:470, src:E+'MAPAS/ABISMO CRESCENTE.webp'},
+      {id:'b-c-eng',   cat:'boards',      label:'A Engenheira',        w:340, src:E+'PERSONAGENS/TABULEIRO DOS PERSONAGENS (FASE 1)/A_ENGENHEIRA.webp'},
+      {id:'b-c-inv',   cat:'boards',      label:'A Investigadora',     w:340, src:E+'PERSONAGENS/TABULEIRO DOS PERSONAGENS (FASE 1)/A_INVESTIGADORA.webp'},
+      {id:'b-c-len',   cat:'boards',      label:'O Lenhador',          w:340, src:E+'PERSONAGENS/TABULEIRO DOS PERSONAGENS (FASE 1)/O_LENHADOR.webp'},
+      {id:'b-c-pin',   cat:'boards',      label:'O Pintor',            w:340, src:E+'PERSONAGENS/TABULEIRO DOS PERSONAGENS (FASE 1)/O_PINTOR.webp'},
+      // ACAMPAMENTO cards
+      {id:'c-api',     cat:'acampamento', label:'Apiário',             w:140, src:E+'CARTAS DE ITENS/CARTAS_ACAMPAMENTO/APIARIO.webp'},
+      {id:'c-baug',    cat:'acampamento', label:'Baú Grande',          w:140, src:E+'CARTAS DE ITENS/CARTAS_ACAMPAMENTO/BAÚ GRANDE.webp'},
+      {id:'c-baup',    cat:'acampamento', label:'Baú Pequeno',         w:140, src:E+'CARTAS DE ITENS/CARTAS_ACAMPAMENTO/BAÚ PEQUENO.webp'},
+      {id:'c-cant',    cat:'acampamento', label:'Canteiro',            w:140, src:E+'CARTAS DE ITENS/CARTAS_ACAMPAMENTO/CANTEIRO.webp'},
+      {id:'c-comp',    cat:'acampamento', label:'Compostagem',         w:140, src:E+'CARTAS DE ITENS/CARTAS_ACAMPAMENTO/COMPOSTAGEM.webp'},
+      {id:'c-fog',     cat:'acampamento', label:'Fogueira',            w:140, src:E+'CARTAS DE ITENS/CARTAS_ACAMPAMENTO/FOGUEIRA.webp'},
+      {id:'c-fluz',    cat:'acampamento', label:'Fonte de Luz',        w:140, src:E+'CARTAS DE ITENS/CARTAS_ACAMPAMENTO/FONT DE LUZ.webp'},
+      {id:'c-gel',     cat:'acampamento', label:'Geladeira',           w:140, src:E+'CARTAS DE ITENS/CARTAS_ACAMPAMENTO/GELADEIRA.webp'},
+      {id:'c-pan',     cat:'acampamento', label:'Panela de Ferro',     w:140, src:E+'CARTAS DE ITENS/CARTAS_ACAMPAMENTO/PANELA DE FERRO.webp'},
+      {id:'c-pfome',   cat:'acampamento', label:'Prot. Fome',          w:140, src:E+'CARTAS DE ITENS/CARTAS_ACAMPAMENTO/PROTEÇÃO DE FOME.webp'},
+      {id:'c-psan',    cat:'acampamento', label:'Prot. Sanidade',      w:140, src:E+'CARTAS DE ITENS/CARTAS_ACAMPAMENTO/PROTEÇÃO DE SANIDADE.webp'},
+      {id:'c-tend',    cat:'acampamento', label:'Tenda Grande',        w:140, src:E+'CARTAS DE ITENS/CARTAS_ACAMPAMENTO/TENDA GRANDE.webp'},
+      {id:'c-vort',    cat:'acampamento', label:'Vórtex',              w:140, src:E+'CARTAS DE ITENS/CARTAS_ACAMPAMENTO/VORTEX.webp'},
+      // ARMAS
+      {id:'a-ada',     cat:'armas',       label:'Adaga de Pedra',      w:140, src:E+'CARTAS DE ITENS/CARTAS_ARMAS_ARMADURAS/ADAGA DE PEDRA 01.webp'},
+      {id:'a-arc',     cat:'armas',       label:'Arco de Madeira',     w:140, src:E+'CARTAS DE ITENS/CARTAS_ARMAS_ARMADURAS/ARCO DE MADEIRA.webp'},
+      {id:'a-bes',     cat:'armas',       label:'Besta',               w:140, src:E+'CARTAS DE ITENS/CARTAS_ARMAS_ARMADURAS/BESTA.webp'},
+      {id:'a-ef',      cat:'armas',       label:'Elmo de Ferro',       w:140, src:E+'CARTAS DE ITENS/CARTAS_ARMAS_ARMADURAS/ELMO DE FERRO.webp'},
+      {id:'a-em',      cat:'armas',       label:'Elmo de Madeira',     w:140, src:E+'CARTAS DE ITENS/CARTAS_ARMAS_ARMADURAS/ELMO DE MADEIRA.webp'},
+      {id:'a-ep',      cat:'armas',       label:'Elmo de Pedra',       w:140, src:E+'CARTAS DE ITENS/CARTAS_ARMAS_ARMADURAS/ELMO DE PEDRA.webp'},
+      {id:'a-esf',     cat:'armas',       label:'Espada de Ferro',     w:140, src:E+'CARTAS DE ITENS/CARTAS_ARMAS_ARMADURAS/ESPADA DE FERRO 01.webp'},
+      {id:'a-esm',     cat:'armas',       label:'Espada de Madeira',   w:140, src:E+'CARTAS DE ITENS/CARTAS_ARMAS_ARMADURAS/ESPADA DE MADEIRA 01.webp'},
+      {id:'a-pm',      cat:'armas',       label:'Prot. Madeira',       w:140, src:E+'CARTAS DE ITENS/CARTAS_ARMAS_ARMADURAS/PROTEÇÃO DE MADEIRA.webp'},
+      {id:'a-torf',    cat:'armas',       label:'Torso de Ferro',      w:140, src:E+'CARTAS DE ITENS/CARTAS_ARMAS_ARMADURAS/TORSO DE FERRO 1.webp'},
+      {id:'a-torm',    cat:'armas',       label:'Torso de Madeira',    w:140, src:E+'CARTAS DE ITENS/CARTAS_ARMAS_ARMADURAS/TORSO DE MADEIRA 1.webp'},
+      {id:'a-torp',    cat:'armas',       label:'Torso de Pedra',      w:140, src:E+'CARTAS DE ITENS/CARTAS_ARMAS_ARMADURAS/TORSO DE PEDRA 1.webp'},
+      // PESSOAIS
+      {id:'p-abri',    cat:'pessoais',    label:'Amuleto Brilhante',   w:140, src:E+'CARTAS DE ITENS/CARTAS_PESSOAIS/AMULETO BRILHANTE.webp'},
+      {id:'p-asom',    cat:'pessoais',    label:'Amuleto Sombrio',     w:140, src:E+'CARTAS DE ITENS/CARTAS_PESSOAIS/AMULETO SOMBRIO.webp'},
+      {id:'p-avig',    cat:'pessoais',    label:'Amuleto Vigoroso',    w:140, src:E+'CARTAS DE ITENS/CARTAS_PESSOAIS/AMULETO VIGOROSO.webp'},
+      {id:'p-aviv',    cat:'pessoais',    label:'Amuleto Vivo',        w:140, src:E+'CARTAS DE ITENS/CARTAS_PESSOAIS/AMULETO VIVO.webp'},
+      {id:'p-bomb',    cat:'pessoais',    label:'Bomba Venenosa',      w:140, src:E+'CARTAS DE ITENS/CARTAS_PESSOAIS/BOMBA VENENOSA.webp'},
+      {id:'p-cap',     cat:'pessoais',    label:'Capacete de Mina',    w:140, src:E+'CARTAS DE ITENS/CARTAS_PESSOAIS/CAPACETE DE MINA.webp'},
+      {id:'p-cart',    cat:'pessoais',    label:'Cartola Elegante',    w:140, src:E+'CARTAS DE ITENS/CARTAS_PESSOAIS/CARTOLA ELEGANTE.webp'},
+      {id:'p-chap',    cat:'pessoais',    label:'Chapéu Elegante',     w:140, src:E+'CARTAS DE ITENS/CARTAS_PESSOAIS/CHAPEU ELEGANTE.webp'},
+      {id:'p-cubo',    cat:'pessoais',    label:'Cubo Remoto',         w:140, src:E+'CARTAS DE ITENS/CARTAS_PESSOAIS/CUBO REMOTO.webp'},
+      {id:'p-ener',    cat:'pessoais',    label:'Energia Sombria',     w:140, src:E+'CARTAS DE ITENS/CARTAS_PESSOAIS/ENERGIA SOMBRIA.webp'},
+      {id:'p-guar',    cat:'pessoais',    label:'Guarda-chuva',        w:140, src:E+'CARTAS DE ITENS/CARTAS_PESSOAIS/GUARDA-CHUVA.webp'},
+      {id:'p-mach',    cat:'pessoais',    label:'Machado',             w:140, src:E+'CARTAS DE ITENS/CARTAS_PESSOAIS/MACHADO.webp'},
+      {id:'p-pica',    cat:'pessoais',    label:'Picareta',            w:140, src:E+'CARTAS DE ITENS/CARTAS_PESSOAIS/PICARETA.webp'},
+      {id:'p-rede',    cat:'pessoais',    label:'Rede de Insetos',     w:140, src:E+'CARTAS DE ITENS/CARTAS_PESSOAIS/REDE DE INSETOS.webp'},
+      {id:'p-toch',    cat:'pessoais',    label:'Tocha',               w:140, src:E+'CARTAS DE ITENS/CARTAS_PESSOAIS/TOCHA.webp'},
+      {id:'p-vara',    cat:'pessoais',    label:'Vara de Pescar',      w:140, src:E+'CARTAS DE ITENS/CARTAS_PESSOAIS/VARA DE PESCAR.webp'},
+      {id:'p-visor',   cat:'pessoais',    label:'Visor Tático',        w:140, src:E+'CARTAS DE ITENS/CARTAS_PESSOAIS/VISOR TATICO.webp'},
+      {id:'p-vorp',    cat:'pessoais',    label:'Vórtex Portátil',     w:140, src:E+'CARTAS DE ITENS/CARTAS_PESSOAIS/VORTEX PORTATIL.webp'},
+      // RECURSOS tokens
+      {id:'r-abe',     cat:'recursos',    label:'Abelha',              w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/ABELHA.webp'},
+      {id:'r-abo',     cat:'recursos',    label:'Abóbora',             w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/ABOBORA.webp'},
+      {id:'r-bas',     cat:'recursos',    label:'Base de Criação',     w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/BASE DE CRIAÃO.webp'},
+      {id:'r-car',     cat:'recursos',    label:'Carne Vermelha',      w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/CARNE VERMELHA.webp'},
+      {id:'r-cen',     cat:'recursos',    label:'Cenoura',             w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/CENOURA.webp'},
+      {id:'r-cej',     cat:'recursos',    label:'Cereja',              w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/CEREJA.webp'},
+      {id:'r-cox',     cat:'recursos',    label:'Coxa de Ave',         w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/COXA DE AVE.webp'},
+      {id:'r-caz',     cat:'recursos',    label:'Cristal Azul',        w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/CRISTAL ARCANO AZUL.webp'},
+      {id:'r-cpr',     cat:'recursos',    label:'Cristal Preto',       w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/CRISTAL ARCANO PRETO.webp'},
+      {id:'r-cve',     cat:'recursos',    label:'Cristal Verde',       w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/CRISTAL ARCANO VERDE.webp'},
+      {id:'r-cvm',     cat:'recursos',    label:'Cristal Vermelho',    w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/CRISTAL ARCANO VERMELHO.webp'},
+      {id:'r-dia',     cat:'recursos',    label:'Diamante',            w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/DIAMANTE.webp'},
+      {id:'r-fib',     cat:'recursos',    label:'Fibra',               w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/FIBRA.webp'},
+      {id:'r-lei',     cat:'recursos',    label:'Leite',               w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/LEITE.webp'},
+      {id:'r-mad',     cat:'recursos',    label:'Madeira',             w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/MADEIRA.webp'},
+      {id:'r-med',     cat:'recursos',    label:'Medicinal',           w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/MEDICINAL.webp'},
+      {id:'r-mel',     cat:'recursos',    label:'Mel',                 w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/MEL.webp'},
+      {id:'r-min',     cat:'recursos',    label:'Minério de Ferro',    w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/MINERIO DE FERRO.webp'},
+      {id:'r-mor',     cat:'recursos',    label:'Morangos',            w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/MORANGOS.webp'},
+      {id:'r-our',     cat:'recursos',    label:'Ouro',                w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/OURO.webp'},
+      {id:'r-ped',     cat:'recursos',    label:'Pedra',               w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/PEDRA.webp'},
+      {id:'r-per',     cat:'recursos',    label:'Pernil',              w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/PERNIL.webp'},
+      {id:'r-rub',     cat:'recursos',    label:'Rubi',                w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/RUBI.webp'},
+      {id:'r-saf',     cat:'recursos',    label:'Safira',              w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/SAFIRA.webp'},
+      {id:'r-vag',     cat:'recursos',    label:'Vagalume',            w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/VAGALUME.webp'},
+      // TOKENS
+      {id:'t-rcl',     cat:'tokens',      label:'Rec: Carne/Legumes',  w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/RECEITA_ CARNE COM LEGUMES.webp'},
+      {id:'t-rch',     cat:'tokens',      label:'Rec: Churrascada',    w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/RECEITA_ CHURRASCADA.webp'},
+      {id:'t-rco',     cat:'tokens',      label:'Rec: Compota',        w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/RECEITA_ COMPOTA DE FRUTAS.webp'},
+      {id:'t-rcg',     cat:'tokens',      label:'Rec: Coxa Glaceada',  w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/RECEITA_ COXA GLAUCEADA.webp'},
+      {id:'t-rpan',    cat:'tokens',      label:'Rec: Panachê',        w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/RECEITA_ PANACHE.webp'},
+      {id:'t-rpm',     cat:'tokens',      label:'Rec: Pernil c/ Mel',  w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/RECEITA_ PERNIL COM MEL.webp'},
+      {id:'t-rpu',     cat:'tokens',      label:'Rec: Purê',           w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/RECEITA_ PURE DE ABOBORA.webp'},
+      {id:'t-rsh',     cat:'tokens',      label:'Rec: Shake',          w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/RECEITA_ SHAKE.webp'},
+      {id:'t-rso',     cat:'tokens',      label:'Rec: Sopa',           w:80, src:E+'TOKENS DO JOGO/TOKENS DE RECURSOS/RECEITA_ SOPA DE LEGUMES.webp'},
+      {id:'t-val',     cat:'tokens',      label:'Valise',              w:80, src:E+'TOKENS DO JOGO/TOKENS DE TABULEIRO DE PERSONAGEM/VALISE.webp'},
+      {id:'t-tbg',     cat:'tokens',      label:'Token: Baú Grande',   w:80, src:E+'TOKENS DO JOGO/TOKENS DE TABULEIRO DE ACAMPAMENTO/BAU GRANDE.webp'},
+      {id:'t-tbp',     cat:'tokens',      label:'Token: Baú Pequeno',  w:80, src:E+'TOKENS DO JOGO/TOKENS DE TABULEIRO DE ACAMPAMENTO/BAU PEQUENO.webp'},
+      {id:'t-tca',     cat:'tokens',      label:'Token: Canteiro',     w:80, src:E+'TOKENS DO JOGO/TOKENS DE TABULEIRO DE ACAMPAMENTO/CANTEIRO.webp'},
+      {id:'t-tco',     cat:'tokens',      label:'Condições',           w:80, src:E+'TOKENS DO JOGO/TOKENS DE TABULEIRO DE ACAMPAMENTO/CONDIÇÕES.webp'},
+      {id:'t-tge',     cat:'tokens',      label:'Token: Geladeira',    w:80, src:E+'TOKENS DO JOGO/TOKENS DE TABULEIRO DE ACAMPAMENTO/GELADEIRA.webp'},
+      {id:'t-pab',     cat:'tokens',      label:'Abelhas',             w:80, src:E+'TOKENS DO JOGO/TOKENS DE TABULEIRO DE MAPA/PASSIVOS/ABELHAS@4x.webp'},
+      {id:'t-ppe',     cat:'tokens',      label:'Peru',                w:80, src:E+'TOKENS DO JOGO/TOKENS DE TABULEIRO DE MAPA/PASSIVOS/PERU@4x.webp'},
+      {id:'t-ppo',     cat:'tokens',      label:'Porco',               w:80, src:E+'TOKENS DO JOGO/TOKENS DE TABULEIRO DE MAPA/PASSIVOS/PORCO@4x.webp'},
+      {id:'t-pva',     cat:'tokens',      label:'Vaca',                w:80, src:E+'TOKENS DO JOGO/TOKENS DE TABULEIRO DE MAPA/PASSIVOS/VACA@4x.webp'},
+      {id:'t-pvg',     cat:'tokens',      label:'Vagalume',            w:80, src:E+'TOKENS DO JOGO/TOKENS DE TABULEIRO DE MAPA/PASSIVOS/VAGALUME@4x.webp'},
+      {id:'t-c2',      cat:'tokens',      label:'2 Turnos',            w:80, src:E+'TOKENS DO JOGO/TOKENS DE TEMPO DE CONDIÇÃO/2 turnos.webp'},
+      {id:'t-c3',      cat:'tokens',      label:'3 Turnos',            w:80, src:E+'TOKENS DO JOGO/TOKENS DE TEMPO DE CONDIÇÃO/3 turnos.webp'},
+    ];
+
+    const DMAP = Object.fromEntries(DEFS.map(d => [d.id, d]));
+
+    const DEFAULTS = [
+      // Row 1: 4 maps
+      {id:'d-fl', defId:'b-fl',    x:20,   y:20},
+      {id:'d-um', defId:'b-um',    x:510,  y:20},
+      {id:'d-vs', defId:'b-vs',    x:1000, y:20},
+      {id:'d-ab', defId:'b-ab',    x:1490, y:20},
+      // Large boards
+      {id:'d-ca', defId:'b-camp',  x:2010, y:20},
+      {id:'d-es', defId:'b-est',   x:2720, y:20},
+      // Row 2: char boards
+      {id:'d-c1', defId:'b-c-eng', x:20,   y:560},
+      {id:'d-c2', defId:'b-c-inv', x:380,  y:560},
+      {id:'d-c3', defId:'b-c-len', x:740,  y:560},
+      {id:'d-c4', defId:'b-c-pin', x:1100, y:560},
+    ];
+
+    const SK = 'le_tab_v1';
+    let pieces = [];
+    let nextId = 2000;
+    let maxZ   = 10;
+    let activeCat = 'boards';
+
+    function loadState(){
+      try {
+        const raw = localStorage.getItem(SK);
+        if(raw){ const d = JSON.parse(raw); pieces = d.pieces||[]; nextId = d.nextId||2000; return true; }
+      } catch(e){}
+      return false;
+    }
+    function saveState(){
+      try { localStorage.setItem(SK, JSON.stringify({pieces, nextId})); } catch(e){}
+    }
+    function resetState(){
+      pieces = DEFAULTS.map(p => ({...p}));
+      nextId = 2000;
+      renderCanvas();
+      saveState();
+    }
+
+    const canvas = document.getElementById('tabCanvas');
+    const wrap   = document.getElementById('tabCanvasWrap');
+
+    function renderCanvas(){
+      canvas.innerHTML = '';
+      pieces.forEach(p => {
+        const el = makePieceEl(p);
+        if(el) canvas.appendChild(el);
+      });
+    }
+
+    function makePieceEl(piece){
+      const def = DMAP[piece.defId];
+      if(!def) return null;
+      const el  = document.createElement('div');
+      el.className = 'tab-piece';
+      el.dataset.pid = piece.id;
+      el.style.cssText = 'left:'+piece.x+'px;top:'+piece.y+'px;width:'+def.w+'px;z-index:'+maxZ;
+      const img = document.createElement('img');
+      img.src = def.src; img.alt = def.label; img.draggable = false;
+      const del = document.createElement('button');
+      del.className = 'tab-piece-del'; del.title = 'Remover'; del.textContent = '✕';
+      el.appendChild(img); el.appendChild(del);
+
+      let sx, sy, ox, oy, dragging = false;
+      el.addEventListener('pointerdown', e => {
+        if(e.target === del) return;
+        e.preventDefault(); e.stopPropagation();
+        el.setPointerCapture(e.pointerId);
+        sx = e.clientX; sy = e.clientY; ox = piece.x; oy = piece.y; dragging = false;
+        el.style.zIndex = ++maxZ; el.style.opacity = '0.88';
+      });
+      el.addEventListener('pointermove', e => {
+        if(!el.hasPointerCapture(e.pointerId)) return;
+        const dx = e.clientX - sx, dy = e.clientY - sy;
+        if(!dragging && (Math.abs(dx)>3||Math.abs(dy)>3)) dragging = true;
+        if(!dragging) return;
+        piece.x = ox + dx; piece.y = oy + dy;
+        el.style.left = piece.x+'px'; el.style.top = piece.y+'px';
+      });
+      el.addEventListener('pointerup', () => {
+        el.style.opacity = '';
+        if(dragging) saveState();
+      });
+      del.addEventListener('click', e => {
+        e.stopPropagation();
+        pieces = pieces.filter(p => p.id !== piece.id);
+        el.remove(); saveState();
+      });
+      return el;
+    }
+
+    function addPiece(defId){
+      const def = DMAP[defId]; if(!def) return;
+      const cx = wrap.scrollLeft + wrap.clientWidth/2;
+      const cy = wrap.scrollTop  + wrap.clientHeight/2;
+      const piece = {
+        id: 'p'+(nextId++), defId,
+        x: Math.round(cx - def.w/2 + (Math.random()*40-20)),
+        y: Math.round(cy - 80 + (Math.random()*40-20)),
+      };
+      pieces.push(piece);
+      const el = makePieceEl(piece);
+      if(el){ el.style.zIndex = ++maxZ; canvas.appendChild(el); }
+      saveState();
+    }
+
+    function renderTray(cat){
+      activeCat = cat;
+      const items = document.getElementById('tabTrayItems');
+      items.innerHTML = DEFS.filter(d => d.cat===cat).map(def =>
+        '<div class="tab-stack" onclick="tabAddPiece(\''+def.id+'\')" title="'+def.label+'">'+
+        '<img src="'+def.src+'" alt="'+def.label+'" draggable="false">'+
+        '<div class="tab-stack-lbl">'+def.label+'</div></div>'
+      ).join('');
+      document.querySelectorAll('#tabTrayCats .tab-cat').forEach(btn =>
+        btn.classList.toggle('active', btn.dataset.cat === cat)
+      );
+    }
+
+    function renderCats(){
+      const catsEl = document.getElementById('tabTrayCats');
+      catsEl.innerHTML = CATS.map(c =>
+        '<button class="tab-cat'+(c.id===activeCat?' active':'')+'" data-cat="'+c.id+
+        '" onclick="tabSwitchCat(\''+c.id+'\')">'+c.label+'</button>'
+      ).join('');
+    }
+
+    window.tabAddPiece  = addPiece;
+    window.tabSwitchCat = renderTray;
+    window.tabSave = function(){
+      saveState();
+      const msg = document.getElementById('tab-save-msg');
+      if(msg){ msg.style.opacity='1'; setTimeout(()=>{ msg.style.opacity='0'; },1600); }
+    };
+    window.tabReset = function(){
+      if(confirm('Resetar o tabuleiro para a disposição padrão?\nTodas as peças adicionadas serão removidas.'))
+        resetState();
+    };
+
+    if(!loadState()) resetState(); else renderCanvas();
+    renderCats();
+    renderTray(activeCat);
+
+    // Scroll to center of canvas on load
+    requestAnimationFrame(() => {
+      wrap.scrollLeft = 0;
+      wrap.scrollTop  = 0;
+    });
+  }
+
+  // Router
+  window.addEventListener('hashchange', () => loadPage(window.location.hash));
+  loadPage(window.location.hash);
+})();
+</script>
+</body>
+</html>

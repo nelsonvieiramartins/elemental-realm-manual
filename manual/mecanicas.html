@@ -1,0 +1,251 @@
+<section class="page">
+  <div class="page-header">
+    <div class="page-kicker">Seção 07</div>
+    <h1 class="page-title">Mecânicas</h1>
+    <p class="page-lead">Tudo que você precisa saber para jogar: rodada, ações, combate, testes, fuga e reanimação. As regras cabem em cinco fases.</p>
+  </div>
+
+  <h2>A rodada em 5 fases</h2>
+
+  <div class="turn-flow">
+    <div class="turn-phase">
+      <span class="turn-phase-num">1</span>
+      <div class="turn-phase-name">Evento</div>
+      <div class="turn-phase-desc">Revela-se uma carta do Deck de Eventos. Criatura? Rola D4 (mapa) + D20 (célula hexagonal). <em>Excepção: 1.º turno da Era não tem evento.</em></div>
+    </div>
+    <div class="turn-phase">
+      <span class="turn-phase-num">2</span>
+      <div class="turn-phase-name">Ações</div>
+      <div class="turn-phase-desc">Cada jogador executa até <strong>3 ações</strong> na sua vez, em ordem.</div>
+    </div>
+    <div class="turn-phase">
+      <span class="turn-phase-num">3</span>
+      <div class="turn-phase-name">Criaturas</div>
+      <div class="turn-phase-desc">Criaturas em campo se movem e atacam conforme suas regras.</div>
+    </div>
+    <div class="turn-phase">
+      <span class="turn-phase-num">4</span>
+      <div class="turn-phase-name">Manutenção</div>
+      <div class="turn-phase-desc">Fome, combustível de fogueiras, descarte de cartas acima do limite.</div>
+    </div>
+    <div class="turn-phase">
+      <span class="turn-phase-num">5</span>
+      <div class="turn-phase-name">Final</div>
+      <div class="turn-phase-desc">Durações de efeitos decaem. Marcador de 1º jogador avança.</div>
+    </div>
+  </div>
+
+  <!-- MAPA HEXAGONAL -->
+  <h2>O Mapa — Células Hexagonais</h2>
+  <p>Cada tabuleiro é composto por <strong>células hexagonais</strong> — espaços desenhados em grade de hexágonos onde os aventureiros se deslocam. O movimento é sempre de célula adjacente em célula adjacente, gastando <strong>1 ponto de Movimento por célula</strong>.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.8rem;margin:1rem 0 1.6rem">
+    <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:1rem">
+      <div style="font-family:'Oswald',sans-serif;font-size:.85rem;color:var(--accent);letter-spacing:.1em;margin-bottom:.5rem">DESLOCAMENTO</div>
+      <ul style="list-style:none;padding:0;margin:0;font-size:.85rem;font-family:'Lora',serif;color:var(--fg)">
+        <li style="padding:.25rem 0;border-bottom:1px solid var(--border-soft)">Cada célula adjacente custa <strong>1 Movimento</strong></li>
+        <li style="padding:.25rem 0;border-bottom:1px solid var(--border-soft)">Atravessar um <strong>Vórtex</strong> custa <strong>2 Movimentos</strong> e muda de mapa</li>
+        <li style="padding:.25rem 0">Terrenos especiais podem aumentar o custo</li>
+      </ul>
+    </div>
+    <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:1rem">
+      <div style="font-family:'Oswald',sans-serif;font-size:.85rem;color:var(--accent);letter-spacing:.1em;margin-bottom:.5rem">O QUE HÁ EM CADA CÉLULA</div>
+      <ul style="list-style:none;padding:0;margin:0;font-size:.85rem;font-family:'Lora',serif;color:var(--fg)">
+        <li style="padding:.25rem 0;border-bottom:1px solid var(--border-soft)"><strong style="color:var(--venaris)">Recurso</strong> — marcado com ícone verde; acção Coletar</li>
+        <li style="padding:.25rem 0;border-bottom:1px solid var(--border-soft)"><strong style="color:var(--accent)">Comércio</strong> — marcado com balança; acção Comprar</li>
+        <li style="padding:.25rem 0;border-bottom:1px solid var(--border-soft)"><strong style="color:#4a9fd8">Vórtex</strong> — marcado com ícone redondo azul; transição de mapa</li>
+        <li style="padding:.25rem 0">Criaturas — colocadas pela Fase de Evento</li>
+      </ul>
+    </div>
+    <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:1rem">
+      <div style="font-family:'Oswald',sans-serif;font-size:.85rem;color:var(--accent);letter-spacing:.1em;margin-bottom:.5rem">CRIATURAS PASSIVAS</div>
+      <p style="font-size:.85rem;font-family:'Lora',serif;color:var(--fg);margin:0">Animais (Vaca, Porco, Peru, Abelhas, Vagalume) representados por tokens no mapa. Não atacam, mas podem ser abatidos para obter recursos. São distribuídos antes do início da partida.</p>
+    </div>
+  </div>
+
+  <!-- DECK DE EVENTOS -->
+  <h2>Fase de Evento — Deck e Posicionamento</h2>
+
+  <div class="callout callout-note" style="margin-bottom:1.2rem">
+    <strong>1.º Turno de cada Era — sem evento</strong>
+    O primeiro turno de cada nova Era <em>não gera evento</em>. Os jogadores têm esse turno para se reposicionar, avaliar os mapas e definir estratégia antes das criaturas começarem a entrar.
+  </div>
+
+  <p>A partir do 2.º turno, cada Era tem o seu próprio <strong>Deck de Eventos</strong> — um único baralho embaralhado que combina todos os tipos de carta:</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.8rem;margin:1rem 0 1.4rem">
+    <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:1rem;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--terragorn)"></div>
+      <div style="font-family:'Oswald',sans-serif;font-size:.85rem;color:var(--terragorn);letter-spacing:.1em;margin-bottom:.5rem">CRIATURAS DA ERA</div>
+      <p style="font-size:.85rem;font-family:'Lora',serif;color:var(--fg);margin:0"><strong>2 cópias</strong> de cada criatura da Era entram no deck. Quando revelada, a criatura é colocada no mapa por dados (ver abaixo).</p>
+    </div>
+    <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:1rem;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--glacis)"></div>
+      <div style="font-family:'Oswald',sans-serif;font-size:.85rem;color:var(--glacis);letter-spacing:.1em;margin-bottom:.5rem">EVENTOS ÚNICOS</div>
+      <p style="font-size:.85rem;font-family:'Lora',serif;color:var(--fg);margin:0">Cartas de Clima, Fenômeno e Sobrenatural específicas de cada Era — <strong>1 cópia cada</strong>, únicas por Era.</p>
+    </div>
+    <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:1rem;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--venaris)"></div>
+      <div style="font-family:'Oswald',sans-serif;font-size:.85rem;color:var(--venaris);letter-spacing:.1em;margin-bottom:.5rem">CRIATURAS PASSIVAS</div>
+      <p style="font-size:.85rem;font-family:'Lora',serif;color:var(--fg);margin:0">As criaturas passivas (animais de recurso) também entram no deck — <strong>1 cópia por Era</strong>. Quando reveladas, são colocadas como tokens no mapa.</p>
+    </div>
+  </div>
+
+  <h3>Como uma criatura entra no mapa</h3>
+  <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:10px;padding:1.4rem;margin:.5rem 0 1.6rem">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:1.2rem 1.6rem;align-items:center">
+      <!-- PASSO 1 -->
+      <div style="width:44px;height:44px;border-radius:50%;background:var(--bg-3);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:1.2rem;color:var(--accent);flex:0 0 auto">1</div>
+      <div>
+        <div style="font-family:'Oswald',sans-serif;color:var(--fg);font-size:.95rem;margin-bottom:.2rem">Revelar a carta</div>
+        <div style="font-size:.85rem;font-family:'Lora',serif;color:var(--fg-dim)">O primeiro jogador compra a carta do topo do Deck de Eventos da Era activa.</div>
+      </div>
+      <!-- PASSO 2 -->
+      <div style="width:44px;height:44px;border-radius:50%;background:var(--bg-3);border:2px solid #4a9fd8;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:1.2rem;color:#4a9fd8;flex:0 0 44px">2</div>
+      <div>
+        <div style="font-family:'Oswald',sans-serif;color:var(--fg);font-size:.95rem;margin-bottom:.2rem">Rolar <strong style="color:#4a9fd8">D4</strong> — escolher o mapa</div>
+        <div style="font-size:.85rem;font-family:'Lora',serif;color:var(--fg-dim)">Cada face corresponde a um dos 4 mapas: <span style="color:var(--venaris)">1=Floresta Negra</span>, <span style="color:var(--glacis)">2=Umbrafort</span>, <span style="color:var(--terragorn)">3=Vale Sereno</span>, <span style="color:var(--tenebris)">4=Abismo Crescente</span>.</div>
+      </div>
+      <!-- PASSO 3 -->
+      <div style="width:44px;height:44px;border-radius:50%;background:var(--bg-3);border:2px solid var(--terragorn);display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:1.2rem;color:var(--terragorn);flex:0 0 44px">3</div>
+      <div>
+        <div style="font-family:'Oswald',sans-serif;color:var(--fg);font-size:.95rem;margin-bottom:.2rem">Rolar <strong style="color:var(--terragorn)">D20</strong> — escolher a célula</div>
+        <div style="font-size:.85rem;font-family:'Lora',serif;color:var(--fg-dim)">O resultado indica o número da célula hexagonal dentro do mapa escolhido onde a criatura é colocada. Cada mapa tem 24 células numeradas; resultados 21–24 podem usar a regra de célula aleatória em zona livre.</div>
+      </div>
+      <!-- PASSO 4 -->
+      <div style="width:44px;height:44px;border-radius:50%;background:var(--bg-3);border:2px solid var(--venaris);display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:1.2rem;color:var(--venaris);flex:0 0 44px">4</div>
+      <div>
+        <div style="font-family:'Oswald',sans-serif;color:var(--fg);font-size:.95rem;margin-bottom:.2rem">Colocar o token / carta</div>
+        <div style="font-size:.85rem;font-family:'Lora',serif;color:var(--fg-dim)">A criatura fica nessa célula e age na Fase 3 (Criaturas) de cada turno seguinte. Criaturas passivas são colocadas como tokens; criaturas de combate como carta virada.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>As 8 ações disponíveis</h2>
+  <div style="display:flex;gap:1.4rem;align-items:flex-start;flex-wrap:wrap;margin-bottom:1.6rem">
+    <!-- 4×2 grid of actions -->
+    <div style="flex:1 1 0;min-width:0;display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem">
+      <div class="action-card">
+        <svg class="action-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 24 L16 8 L24 24 Z M16 16 L16 22"/><circle cx="16" cy="12" r="1" fill="currentColor"/></svg>
+        <div><div class="action-name">Explorar</div><div class="action-desc">Move-se para espaço adjacente e revela o que estiver oculto nele.</div></div>
+      </div>
+      <div class="action-card">
+        <svg class="action-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 10 L26 10 L24 26 L8 26 Z"/><path d="M12 10 L12 6 L20 6 L20 10"/></svg>
+        <div><div class="action-name">Coletar</div><div class="action-desc">Recolhe 1 recurso disponível no espaço atual.</div></div>
+      </div>
+      <div class="action-card">
+        <svg class="action-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="16" cy="16" r="8"/><path d="M12 16 L14 18 L20 12"/></svg>
+        <div><div class="action-name">Comprar</div><div class="action-desc">Adquire item do mercado. Thomas Wellington reduz custo em 1.</div></div>
+      </div>
+      <div class="action-card">
+        <svg class="action-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 26 L26 26 M10 26 L10 14 L16 8 L22 14 L22 26 M14 26 L14 20 L18 20 L18 26"/></svg>
+        <div><div class="action-name">Construir</div><div class="action-desc">Ergue estrutura de Acampamento pagando custo em materiais. Helena −1 custo.</div></div>
+      </div>
+      <div class="action-card">
+        <svg class="action-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 24 L24 8 M8 8 L14 8 L14 14 Z M18 18 L24 18 L24 24 Z"/></svg>
+        <div><div class="action-name">Atacar</div><div class="action-desc">Combate contra criatura em espaço adjacente. Ver Sistema de Combate.</div></div>
+      </div>
+      <div class="action-card">
+        <svg class="action-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 26 C8 20,6 14,10 10 C13 7,16 9,16 12 C16 9,19 7,22 10 C26 14,24 20,16 26 Z"/></svg>
+        <div><div class="action-name">Curar</div><div class="action-desc">Restaura PV ou Sanidade em si ou aliado adjacente, conforme item/habilidade.</div></div>
+      </div>
+      <div class="action-card">
+        <svg class="action-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="16" cy="14" r="5"/><path d="M8 28 C8 22,12 20,16 20 C20 20,24 22,24 28"/><path d="M20 6 L24 10 L28 6"/></svg>
+        <div><div class="action-name">Reanimar</div><div class="action-desc">Traz aliado desmaiado de volta com ½ PV + ½ Sanidade. Requer item específico.</div></div>
+      </div>
+      <div class="action-card">
+        <svg class="action-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 16 C6 10,10 6,16 6 L20 6 L18 4 M20 6 L18 8"/><path d="M26 16 C26 22,22 26,16 26 L12 26 L14 28 M12 26 L14 24"/></svg>
+        <div><div class="action-name">Reciclar</div><div class="action-desc">Quebra item em ½ dos materiais base (arredondado para baixo).</div></div>
+      </div>
+    </div>
+    <!-- Reference card image -->
+    <div style="flex:0 0 auto;text-align:center">
+      <img src="ELEMENTOS/AÇÕES DOS JOGADORES/CARTA_REGRA_AÇOES.webp" alt="Carta de Regras — Ações"
+        style="width:220px;border-radius:8px;border:1px solid var(--border);cursor:zoom-in;display:block"
+        onclick="openLightbox('ELEMENTOS/AÇÕES DOS JOGADORES/CARTA_REGRA_AÇOES.webp')"
+        title="Clique para ampliar">
+      <div style="font-size:.72rem;color:var(--fg-muted);margin-top:.4rem;font-family:'Inter',sans-serif">Carta de Referência Oficial de Ações</div>
+    </div>
+  </div>
+
+  <h2>Sistema de combate</h2>
+  <p>O combate gira em torno de <strong>um único dado de dez faces (1d10)</strong>. Todo conflito segue a mesma fórmula:</p>
+
+  <div class="formula-box">
+    <span class="formula-lbl">Fórmula Universal de Combate</span>
+    <div class="formula">
+      <span class="var">Dano sofrido</span><span class="op">=</span>Ataque<span class="op">−</span>(Resistência<span class="op">+</span>Armadura)
+    </div>
+  </div>
+
+  <p>Se o resultado for <strong>≤ 0</strong>, o golpe <em>ricocheteou</em> — nenhum dano é sofrido. Empates favorecem o defensor.</p>
+
+  <h3>O crítico</h3>
+  <p>Quando se tira um <strong>10 natural</strong>, o golpe é crítico: o dano é <em>dobrado antes</em> de subtrair Resistência e Armadura.</p>
+
+  <div class="example">
+    <div class="example-title">Exemplo de combate</div>
+    <p><strong>Jack Timber</strong> (Poder 5) ataca um <em>Nightmarish Spider</em> (RES 1, Armadura 0).</p>
+    <p>Jack rola <code>1d10</code> e tira <strong>7</strong>. Ataque = 7 + 5 = <strong>12</strong>.</p>
+    <p>Dano sofrido = <code>12 − (1 + 0) = <strong>11</strong></code>. Se a aranha tinha 6 PV, é derrotada.</p>
+    <p><em>Em crítico (10 natural): (10×2 + 5) = 25 antes de subtrair Resistência.</em></p>
+  </div>
+
+  <h3>Fuga — Ponto de Escape</h3>
+  <p>Todo jogador pode tentar <strong>fugir</strong> no início do seu turno de combate, consumindo 1 ação. Cada criatura tem um <strong>Ponto de Escape</strong> (4–10). Role <code>1d10</code> — se o resultado for <strong>≥ ao Ponto de Escape</strong>, foge para espaço adjacente livre. Em falha, perde a ação e sofre o ataque de resposta da criatura.</p>
+
+  <h2>Testes de dificuldade</h2>
+  <p>Fora do combate, situações pedem um <strong>Teste de Dificuldade X</strong>. Role <code>1d10</code> — sucesso se resultado <strong>≥ X</strong>.</p>
+  <div class="diff-scale">
+    <div class="diff-level"><span class="num">3</span><span class="lbl">Trivial</span></div>
+    <div class="diff-level"><span class="num">5</span><span class="lbl">Fácil</span></div>
+    <div class="diff-level"><span class="num">7</span><span class="lbl">Médio</span></div>
+    <div class="diff-level"><span class="num">9</span><span class="lbl">Difícil</span></div>
+    <div class="diff-level"><span class="num">10</span><span class="lbl">Heróico</span></div>
+  </div>
+
+  <h2>Estados críticos</h2>
+  <div class="state-flow">
+    <div class="state-card">
+      <svg class="state-icon" viewBox="0 0 32 32" fill="none" stroke="#6fb871" stroke-width="1.6"><path d="M16 26 C8 20,6 14,10 10 C13 7,16 9,16 12 C16 9,19 7,22 10 C26 14,24 20,16 26 Z" fill="#6fb87122"/></svg>
+      <div class="state-name" style="color:#6fb871">Ativo</div>
+      <div class="state-desc">PV > 0. Joga normalmente, 3 ações por turno.</div>
+    </div>
+    <div class="state-card">
+      <svg class="state-icon" viewBox="0 0 32 32" fill="none" stroke="#e27a5f" stroke-width="1.6"><circle cx="16" cy="16" r="10"/><path d="M10 14 L14 14 M18 14 L22 14 M11 22 C13 20,19 20,21 22"/></svg>
+      <div class="state-name" style="color:#e27a5f">Desmaiado</div>
+      <div class="state-desc">PV = 0. Não age. Precisa ser reanimado por aliado adjacente.</div>
+    </div>
+    <div class="state-card">
+      <svg class="state-icon" viewBox="0 0 32 32" fill="none" stroke="#7ec6e8" stroke-width="1.6"><path d="M16 4 L16 28 M8 12 L24 12 M10 18 L22 18"/><circle cx="16" cy="16" r="12" opacity=".35"/></svg>
+      <div class="state-name" style="color:#7ec6e8">Reanimado</div>
+      <div class="state-desc">Volta com ½ PV e ½ Sanidade máximos (arredondados para baixo).</div>
+    </div>
+  </div>
+
+  <div class="callout callout-warn">
+    <strong>Derrota total</strong>
+    Se <strong>todos</strong> os jogadores estiverem desmaiados simultaneamente ao fim de qualquer fase, o grupo perde a partida.
+  </div>
+
+  <h2>Fase de Manutenção</h2>
+  <ol>
+    <li><strong>Fome.</strong> Jogador que não consumiu comida perde <strong>1 PV</strong>. Comida crua estraga em 2 turnos; em Geladeira, não estraga.</li>
+    <li><strong>Fogueira.</strong> Consome 1 graveto. Sem fogo à noite em Glacis ou Tenebris → −1 Sanidade.</li>
+    <li><strong>Descarte.</strong> Jogadores com mais de <strong>5 cartas na mão</strong> descartam até o limite (equipamentos em uso não contam).</li>
+  </ol>
+
+  <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:flex-start">
+    <div>
+      <div style="font-size:.72rem;color:var(--fg-muted);margin-bottom:.4rem;font-family:'Inter',sans-serif">Carta de Regras — Ressurreição</div>
+      <img src="ELEMENTOS/AÇÕES DOS JOGADORES/CARTA_REGRA_RESURGE.webp" alt="Carta Regra Ressurreição"
+        style="max-width:260px;border-radius:8px;border:1px solid var(--border);cursor:zoom-in;display:block"
+        onclick="openLightbox('ELEMENTOS/AÇÕES DOS JOGADORES/CARTA_REGRA_RESURGE.webp')">
+    </div>
+  </div>
+
+  <div class="pager">
+    <a class="prev" href="#/personagens"><span class="lbl">← Anterior</span><span class="nxt">Personagens</span></a>
+    <a class="next" href="#/bestiario"><span class="lbl">Próximo →</span><span class="nxt">Bestiário</span></a>
+  </div>
+</section>

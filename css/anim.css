@@ -1,0 +1,33 @@
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-out-down {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(30px); }
+}
+
+/* Route transitions */
+.page-transition-enter {
+  animation: fade-in-up 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.page-transition-exit {
+  animation: fade-out-down 0.3s cubic-bezier(0.8, 0.2, 1, 0.2) forwards;
+}
+
+/* Lightbox styles */
+.lightbox-wrap {
+  position: fixed; inset:0; z-index: 9999;
+  background: rgba(0,0,0,0.85); backdrop-filter: blur(10px);
+  display: flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:0.3s ease;
+}
+.lightbox-wrap.open { opacity:1; pointer-events:auto; }
+.lightbox-img { max-width:90vw; max-height:90vh; border-radius:8px; border:1px solid var(--accent); box-shadow:0 0 50px rgba(0,0,0,1); transform:scale(0.9); transition:0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.lightbox-wrap.open .lightbox-img { transform:scale(1); }
+.lightbox-close { position:absolute; top:20px; right:30px; font-size:3rem; color:var(--accent); cursor:pointer; font-family:'Inter', sans-serif; }
+.lightbox-close:hover { color:#fff; transform:scale(1.1); }

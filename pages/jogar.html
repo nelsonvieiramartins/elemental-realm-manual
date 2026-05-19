@@ -1,0 +1,52 @@
+<div class="page game-page">
+  <!-- Game header -->
+  <div class="game-header">
+    <div class="game-header-left">
+      <span class="game-header-icon">🎮</span>
+      <div>
+        <h2 class="game-header-title">Legacy Elemental</h2>
+        <p class="game-header-sub">Jogo de tabuleiro digital · 2–4 jogadores</p>
+      </div>
+    </div>
+    <div class="game-header-actions">
+      <button class="game-btn game-btn-fullscreen" onclick="toggleGameFullscreen()" title="Tela cheia">
+        <span id="fs-icon">⛶</span> Tela Cheia
+      </button>
+      <button class="game-btn game-btn-reload" onclick="reloadGame()" title="Reiniciar jogo">
+        ↻ Reiniciar
+      </button>
+    </div>
+  </div>
+
+  <!-- Game iframe -->
+  <div class="game-frame-container" id="game-frame-container">
+    <iframe
+      id="game-iframe"
+      src="Game/Legacy Elemental.html"
+      class="game-frame"
+      allow="fullscreen"
+      allowfullscreen
+      title="Legacy Elemental – Jogo de Tabuleiro Digital"
+    ></iframe>
+  </div>
+</div>
+
+<script>
+function toggleGameFullscreen() {
+  const container = document.getElementById('game-frame-container');
+  const icon = document.getElementById('fs-icon');
+  if (!document.fullscreenElement) {
+    container.requestFullscreen().then(() => {
+      icon.textContent = '⛶';
+    }).catch(() => {});
+  } else {
+    document.exitFullscreen();
+    icon.textContent = '⛶';
+  }
+}
+
+function reloadGame() {
+  const iframe = document.getElementById('game-iframe');
+  if (iframe) iframe.src = iframe.src;
+}
+</script>

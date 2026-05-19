@@ -1,0 +1,94 @@
+<section id="eras" class="page">
+  <div class="page-header">
+    <div class="page-kicker">Seção 03</div>
+    <h1 class="page-title">Os Quatro Reinos</h1>
+    <p class="page-lead">Quatro Eras, quatro paletas, quatro destinos. Cada Era é um tabuleiro com 24 espaços numerados, regras climáticas próprias e uma Anciã à espreita.</p>
+  </div>
+
+  <div class="eras-grid">
+
+    <article class="era era-venaris" id="era-venaris">
+      <svg class="era-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6">
+        <path d="M24 6 C16 14, 12 22, 12 30 C12 38, 18 42, 24 42 C30 42, 36 38, 36 30 C36 22, 32 14, 24 6 Z"/>
+        <path d="M24 18 L24 38 M18 26 L24 30 L30 26 M20 34 L24 36 L28 34"/>
+      </svg>
+      <span class="era-tag">Era 01 · Poison Green</span>
+      <h3>Venaris</h3>
+      <p>O primeiro reino. A natureza cresceu descontrolada, e cada folha exala veneno. Esporos no ar, raízes que se movem à noite.</p>
+      <dl>
+        <dt>Eventos dominantes</dt>
+        <dd>Bonanza · Névoa Densa</dd>
+        <dt>Criatura Anciã</dt>
+        <dd class="guardia-click" data-boss="ELEMENTOS/CRIATURAS GUARDIÃS/VIPER.png" style="cursor:pointer; color:var(--accent); text-decoration:underline;">Viper (Verdant Sovereign)</dd>
+      </dl>
+    </article>
+
+    <article class="era era-glacis" id="era-glacis">
+      <svg class="era-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6">
+        <path d="M24 6 L24 42 M8 14 L40 34 M8 34 L40 14 M16 6 L24 14 L32 6 M16 42 L24 34 L32 42 M6 22 L14 24 L6 26 M42 22 L34 24 L42 26"/>
+      </svg>
+      <span class="era-tag">Era 02 · Black Frozen</span>
+      <h3>Glacis</h3>
+      <p>O inverno que engoliu tudo. Geada negra cobre o solo, a sanidade escorre a cada respiração e os passos congelam onde se detêm.</p>
+      <dl>
+        <dt>Eventos dominantes</dt>
+        <dd>Frio Intenso · Nevasca</dd>
+        <dt>Criatura Anciã</dt>
+        <dd class="guardia-click" data-boss="ELEMENTOS/CRIATURAS GUARDIÃS/ICE WITCH.png" style="cursor:pointer; color:var(--accent); text-decoration:underline;">Ice Monarch (Ice Witch)</dd>
+      </dl>
+    </article>
+
+    <article class="era era-terragorn" id="era-terragorn">
+      <svg class="era-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6">
+        <path d="M8 40 L18 26 L24 32 L32 16 L40 40 Z"/>
+        <path d="M18 12 C18 18, 22 20, 22 24 C22 20, 26 18, 26 14 C26 18, 30 20, 30 22"/>
+      </svg>
+      <span class="era-tag">Era 03 · Stonefire</span>
+      <h3>Terragorn</h3>
+      <p>Rocha viva e fogo sem pausa. Geleiras derretidas viram rios de lava, e o próprio chão queima a armadura de quem para muito tempo.</p>
+      <dl>
+        <dt>Eventos dominantes</dt>
+        <dd>Incêndio · Calor Intenso</dd>
+        <dt>Criatura Anciã</dt>
+        <dd class="guardia-click" data-boss="ELEMENTOS/CRIATURAS GUARDIÃS/Hellish Titan.png" style="cursor:pointer; color:var(--accent); text-decoration:underline;">Titan Inferno (Hellish Titan)</dd>
+      </dl>
+    </article>
+
+    <article class="era era-tenebris" id="era-tenebris">
+      <svg class="era-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6">
+        <path d="M30 8 C22 8, 16 14, 16 22 C16 32, 24 40, 34 40 C30 38, 28 32, 28 26 C28 18, 30 12, 34 8 C32.5 8, 31 8, 30 8 Z"/>
+        <circle cx="22" cy="20" r="1" fill="currentColor"/>
+        <circle cx="26" cy="30" r="1" fill="currentColor"/>
+      </svg>
+      <span class="era-tag">Era 04 · Evil Nightmare</span>
+      <h3>Tenebris</h3>
+      <p>O último reino. Trevas líquidas, chuva eterna, pesadelos que caminham. Aqui mora o Soberano das Sombras — e o quarto fragmento.</p>
+      <dl>
+        <dt>Eventos dominantes</dt>
+        <dd>Chuva Torrencial · Alagamento</dd>
+        <dt>Criatura Anciã</dt>
+        <dd class="guardia-click" data-boss="ELEMENTOS/CRIATURAS GUARDIÃS/SHADOW.png" style="cursor:pointer; color:var(--accent); text-decoration:underline;">Shadow Sovereign</dd>
+      </dl>
+    </article>
+
+  </div>
+
+  <h2>Estrutura comum a toda Era</h2>
+  <ul>
+    <li><strong>1 tabuleiro (mapa)</strong> com 24 espaços numerados.</li>
+    <li><strong>1 deck de Criaturas</strong> específico, misturando monstros gerais e temáticos da Era.</li>
+    <li><strong>1 deck de Eventos climáticos</strong> próprio, além dos decks gerais de Fenômenos e Sobrenaturais.</li>
+    <li><strong>1 Criatura Anciã</strong> guardiã, que só aparece depois que o grupo coleta determinados pré-requisitos da Era.</li>
+    <li><strong>1 fragmento da Essência Harmônica</strong> liberado ao derrotar a Anciã.</li>
+  </ul>
+
+  <div class="callout callout-warn">
+    <strong>Pendência de design</strong>
+    <p style="margin:0.4rem 0 0">A Criatura Anciã de <strong>Venaris</strong> ainda não foi nomeada nos documentos do projeto. Sugestão preliminar: <em>"Verdant Sovereign"</em> ou <em>"Toxic Overgrowth"</em>, mantendo o padrão de título dos outros três chefões. Ver também a seção de <a href="#criaturas">Criaturas</a>.</p>
+  </div>
+
+  <div class="pager">
+    <a class="prev" href="#historia"><span class="lbl">← Anterior</span><span class="nxt">A História</span></a>
+    <a class="next" href="#pedras"><span class="lbl">Próximo →</span><span class="nxt">Pedras Especiais</span></a>
+  </div>
+</section>
